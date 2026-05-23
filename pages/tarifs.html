@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Découvrez nos cures mensuelles : Essentielle 239€, Équilibre 339€, Premium 439€. Un accompagnement sur-mesure mêlant nutrition et technologies de pointe au Centre Body Reset.">
+<title>Tarifs — Centre Body Reset Clermont-l'Hérault</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.pcard{background:#fff;border-radius:var(--rl);padding:50px 36px;border:2px solid transparent;transition:var(--tr);position:relative;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(42,32,27,.1)}
+.pcard.featured{border-color:var(--tc);background:linear-gradient(180deg,#fff 0%,var(--cm) 100%);transform:scale(1.04)}
+.pcard.featured:hover{transform:scale(1.04) translateY(-6px)}
+.pcard-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--tc);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px}
+.pcard-name{font-family:var(--fd);font-size:1.8rem;color:var(--br);margin-bottom:8px;font-weight:400}
+.pcard-tag{font-size:.85rem;color:var(--mu);margin-bottom:32px;min-height:48px}
+.pcard-price{display:flex;align-items:baseline;gap:4px;margin-bottom:8px}
+.pcard-price .amount{font-family:var(--fd);font-size:3.8rem;color:var(--tc);line-height:1;font-weight:300}
+.pcard-price .currency{font-size:1.6rem;color:var(--tc);font-weight:300}
+.pcard-period{font-size:.85rem;color:var(--mu);margin-bottom:36px}
+.pcard-features{list-style:none;margin-bottom:36px;flex:1}
+.pcard-features li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--bm);padding:8px 0;line-height:1.5}
+.pcard-features li::before{content:'✓';color:var(--sg);font-weight:700;flex-shrink:0;font-size:.95rem;margin-top:2px}
+.pcard-features li.off{color:var(--li)}
+.pcard-features li.off::before{content:'—';color:var(--li);font-weight:400}
+.pcard .btn{width:100%}
+.faq{max-width:780px;margin:0 auto}
+.faq-item{background:#fff;border-radius:var(--rm);margin-bottom:14px;overflow:hidden;border:1px solid var(--be)}
+.faq-q{padding:22px 28px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:500;color:var(--br);font-size:.98rem;transition:var(--tf)}
+.faq-q:hover{background:var(--cm)}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--tc);transition:transform .3s ease}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 28px}
+.faq-item.open .faq-a{max-height:400px;padding-bottom:22px}
+.faq-a p{font-size:.92rem;line-height:1.75;color:var(--mu)}
+.banner-promo{background:linear-gradient(135deg,var(--sd) 0%,var(--sg) 100%);border-radius:var(--rl);padding:50px 60px;color:#fff;text-align:center;margin-top:80px;position:relative;overflow:hidden}
+.banner-promo::before{content:'';position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;border:1px solid rgba(255,255,255,.1)}
+.banner-promo h3{color:#fff;font-size:1.8rem;margin-bottom:10px}
+.banner-promo p{color:rgba(255,255,255,.85);margin-bottom:24px;font-size:.95rem}
+.banner-promo .btn{background:#fff;color:var(--sd)}
+@media(max-width:900px){
+  .pricing{grid-template-columns:1fr;gap:30px}
+  .pcard.featured{transform:none}
+  .pcard.featured:hover{transform:translateY(-6px)}
+}
+</style>
+</head>
+<body data-nav="tarifs">
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="bread"><a href="../index.html">Accueil</a><span>›</span><span>Tarifs</span></nav>
+    <span class="ol">Nos cures</span>
+    <h1>Un accompagnement qui s'adapte à <em style="color:var(--tc)">vos objectifs</em></h1>
+    <p class="lead">Trois formules pensées pour répondre à des besoins et budgets différents. Chacune commence obligatoirement par un bilan personnalisé pour définir précisément le protocole qui vous correspond.</p>
+  </div>
+  <div class="deco-leaf" style="top:25%;right:6%;width:36px;height:54px"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#8EC472" opacity=".7"/></svg></div>
+</section>
+
+<!-- Pricing cards -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sh rv"><span class="ol">Cures mensuelles</span><h2>Choisissez votre formule</h2><p>Les prix sont indicatifs et peuvent évoluer selon le protocole défini lors de votre bilan personnalisé.</p></div>
+
+    <div class="pricing rv-stagger">
+
+      <!-- Essentielle -->
+      <div class="pcard">
+        <div class="pcard-name">Essentielle</div>
+        <div class="pcard-tag">Pour démarrer en douceur et tester nos approches.</div>
+        <div class="pcard-price"><span class="amount">239</span><span class="currency">€</span></div>
+        <div class="pcard-period">par mois · engagement 3 mois</div>
+        <ul class="pcard-features">
+          <li>Bilan personnalisé inclus (1h)</li>
+          <li>4 séances technologie / mois</li>
+          <li>1 consultation nutrition / mois</li>
+          <li>Suivi par messagerie</li>
+          <li class="off">Plan nutritionnel détaillé</li>
+          <li class="off">Accès au pack récupération</li>
+          <li class="off">Ajustements illimités</li>
+        </ul>
+        <a href="contact.html" class="btn btn-out">Choisir cette cure</a>
+      </div>
+
+      <!-- Équilibre - featured -->
+      <div class="pcard featured">
+        <div class="pcard-badge">Le plus choisi</div>
+        <div class="pcard-name">Équilibre</div>
+        <div class="pcard-tag">Notre formule la plus complète pour des résultats durables.</div>
+        <div class="pcard-price"><span class="amount">339</span><span class="currency">€</span></div>
+        <div class="pcard-period">par mois · engagement 3 mois</div>
+        <ul class="pcard-features">
+          <li>Bilan personnalisé inclus (1h)</li>
+          <li>8 séances technologie / mois</li>
+          <li>2 consultations nutrition / mois</li>
+          <li>Plan nutritionnel détaillé</li>
+          <li>Suivi par messagerie prioritaire</li>
+          <li>Ajustements en cours de cure</li>
+          <li class="off">Accès au pack récupération</li>
+        </ul>
+        <a href="contact.html" class="btn bp">Choisir cette cure</a>
+      </div>
+
+      <!-- Premium -->
+      <div class="pcard">
+        <div class="pcard-name">Premium</div>
+        <div class="pcard-tag">L'accompagnement haut de gamme avec tous les outils.</div>
+        <div class="pcard-price"><span class="amount">439</span><span class="currency">€</span></div>
+        <div class="pcard-period">par mois · engagement 3 mois</div>
+        <ul class="pcard-features">
+          <li>Bilan personnalisé inclus (1h30)</li>
+          <li>Séances technologie illimitées</li>
+          <li>Suivi nutritionnel hebdomadaire</li>
+          <li>Plan nutritionnel détaillé + recettes</li>
+          <li>Suivi messagerie prioritaire 7j/7</li>
+          <li>Ajustements illimités</li>
+          <li>Pack récupération inclus</li>
+        </ul>
+        <a href="contact.html" class="btn btn-out">Choisir cette cure</a>
+      </div>
+
+    </div>
+
+    <!-- Banner offre lancement -->
+    <div class="banner-promo rv-scale">
+      <h3>Offre d'ouverture — 50 premiers clients</h3>
+      <p>Bilan personnalisé offert (valeur 60€) + <strong>-30% sur votre cure</strong> si elle est prise le jour du bilan.</p>
+      <a href="contact.html" class="btn">Profiter de l'offre →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--cm)">
+  <div class="wrap">
+    <div class="sh rv"><span class="ol">FAQ</span><h2>Questions fréquentes</h2></div>
+    <div class="faq rv-stagger">
+
+      <div class="faq-item">
+        <div class="faq-q">Quelle est la durée minimum d'une cure ?</div>
+        <div class="faq-a"><p>Toutes nos cures sont sur un engagement minimum de 3 mois. C'est la durée nécessaire pour observer des résultats tangibles et durables. La biologie a besoin de temps : les transformations métaboliques ne s'opèrent pas en quelques séances.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Le bilan est-il vraiment obligatoire ?</div>
+        <div class="faq-a"><p>Oui. C'est ce qui distingue Body Reset des centres classiques : nous ne vendons pas de séances "à la carte" sans connaître votre situation. Le bilan permet à Charlotte et Alison de comprendre vos blocages réels, vos contraintes, votre histoire — et de construire un protocole qui aura du sens pour vous. Sans bilan, pas d'accompagnement personnalisé possible.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Puis-je changer de cure en cours de route ?</div>
+        <div class="faq-a"><p>Absolument. Si vos besoins évoluent — accélération du programme, ajout de séances supplémentaires, focus sur une nouvelle problématique — nous adaptons votre cure. C'est l'avantage d'un accompagnement humain et flexible.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Les séances peuvent-elles être prises en charge ?</div>
+        <div class="faq-a"><p>Les soins en cabinet d'esthétique avancée et les consultations diététiques ne sont généralement pas remboursés par la Sécurité Sociale. Cependant, certaines mutuelles proposent des forfaits "bien-être" ou "prévention santé". Nous vous remettons une facture détaillée pour vos démarches.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Comment se passe le paiement ?</div>
+        <div class="faq-a"><p>Le paiement de votre cure peut se faire en une fois ou être mensualisé sur la durée de l'engagement. Nous acceptons les cartes bancaires, virements et chèques. Aucun frais supplémentaire pour le paiement en plusieurs fois.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Y a-t-il des séances à l'unité possibles ?</div>
+        <div class="faq-a"><p>Pour garantir l'efficacité de notre approche, nous privilégions les cures. Cependant, après votre première cure, des séances de maintenance à l'unité sont possibles selon vos besoins et notre disponibilité.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <span class="ol">Encore des questions ?</span>
+    <h2>Parlons de votre projet</h2>
+    <p>Le bilan personnalisé est l'occasion idéale pour discuter de la cure la plus adaptée à votre situation.</p>
+    <a href="contact.html" class="btn bw">Réserver mon bilan offert →</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../js/layout.js"></script>
+<script>
+// FAQ toggle
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+});
+</script>
+</body>
+</html>

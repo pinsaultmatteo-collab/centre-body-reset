@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Trail, sport intensif, retour de blessure : photobiomodulation LED + pressothérapie + nutrition sportive pour récupérer plus vite et progresser durablement.">
+<title>Récupération sportive — Centre Body Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<style>
+.target-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px}
+.target-card{background:#fff;border-radius:var(--rm);padding:36px 30px;border:1px solid var(--be);transition:var(--tr)}
+.target-card:hover{border-color:var(--tc);transform:translateY(-4px)}
+.target-card h3{font-size:1.15rem;margin-bottom:12px;color:var(--br)}
+.target-card p{font-size:.88rem}
+.target-icon{font-size:2rem;margin-bottom:18px}
+.approach{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin:60px 0}
+.approach-img img{width:100%;border-radius:var(--rx);height:480px;object-fit:cover}
+.approach ul{list-style:none;margin:24px 0 32px}
+.approach ul li{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;color:var(--bm);padding:8px 0}
+.approach ul li::before{content:'';width:24px;height:24px;border-radius:50%;background:var(--sx);flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B8C5A' stroke-width='2.5'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-size:14px;background-repeat:no-repeat;background-position:center}
+.tech-section{background:var(--cm)}
+.tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:60px}
+.tech-card{background:#fff;border-radius:var(--rm);overflow:hidden;text-decoration:none;color:inherit;display:block;transition:var(--tr);border:2px solid transparent}
+.tech-card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(42,32,27,.1);border-color:var(--tc)}
+.tech-card img{width:100%;height:180px;object-fit:cover}
+.tech-card-body{padding:26px 24px}
+.tech-card-body h3{font-size:1.1rem;color:var(--br);margin-bottom:8px}
+.tech-card-body p{font-size:.85rem;line-height:1.6}
+.tech-card-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--tc);font-weight:500;font-size:.8rem;letter-spacing:.04em;transition:gap .2s}
+.tech-card:hover .tech-card-link{gap:10px}
+.testimonial-block{max-width:780px;margin:0 auto;background:#fff;padding:50px 60px;border-radius:var(--rl);text-align:center;border:1px solid var(--be)}
+.testimonial-block blockquote{font-family:var(--fd);font-size:1.4rem;font-style:italic;color:var(--br);line-height:1.55;margin-bottom:24px}
+.testimonial-block blockquote::before{content:'\201C';font-size:3rem;color:var(--tl);line-height:0;vertical-align:-.6rem;margin-right:4px}
+.testimonial-block .stars{justify-content:center;margin-bottom:18px;display:flex;gap:4px}
+.testimonial-block .star{color:var(--tc);font-size:1.1rem}
+.testimonial-block .author{font-weight:500;color:var(--br)}
+.testimonial-block .author span{display:block;font-weight:400;color:var(--mu);font-size:.85rem;margin-top:3px}
+@media(max-width:768px){
+  .target-grid{grid-template-columns:1fr}
+  .approach{grid-template-columns:1fr;gap:40px}
+  .approach-img img{height:280px}
+  .tech-grid{grid-template-columns:1fr}
+  .testimonial-block{padding:36px 28px}
+  .testimonial-block blockquote{font-size:1.15rem}
+}
+</style>
+</head>
+<body data-nav="solutions">
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="bread"><a href="../../index.html">Accueil</a><span>›</span><a href="../../index.html#solutions">Solutions</a><span>›</span><span>Récupération sportive</span></nav>
+    <span class="ol">Récupération sportive</span>
+    <h1>Récupérer mieux, c'est <em style="color:var(--tc)">progresser plus loin</em></h1>
+    <p class="lead">Trail, course à pied, sport intensif, retour de blessure... Vous donnez tout à l'entraînement, mais la récupération est tout aussi cruciale. Notre protocole combine photobiomodulation LED, pressothérapie et nutrition sportive pour optimiser votre récupération et vos performances.</p>
+  </div>
+  <div class="deco-leaf" style="top:30%;right:8%;width:38px;height:56px"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#8EC472" opacity=".7"/></svg></div>
+  <div class="deco-leaf" style="bottom:15%;left:5%;width:32px;height:48px"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#A6D68A" opacity=".7"/></svg></div>
+</section>
+
+<!-- À qui s'adresse -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="ol">À qui s'adresse cette solution</span>
+      <h2>Quel sportif êtes-vous ?</h2>
+      <p>Que vous soyez athlète confirmé ou amateur passionné, notre protocole s'adapte à votre niveau et vos objectifs.</p>
+    </div>
+    <div class="target-grid rv-stagger">
+      <div class="target-card"><div class="target-icon">🏃</div><h3>Je suis traileur ou marathonien</h3><p>Volumes d'entraînement importants, courbatures persistantes, fatigue accumulée. Notre protocole accélère la régénération musculaire entre les sorties longues et les compétitions.</p></div>
+      <div class="target-card"><div class="target-icon">💪</div><h3>Je pratique en intensif (crossfit, muscu, HIIT)</h3><p>Microtraumatismes répétés, inflammation chronique, plateau de performance. Nous optimisons votre récupération pour passer au niveau supérieur.</p></div>
+      <div class="target-card"><div class="target-icon">🩹</div><h3>Je reviens de blessure</h3><p>Tendinite, entorse, claquage... La photobiomodulation accélère la cicatrisation tissulaire. La pressothérapie limite l'œdème. Un retour au sport plus rapide et plus sûr.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Notre approche -->
+<section class="sec" style="background:var(--cm)">
+  <div class="wrap">
+    <div class="approach">
+      <div class="approach-img rv-left rv-zoom"><img src="../../images/tech-pressotherapie.webp" alt="Récupération sportive"></div>
+      <div class="rv-right">
+        <span class="ol">Notre approche</span>
+        <h2>La récupération, science précise</h2>
+        <p>La performance se construit autant à l'entraînement que pendant la récupération. Les muscles se renforcent en se réparant. Or les sportifs sous-estiment souvent ce volet : ils empilent les séances sans donner au corps les outils pour rebondir.</p>
+        <p>Charlotte construit votre nutrition de récupération : protéines, micronutriments anti-inflammatoires, hydratation, timing. Alison utilise les <strong>technologies de pointe</strong> dont les meilleurs athlètes mondiaux bénéficient. Vous récupérez plus vite, vous progressez plus loin, vous vous blessez moins.</p>
+        <ul>
+          <li>Nutrition sportive personnalisée (avant/pendant/après)</li>
+          <li>Photobiomodulation LED post-entraînement</li>
+          <li>Drainage lymphatique mécanique (pressothérapie)</li>
+          <li>Stratégie anti-inflammatoire naturelle</li>
+          <li>Optimisation du sommeil et de la récupération</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technologies utilisées (pont) -->
+<section class="sec tech-section">
+  <div class="wrap">
+    <div class="sh rv">
+      <span class="ol">Les technologies que nous utilisons</span>
+      <h2>2 technologies pour récupérer comme un pro</h2>
+      <p>Les technologies que nous utilisons sont validées scientifiquement et adoptées par les meilleurs athlètes mondiaux.</p>
+    </div>
+    <div class="tech-grid rv-stagger">
+      <a href="../technologies/pressotherapie.html" class="tech-card">
+        <img src="../../images/tech-pressotherapie.webp" alt="Pressothérapie">
+        <div class="tech-card-body">
+          <h3>Pressothérapie</h3>
+          <p>Drainage lymphatique mécanique : élimination des déchets musculaires, réduction des courbatures, retour veineux optimisé. Indispensable après les efforts longs.</p>
+          <span class="tech-card-link">Voir cette technologie →</span>
+        </div>
+      </a>
+      <a href="../technologies/led.html" class="tech-card">
+        <img src="../../images/tech-led.webp" alt="LED Infrarouge">
+        <div class="tech-card-body">
+          <h3>LED Infrarouge</h3>
+          <p>Photobiomodulation post-effort : accélération de la régénération musculaire, réduction de l'inflammation, cicatrisation tissulaire. Utilisée par la NASA et les sportifs de haut niveau.</p>
+          <span class="tech-card-link">Voir cette technologie →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Témoignage -->
+<section class="sec">
+  <div class="wrap">
+    <div class="testimonial-block rv-scale">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <blockquote>Traileur depuis 10 ans, jamais je n'avais récupéré aussi vite. La combinaison LED, pressothérapie et nutrition est redoutable. Mes performances ont décollé.</blockquote>
+      <div class="author">Thomas, 38 ans<span>Cure récupération sportive</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <span class="ol">Prêt·e à passer à l'action ?</span>
+    <h2>Votre bilan personnalisé vous attend</h2>
+    <p>30 à 60 minutes avec nos expertes pour comprendre votre situation et définir le bon protocole pour vous.</p>
+    <a href="../contact.html" class="btn bw">Réserver mon bilan offert →</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../../js/layout.js"></script>
+</body>
+</html>

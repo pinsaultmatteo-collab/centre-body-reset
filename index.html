@@ -8,311 +8,54 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
 <style>
-:root{
- --c:#FAF7F2;--cd:#EFE8DE;--cm:#F5EFE7;
- --tc:#C4704A;--tl:#D4A99A;--tx:#EDD8CC;--td:#9E5535;
- --sg:#6B8C5A;--sl:#A8C19A;--sx:#D4E5CC;--sd:#48643C;
- --br:#2A201B;--bm:#4A3B32;--mu:#8A7068;--li:#B5A89E;
- --be:#E2D5C7;--bl:#EDE6DC;
- --fd:'Cormorant Garamond',Georgia,serif;
- --fb:'DM Sans',system-ui,sans-serif;
- --ease:cubic-bezier(.25,.46,.45,.94);
- --tr:all .42s var(--ease);--tf:all .18s ease;
- --rs:10px;--rm:20px;--rl:36px;--rx:56px;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-html,body{height:auto}body{background:var(--c);color:var(--br);font-family:var(--fb);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{color:inherit}
-button{font-family:var(--fb);cursor:pointer}
-h1,h2,h3{font-family:var(--fd);font-weight:400;line-height:1.12}
-h1{font-size:clamp(2.5rem,5.2vw,5rem)}
-h2{font-size:clamp(1.9rem,3.8vw,3.4rem)}
-h3{font-size:clamp(1.2rem,2.3vw,1.65rem)}
-.ol{font-family:var(--fb);font-size:.71rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--tc);display:inline-block}
-p{color:var(--mu);line-height:1.85}
-.wrap{max-width:1200px;margin:0 auto;padding:0 56px}
-.sec{padding:110px 0}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 36px;border-radius:100px;font-family:var(--fb);font-size:.875rem;font-weight:500;letter-spacing:.03em;text-decoration:none;border:none;cursor:pointer;transition:var(--tr);white-space:nowrap}
-.bp{background:var(--tc);color:#fff}
-.bp:hover{background:var(--td);transform:translateY(-2px);box-shadow:0 14px 36px rgba(196,112,74,.35)}
-.bo{background:rgba(255,255,255,.75);color:var(--br);border:1.5px solid rgba(255,255,255,.8);backdrop-filter:blur(8px)}
-.bo:hover{background:#fff;transform:translateY(-2px)}
-.bw{background:#fff;color:var(--br)}
-.bw:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(42,32,27,.1)}
-.bgh{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.35)}
-.bgh:hover{background:rgba(255,255,255,.22)}
-
-/* ─── NAV ─── */
-#nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;transition:var(--tr)}
-#nav.sc{background:#ffffff !important;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:13px 40px;box-shadow:0 4px 20px rgba(42,32,27,.08);border-bottom:1px solid rgba(42,32,27,.05)}
-.nl img{height:64px;width:auto;transition:height var(--tr);object-fit:contain}
-#nav.sc .nl img{height:52px}
-.nls{display:flex;gap:34px;list-style:none}
-.nls a{text-decoration:none;font-size:.84rem;color:var(--bm);letter-spacing:.04em;transition:var(--tf);position:relative}
-.nls a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--tc);transform:scaleX(0);transition:var(--tf)}
-.nls a:hover{color:var(--tc)}
-.nls a:hover::after{transform:scaleX(1)}
-.nr{display:flex;gap:12px;align-items:center}
-.burg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
-.burg span{display:block;width:22px;height:1.5px;background:var(--br);transition:var(--tr)}
-.mm{display:none;position:fixed;inset:0;background:var(--c);z-index:998;padding:100px 32px 40px;flex-direction:column;gap:8px}
-.mm.op{display:flex}
-.mm a{font-family:var(--fd);font-size:2rem;text-decoration:none;color:var(--br);padding:12px 0;border-bottom:1px solid var(--be);transition:var(--tf)}
-.mm a:hover{color:var(--tc);padding-left:8px}
-.mm .btn{margin-top:20px;width:100%;justify-content:center}
-
-/* ═══════════════════════════════════
- HERO — Photo background + Arbre
-═══════════════════════════════════ */
-.hero{
- min-height:100svh;
- position:relative;
- display:grid;
- grid-template-columns:54% 46%;
- overflow:hidden;
-}
-
-/* Photo plein fond */
-.hero-photo{
- position:absolute;
- inset:0;
- z-index:0;
-}
-.hero-photo img{
- width:100%;height:100%;
- object-fit:cover;
- object-position:center center;
- animation:hzoom 14s ease-out forwards;
-}
+/* ═══════ Styles spécifiques à la home ═══════ */
+.hero{min-height:100svh;position:relative;display:grid;grid-template-columns:54% 46%;overflow:hidden}
+.hero-photo{position:absolute;inset:0;z-index:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center center;animation:hzoom 14s ease-out forwards}
 @keyframes hzoom{from{transform:scale(1.06)}to{transform:scale(1)}}
-
-/* Dégradé : très opaque à gauche (texte lisible) → transparent à droite (photo visible) */
-.hero-ov{
- position:absolute;inset:0;z-index:1;
- /* Voile crème uniforme — même couleur partout, juste un chouïa plus opaque à gauche pour le texte */
- background:linear-gradient(
- 100deg,
- rgba(251,248,244,.88) 0%,
- rgba(251,248,244,.82) 40%,
- rgba(251,248,244,.68) 60%,
- rgba(251,248,244,.62) 100%
- );
-}
-
-/* Grain */
-.hero::before{
- content:'';position:absolute;inset:0;z-index:2;
- opacity:.035;pointer-events:none;
- background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ─ Texte gauche ─ */
-.hl{
- position:relative;z-index:3;
- display:flex;align-items:center;
- padding-top:120px;
- padding-right:40px;
- padding-bottom:80px;
- padding-left:max(56px, calc((100vw - 1200px) / 2 + 56px));
-}
-.hl::before{
- content:'';
- position:absolute;
- left:max(32px, calc((100vw - 1200px) / 2 + 32px));
- top:22%;bottom:22%;
- width:1px;
- background:linear-gradient(to bottom,transparent,var(--be) 30%,var(--be) 70%,transparent);
-}
+.hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(251,248,244,.88) 0%,rgba(251,248,244,.82) 40%,rgba(251,248,244,.68) 60%,rgba(251,248,244,.62) 100%)}
+.hero::before{content:'';position:absolute;inset:0;z-index:2;opacity:.035;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hl{position:relative;z-index:3;display:flex;align-items:center;padding-top:120px;padding-right:40px;padding-bottom:80px;padding-left:max(56px, calc((100vw - 1200px) / 2 + 56px))}
 .hl-in{max-width:590px;margin-left:0}
-
-.h-chap{
- font-family:var(--fd);font-size:.78rem;
- letter-spacing:.3em;text-transform:uppercase;
- color:var(--bm);font-style:italic;font-weight:500;
- display:flex;align-items:center;gap:14px;
- margin-bottom:36px;
- animation:fupr .9s var(--ease) .1s both;
-}
+.h-chap{font-family:var(--fd);font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bm);font-style:italic;font-weight:500;display:flex;align-items:center;gap:14px;margin-bottom:36px;animation:fupr .9s var(--ease) .1s both}
 .h-chap::before{content:'';width:32px;height:1px;background:var(--mu);opacity:.5}
-
-.h-tag{
- display:inline-flex;align-items:center;gap:10px;
- background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.9);
- backdrop-filter:blur(12px);
- padding:9px 18px;border-radius:100px;
- font-size:.77rem;color:var(--mu);
- margin-bottom:28px;
- box-shadow:0 2px 12px rgba(42,32,27,.06);
- animation:fupr .9s var(--ease) .2s both;
-}
+.h-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(12px);padding:9px 18px;border-radius:100px;font-size:.77rem;color:var(--mu);margin-bottom:28px;box-shadow:0 2px 12px rgba(42,32,27,.06);animation:fupr .9s var(--ease) .2s both}
 .h-dot{width:8px;height:8px;border-radius:50%;background:var(--sg);flex-shrink:0;animation:blink 2.5s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
-
-/* ─── TITRE HERO — propre, sans décalage bizarre ─── */
-.hero h1{
- color:var(--br);
- font-size:clamp(1.95rem,3.7vw,3.5rem);
- line-height:1.1;
- margin-bottom:26px;
- animation:fupr .9s var(--ease) .32s both;
-}
-/* Ligne 1 — normale */
+.hero h1{color:var(--br);font-size:clamp(1.95rem,3.7vw,3.5rem);line-height:1.1;margin-bottom:26px;animation:fupr .9s var(--ease) .32s both}
 .hero h1 .l1{display:block}
-/* Ligne 2 — italique terracotta, légèrement plus grande */
-.hero h1 .l2{
- display:block;
- font-style:italic;
- color:var(--tc);
- font-size:1.07em;
- margin-top:2px;
-}
-/* Ligne 3 — normale */
+.hero h1 .l2{display:block;font-style:italic;color:var(--tc);font-size:1.07em;margin-top:2px}
 .hero h1 .l3{display:block;margin-top:2px}
-
-.h-sub{
- font-size:1.02rem;color:var(--mu);max-width:520px;
- line-height:1.85;margin-bottom:42px;
- animation:fupr .9s var(--ease) .46s both;
-}
+.h-sub{font-size:1.02rem;color:var(--mu);max-width:520px;line-height:1.85;margin-bottom:42px;animation:fupr .9s var(--ease) .46s both}
 .h-ctas{display:flex;gap:14px;flex-wrap:wrap;animation:fupr .9s var(--ease) .60s both}
-.h-div{
- display:flex;align-items:center;gap:18px;margin-top:38px;
- animation:fupr .9s var(--ease) .74s both;
-}
+.h-div{display:flex;align-items:center;gap:18px;margin-top:38px;animation:fupr .9s var(--ease) .74s both}
 .h-div-line{width:36px;height:1px;background:linear-gradient(to right,transparent,var(--mu));opacity:.5}
 .h-div p{font-size:.84rem;color:var(--bm)}
 .h-div strong{color:var(--br);font-weight:600}
-.h-stats{
- display:flex;align-items:center;
- margin-top:34px;
- animation:fupr .9s var(--ease) .88s both;
-}
+.h-stats{display:flex;align-items:center;margin-top:34px;animation:fupr .9s var(--ease) .88s both}
 .h-st{text-align:center;padding:0 22px}
 .h-st:first-child{padding-left:0}
 .h-st .n{font-family:var(--fd);font-size:2.1rem;color:var(--br);line-height:1;font-weight:300}
 .h-st .l{font-size:.72rem;color:var(--bm);margin-top:5px;letter-spacing:.04em;line-height:1.4}
 .h-sdiv{width:1px;background:var(--be);height:42px;align-self:center}
-
-/* ─ Panneau droit : arbre SVG sur la photo ─ */
-.hr{
- position:relative;z-index:3;
- overflow:visible;
- display:flex;align-items:flex-end;
-}
-.hr::before{
- content:'';position:absolute;inset:0;
- background:transparent; /* plus de 2ème couche blanche */
- pointer-events:none;z-index:0;
-}
-.tree-ring{
- position:absolute;border-radius:50%;
- border:1px solid rgba(255,255,255,.18);
- animation:ringPulse 5s ease-in-out infinite;pointer-events:none;
-}
-@keyframes ringPulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.03);opacity:1}}
-
-.tree-svg{width:100%;height:100%;position:absolute;bottom:0;left:0;overflow:visible}
-
-/* ─ Branches ─ */
-.br{
- stroke-dasharray:var(--l);stroke-dashoffset:var(--l);
- animation:draw var(--dr) var(--ease) var(--d) forwards;
-}
-@keyframes draw{to{stroke-dashoffset:0}}
-/* Branches renforcées sur fond clair */
-.br.lv0,.br.lv1,.br.lv2{filter:drop-shadow(0 0 1.5px rgba(58,87,41,.3))}
-
-/* ─ Feuilles SVG — apparaissent au scroll ─ */
-.leaf{
- transform-origin:center bottom;
- opacity:0;
- transform:scale(0);
- transition:opacity .9s cubic-bezier(.34,1.56,.64,1), transform .9s cubic-bezier(.34,1.56,.64,1);
-}
-.leaf.vis{
- opacity:1;
- transform:scale(1);
-}
-/* Frémissement une fois poussées */
-.leaf.vis{
- animation:leafFlutter 5s ease-in-out infinite;
- animation-delay:var(--fd2,0s);
-}
-@keyframes leafFlutter{
- 0%,100%{transform:scale(1) rotate(0deg)}
- 33%{transform:scale(1.03) rotate(1.5deg)}
- 66%{transform:scale(0.98) rotate(-1.2deg)}
-}
-
-/* ─ Particules flottantes ─ */
-.fp{
- position:absolute;border-radius:50%;background:rgba(168,193,154,.6);
- pointer-events:none;animation:float linear infinite;opacity:0;
-}
-@keyframes float{
- 0%{transform:translateY(0) translateX(0);opacity:0}
- 8%{opacity:.4}90%{opacity:.15}
- 100%{transform:translateY(-100px) translateX(var(--dx,0px));opacity:0}
-}
-
-/* Badges */
-.tb{
- position:absolute;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);
- border-radius:22px;padding:18px 24px;
- box-shadow:0 18px 50px rgba(42,32,27,.14);
- border:1px solid rgba(255,255,255,.9);z-index:4;
- min-width:155px;
- opacity:0;
-}
+.hr{position:relative;z-index:3;overflow:visible;display:flex;align-items:flex-end}
+.hr::before{content:'';position:absolute;width:80%;height:80%;bottom:5%;left:10%;background:radial-gradient(ellipse at 50% 80%,rgba(107,140,90,.08) 0%,transparent 65%);pointer-events:none}
+.tb{position:absolute;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-radius:22px;padding:18px 24px;box-shadow:0 18px 50px rgba(42,32,27,.14);border:1px solid rgba(255,255,255,.9);z-index:4;min-width:155px;opacity:0}
 .tb .tn{font-family:var(--fd);font-size:2.1rem;color:var(--tc);line-height:1;font-weight:300}
 .tb .tl{font-size:.76rem;color:var(--mu);margin-top:6px;line-height:1.45;font-weight:400}
 .tb2 .tn{color:var(--sg)}
 .tb1{bottom:22%;left:-2%}
 .tb2{top:25%;right:2%}
-/* Animation entrée + orbite continue autour de leur position */
-@keyframes orbit1{
- 0%{transform:translate(0,0) rotate(0deg)}
- 25%{transform:translate(12px,-18px) rotate(-1.8deg)}
- 50%{transform:translate(-8px,-26px) rotate(1.2deg)}
- 75%{transform:translate(-14px,-10px) rotate(-1deg)}
- 100%{transform:translate(0,0) rotate(0deg)}
-}
-@keyframes orbit2{
- 0%{transform:translate(0,0) rotate(0deg)}
- 25%{transform:translate(-14px,16px) rotate(1.5deg)}
- 50%{transform:translate(8px,22px) rotate(-2deg)}
- 75%{transform:translate(16px,8px) rotate(1deg)}
- 100%{transform:translate(0,0) rotate(0deg)}
-}
+@keyframes orbit1{0%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(12px,-18px) rotate(-1.8deg)}50%{transform:translate(-8px,-26px) rotate(1.2deg)}75%{transform:translate(-14px,-10px) rotate(-1deg)}100%{transform:translate(0,0) rotate(0deg)}}
+@keyframes orbit2{0%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(-14px,16px) rotate(1.5deg)}50%{transform:translate(8px,22px) rotate(-2deg)}75%{transform:translate(16px,8px) rotate(1deg)}100%{transform:translate(0,0) rotate(0deg)}}
 .tb1{animation:fadeBadge .8s ease 3.0s forwards, orbit1 11s ease-in-out 3.8s infinite}
 .tb2{animation:fadeBadge .8s ease 3.4s forwards, orbit2 13s ease-in-out 4.2s infinite}
 @keyframes fadeBadge{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-
-.scroll-ind{
- position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
- z-index:4;display:flex;flex-direction:column;align-items:center;gap:6px;
- animation:fadein 1s ease 3.8s both;
-}
-.scroll-bar{
- width:1px;height:54px;
- background:linear-gradient(to bottom,rgba(255,255,255,.7),transparent);
- animation:scrollDrop 2.2s ease-in-out infinite;
-}
-@keyframes scrollDrop{
- 0%{transform:scaleY(0);transform-origin:top;opacity:1}
- 55%{transform:scaleY(1);transform-origin:top;opacity:1}
- 100%{transform:scaleY(1);transform-origin:bottom;opacity:0}
-}
-.scroll-lbl{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px}
-
 @keyframes fupr{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadein{from{opacity:0}to{opacity:1}}
 
-/* ══ RESTE DU SITE (inchangé) ══════════════════════ */
+/* Marquee */
 .mq{background:var(--sg);overflow:hidden;padding:15px 0}
 .mqi{display:flex;width:max-content;animation:mq 30s linear infinite}
 .mqi:hover{animation-play-state:paused}
@@ -320,6 +63,7 @@ p{color:var(--mu);line-height:1.85}
 .md{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);flex-shrink:0}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+/* Philosophie */
 .ig{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
 .iv{position:relative}
 .iv img{width:100%;height:560px;object-fit:cover;border-radius:var(--rx)}
@@ -329,18 +73,12 @@ p{color:var(--mu);line-height:1.85}
 .fl2{position:absolute;top:32px;left:-28px;background:var(--sg);border-radius:var(--rs);padding:14px 18px;box-shadow:0 12px 40px rgba(42,32,27,.1)}
 .fl2 strong{display:block;color:#fff;font-size:.9rem;margin-bottom:2px}
 .fl2 p{font-size:.77rem;color:rgba(255,255,255,.8);line-height:1.5}
-.it .ol{margin-bottom:18px}
-.it h2{margin-bottom:20px}
-.it p{margin-bottom:18px}
 .ck{list-style:none;margin:24px 0 32px;display:flex;flex-direction:column;gap:10px}
 .ck li{display:flex;align-items:flex-start;gap:12px;font-size:.875rem;color:var(--bm)}
 .ck li::before{content:'';width:20px;height:20px;border-radius:50%;background:var(--sx);flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B8C5A' stroke-width='2.5'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-size:12px;background-repeat:no-repeat;background-position:center;margin-top:2px}
 
+/* Solutions cards */
 .pbs{background:var(--cd)}
-.sh{text-align:center;margin-bottom:70px}
-.sh .ol{margin-bottom:14px}
-.sh h2{margin-bottom:16px}
-.sh p{max-width:620px;margin:0 auto}
 .pg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .pc{background:#fff;border-radius:var(--rm);padding:38px 30px;text-decoration:none;display:block;border:1.5px solid transparent;position:relative;overflow:hidden;transition:var(--tr)}
 .pc-t{position:absolute;top:0;left:0;right:0;height:3px;background:var(--tc);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
@@ -353,6 +91,7 @@ p{color:var(--mu);line-height:1.85}
 .pc-a{font-size:.78rem;color:var(--tc);font-weight:500;letter-spacing:.05em;display:flex;align-items:center;gap:6px;transition:gap .2s ease}
 .pc:hover .pc-a{gap:10px}
 
+/* Steps */
 .sw{display:grid;grid-template-columns:repeat(3,1fr);position:relative;margin-top:70px}
 .sc2{position:absolute;top:46px;left:16.66%;right:16.66%;height:1px;background:var(--be);z-index:0}
 .st{text-align:center;padding:0 44px;position:relative;z-index:1}
@@ -364,33 +103,58 @@ p{color:var(--mu);line-height:1.85}
 .scta2{text-align:center;margin-top:60px}
 .scta2 small{display:block;margin-top:12px;font-size:.78rem;color:var(--li)}
 
+/* Offre */
+.offer-sec{background:var(--c)}
+.offer-inner{border-radius:var(--rx);background:linear-gradient(135deg,var(--sd) 0%,var(--sg) 100%);padding:72px 72px;position:relative;overflow:hidden}
+.offer-inner::before{content:'';position:absolute;right:-80px;top:-80px;width:400px;height:400px;border-radius:50%;border:1px solid rgba(255,255,255,.1)}
+.offer-inner::after{content:'';position:absolute;right:-20px;bottom:-60px;width:280px;height:280px;border-radius:50%;border:1px solid rgba(255,255,255,.08)}
+.offer-head{margin-bottom:48px;position:relative;z-index:1}
+.offer-head .ol{color:rgba(255,255,255,.7);margin-bottom:10px}
+.offer-head h2{color:#fff;font-size:clamp(1.8rem,3.5vw,3rem);margin-bottom:10px}
+.offer-head p{color:rgba(255,255,255,.7);max-width:580px;font-size:.95rem}
+.offer-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;position:relative;z-index:1}
+.ocard{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:var(--rl);padding:40px 36px;transition:var(--tr)}
+.ocard:hover{background:rgba(255,255,255,.18);transform:translateY(-4px)}
+.ocard-val{font-family:var(--fd);font-size:4rem;color:#fff;line-height:1;margin-bottom:12px;font-weight:300}
+.ocard-val span{font-size:2rem;vertical-align:top;margin-top:6px;display:inline-block}
+.ocard h3{color:#fff;font-size:1.2rem;margin-bottom:8px;font-family:var(--fb);font-weight:500}
+.ocard p{color:rgba(255,255,255,.75);font-size:.875rem}
+.ocard-badge{display:inline-block;background:var(--tc);color:#fff;font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-top:14px}
+.offer-foot{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;flex-wrap:wrap;gap:20px}
+.offer-limit{color:rgba(255,255,255,.75);font-size:.85rem;display:flex;align-items:center;gap:10px}
+.offer-limit::before{content:'⏳';font-size:1rem}
+
+/* Technos */
 .tecs{background:var(--br);overflow:hidden}
 .tecs .sh .ol{color:var(--tl)}
 .tecs .sh h2{color:#fff}
-.tecs .sh p{color:rgba(255,255,255,.5)}
+.tecs .sh p{color:rgba(255,255,255,.6)}
 .tg{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;border-radius:var(--rm);overflow:hidden;margin-top:60px}
 .tc{background:rgba(255,255,255,.05);padding:48px 24px;text-align:center;transition:var(--tr);border:2px solid transparent;text-decoration:none;display:block}
 .tc:hover{background:rgba(255,255,255,.1);border-color:rgba(196,112,74,.35)}
 .tc-img{width:100%;height:200px;object-fit:cover;border-radius:var(--rs);margin-bottom:18px;opacity:.7;transition:opacity .35s ease,transform .35s ease;filter:grayscale(20%)}
 .tc:hover .tc-img{opacity:1;filter:grayscale(0);transform:scale(1.03)}
 .tc h3{font-family:var(--fb);font-size:.88rem;font-weight:500;color:#fff;margin-bottom:8px;line-height:1.3}
-.tc p{font-size:.76rem;color:rgba(255,255,255,.42);line-height:1.6}
+.tc p{font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.6}
 .tcb{display:inline-block;background:rgba(196,112,74,.22);color:var(--tl);font-size:.66rem;padding:3px 10px;border-radius:100px;margin-top:10px}
 .tecf{text-align:center;margin-top:50px}
-.tecf p{color:rgba(255,255,255,.4);font-size:.85rem;margin-bottom:24px}
+.tecf p{color:rgba(255,255,255,.5);font-size:.85rem;margin-bottom:24px}
 
-.tmg{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:70px}
-.tmc{background:#fff;border-radius:var(--rl);overflow:hidden;transition:var(--tr)}
-.tmc:hover{transform:translateY(-5px);box-shadow:0 24px 80px rgba(42,32,27,.13)}
-.tmi{height:320px;overflow:hidden}
-.tmp{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.tmb{padding:36px}
-.tmb h3{font-size:1.65rem;color:var(--br);margin-bottom:4px}
-.tmb .role{font-size:.76rem;color:var(--tc);font-weight:500;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:16px}
-.tmb p{font-size:.875rem}
-.bds{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+/* Équipe */
+.team-main{display:grid;grid-template-columns:42% 58%;gap:0;border-radius:var(--rl);overflow:hidden;background:#fff;box-shadow:0 24px 80px rgba(42,32,27,.1);margin-top:70px}
+.team-photo{position:relative;overflow:hidden;min-height:600px}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .6s ease}
+.team-main:hover .team-photo img{transform:scale(1.03)}
+.team-bios{padding:56px 52px;display:flex;flex-direction:column;justify-content:center}
+.tbio{padding:32px 0}
+.tbio:not(:last-child){border-bottom:1px solid var(--be)}
+.tbio h3{font-size:1.7rem;color:var(--br);margin-bottom:4px}
+.tbio .role{font-size:.75rem;color:var(--tc);font-weight:500;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:14px}
+.tbio p{font-size:.875rem;color:var(--mu);line-height:1.8}
+.bds{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .bd{background:var(--c);border-radius:100px;padding:5px 14px;font-size:.76rem;color:var(--bm);font-weight:500}
 
+/* Témoignages */
 .qss{background:var(--cd)}
 .qg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:70px}
 .qc{background:#fff;border-radius:var(--rm);padding:34px;transition:var(--tr)}
@@ -398,39 +162,13 @@ p{color:var(--mu);line-height:1.85}
 .stars{display:flex;gap:3px;margin-bottom:18px}
 .star{color:var(--tc);font-size:.95rem}
 .qc blockquote{font-family:var(--fd);font-size:1.08rem;font-style:italic;color:var(--br);line-height:1.65;margin-bottom:26px;font-weight:400}
-.qc blockquote::before{content:'\201C';font-size:2.5rem;color:var(--tl);line-height:0;vertical-align:-.5rem;margin-right:2px}
+.qc blockquote::before{content:'\\201C';font-size:2.5rem;color:var(--tl);line-height:0;vertical-align:-.5rem;margin-right:2px}
 .qa{display:flex;align-items:center;gap:12px}
 .av{width:44px;height:44px;border-radius:50%;background:var(--cd);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:1.2rem;color:var(--tc);font-style:italic;flex-shrink:0}
 .an{font-size:.875rem;font-weight:500;color:var(--br)}
 .at{font-size:.75rem;color:var(--mu)}
 
-.rss{background:var(--tc);text-align:center;overflow:hidden;position:relative;padding:110px 0}
-.rss::before{content:'Body Reset';position:absolute;font-family:var(--fd);font-size:20vw;color:rgba(255,255,255,.05);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;font-style:italic}
-.rss .ol{color:rgba(255,255,255,.7);margin-bottom:16px}
-.rss h2{color:#fff;margin-bottom:16px}
-.rss>.wrap>p{color:rgba(255,255,255,.75);max-width:560px;margin:0 auto 48px}
-.rsb{background:#fff;border-radius:var(--rl);padding:52px 48px;max-width:740px;margin:0 auto;position:relative;z-index:1;box-shadow:0 40px 100px rgba(0,0,0,.15)}
-.rsb h3{font-size:1.55rem;color:var(--br);margin-bottom:6px}
-.rsb>p{font-size:.875rem;margin-bottom:28px}
-.pph{height:250px;border:2px dashed var(--be);border-radius:var(--rm);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--mu);padding:24px;background:var(--c)}
-.pph svg{width:48px;height:48px;opacity:.35}
-.pph strong{color:var(--br);font-size:1rem}
-.pph span{font-size:.83rem;text-align:center;max-width:300px;line-height:1.6}
-.rst{margin-top:20px;font-size:.83rem;color:var(--mu);text-align:center}
-.rst a{color:var(--tc);font-weight:500;text-decoration:none}
-
-.nls2{padding:80px 0}
-.nli{background:var(--sg);border-radius:var(--rx);padding:70px 80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;overflow:hidden;position:relative}
-.nli::after{content:'';position:absolute;right:-40px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05)}
-.nlt h2{color:#fff;font-size:2.1rem;margin-bottom:12px;font-family:var(--fd);font-weight:400;line-height:1.2}
-.nlt p{color:rgba(255,255,255,.7);font-size:.88rem}
-.nlt .ol{color:rgba(255,255,255,.6);margin-bottom:10px}
-.nlf{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
-.nlf input{width:100%;padding:16px 22px;border-radius:100px;border:none;background:rgba(255,255,255,.92);font-family:var(--fb);font-size:.88rem;color:var(--br);outline:none;transition:var(--tf)}
-.nlf input:focus{background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.3)}
-.nlf input::placeholder{color:var(--mu)}
-.nlg{font-size:.7rem;color:rgba(255,255,255,.4);text-align:center;padding:0 8px}
-
+/* Contact bar */
 .cb{background:var(--cd);padding:44px 0}
 .cg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
 .ci{display:flex;flex-direction:column;align-items:center;gap:8px}
@@ -439,1236 +177,225 @@ p{color:var(--mu);line-height:1.85}
 .ci a{font-size:.88rem;color:var(--br);text-decoration:none;transition:var(--tf)}
 .ci a:hover{color:var(--tc)}
 
-footer{background:var(--br);color:#fff;padding:70px 0 32px}
-.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
-.fb img{height:50px;margin-bottom:20px}
-.fb p{font-size:.83rem;color:rgba(255,255,255,.38);line-height:1.8}
-.fso{display:flex;gap:12px;margin-top:22px}
-.fso a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.95rem;color:rgba(255,255,255,.38);transition:var(--tf)}
-.fso a:hover{border-color:var(--tl);color:var(--tl);background:rgba(196,112,74,.1)}
-.fc h4{font-family:var(--fb);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:22px;font-weight:500}
-.fc ul{list-style:none}
-.fc ul li{margin-bottom:11px}
-.fc ul a{text-decoration:none;font-size:.855rem;color:rgba(255,255,255,.52);transition:var(--tf)}
-.fc ul a:hover{color:var(--tl)}
-.fdv{border:none;border-top:1px solid rgba(255,255,255,.07);margin-bottom:28px}
-.fbt{display:flex;align-items:center;justify-content:space-between;font-size:.76rem;color:rgba(255,255,255,.24)}
-.fbl{display:flex;gap:20px}
-.fbl a{color:rgba(255,255,255,.24);text-decoration:none;transition:var(--tf)}
-.fbl a:hover{color:rgba(255,255,255,.5)}
-
-.scta{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:800;box-shadow:0 8px 32px rgba(196,112,74,.4);opacity:0;pointer-events:none;transition:opacity .4s ease}
-
 @media(max-width:1024px){
- .fg{grid-template-columns:1fr 1fr;gap:44px}
- .fb{grid-column:1/-1}
- .tg{grid-template-columns:repeat(3,1fr)}
+  .tg{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:768px){
- .sec{padding:70px 0}
- #nav{padding:16px 20px}
- #nav.sc{padding:12px 20px}
- .nl img{height:44px}
- .nls,.nr{display:none}
- .burg{display:flex}
- .hero{grid-template-columns:1fr}
- .hero-ov{background:linear-gradient(to bottom,rgba(250,247,242,.96) 0%,rgba(250,247,242,.88) 55%,rgba(250,247,242,.2) 100%)}
- .hl{padding:108px 24px 40px}
- .hl-in{max-width:100%}
- .hl::before{display:none}
- .hero h1{font-size:2.5rem}
- .h-ctas{flex-direction:column;align-items:flex-start}
- .h-stats{flex-wrap:wrap;gap:16px}
- .h-sdiv{display:none}
- .h-st{padding:0 12px}
- .h-st:first-child{padding-left:0}
- .hr{min-height:60vw;max-height:70vw}
- .tb{display:none}
- .ig{grid-template-columns:1fr;gap:50px}
- .iv img{height:300px;border-radius:var(--rl)}
- .fl{right:10px;bottom:-14px}
- .fl2{display:none}
- .pg{grid-template-columns:1fr}
- .sw{grid-template-columns:1fr;gap:50px}
- .sc2{display:none}
- .st{padding:0}
- .tg{grid-template-columns:1fr 1fr}
- .tmg{grid-template-columns:1fr}
- .qg{grid-template-columns:1fr}
- .cg{grid-template-columns:1fr;gap:18px}
- .nli{grid-template-columns:1fr;padding:44px 32px;gap:40px;border-radius:var(--rl)}
- .rsb{padding:36px 24px}
- .fg{grid-template-columns:1fr 1fr;gap:36px}
- .fb{grid-column:1/-1}
- .fbt{flex-direction:column;gap:14px;text-align:center}
- .scta{display:flex}
+  .hero{grid-template-columns:1fr}
+  .hero-ov{background:linear-gradient(to bottom,rgba(250,247,242,.96) 0%,rgba(250,247,242,.88) 55%,rgba(250,247,242,.2) 100%)}
+  .hl{padding:108px 24px 40px}
+  .hl-in{max-width:100%}
+  .hero h1{font-size:2.5rem}
+  .h-ctas{flex-direction:column;align-items:flex-start}
+  .h-stats{flex-wrap:wrap;gap:16px}
+  .h-sdiv{display:none}
+  .hr{min-height:60vw;max-height:70vw}
+  .tb{display:none}
+  .ig{grid-template-columns:1fr;gap:50px}
+  .iv img{height:300px;border-radius:var(--rl)}
+  .fl{right:10px;bottom:-14px}
+  .fl2{display:none}
+  .pg{grid-template-columns:1fr}
+  .sw{grid-template-columns:1fr;gap:50px}
+  .sc2{display:none}
+  .st{padding:0}
+  .tg{grid-template-columns:1fr 1fr}
+  .team-main{grid-template-columns:1fr}
+  .team-photo{min-height:400px}
+  .team-bios{padding:36px 28px}
+  .qg{grid-template-columns:1fr}
+  .cg{grid-template-columns:1fr;gap:18px}
+  .offer-inner{padding:44px 28px}
+  .offer-cards{grid-template-columns:1fr}
+  .offer-foot{flex-direction:column;gap:20px;align-items:flex-start}
 }
 @media(max-width:480px){
- .wrap{padding:0 18px}
- h2{font-size:1.85rem}
- .tg{grid-template-columns:1fr}
- .fg{grid-template-columns:1fr}
- .nli{padding:36px 22px}
+  .tg{grid-template-columns:1fr}
 }
-
-/* ── ÉQUIPE REDESIGN ── */
-.team-main{display:grid;grid-template-columns:42% 58%;gap:0;border-radius:var(--rl);overflow:hidden;background:#fff;box-shadow:0 24px 80px rgba(42,32,27,.1);margin-top:70px}
-.team-photo{position:relative;overflow:hidden;min-height:600px}
-.team-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .6s ease}
-.team-main:hover .team-photo img{transform:scale(1.03)}
-.team-bios{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;gap:0;background:#fff}
-.tbio{padding:32px 0}
-.tbio:not(:last-child){border-bottom:1px solid var(--be)}
-.tbio h3{font-size:1.7rem;color:var(--br);margin-bottom:4px}
-.tbio .role{font-size:.75rem;color:var(--tc);font-weight:500;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:14px}
-.tbio p{font-size:.875rem;color:var(--mu);line-height:1.8}
-.tbio .bds{margin-top:14px}
-@media(max-width:900px){
- .team-main{grid-template-columns:1fr}
- .team-photo{min-height:400px}
- .team-bios{padding:36px 28px}
-}
-
-/* ── OFFRE DE LANCEMENT ── */
-.offer-sec{background:var(--c);position:relative;overflow:hidden}
-.offer-inner{
- border-radius:var(--rx);
- background:linear-gradient(135deg,var(--sd) 0%,var(--sg) 100%);
- padding:72px 72px;
- position:relative;
- overflow:hidden;
-}
-.offer-inner::before{
- content:'';position:absolute;
- right:-80px;top:-80px;
- width:400px;height:400px;
- border-radius:50%;
- border:1px solid rgba(255,255,255,.1);
-}
-.offer-inner::after{
- content:'';position:absolute;
- right:-20px;bottom:-60px;
- width:280px;height:280px;
- border-radius:50%;
- border:1px solid rgba(255,255,255,.08);
-}
-.offer-head{margin-bottom:48px}
-.offer-head .ol{color:rgba(255,255,255,.7);margin-bottom:10px}
-.offer-head h2{color:#fff;font-size:clamp(1.8rem,3.5vw,3rem);margin-bottom:10px}
-.offer-head p{color:rgba(255,255,255,.65);max-width:580px;font-size:.95rem}
-.offer-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px;position:relative;z-index:1}
-.ocard{
- background:rgba(255,255,255,.12);
- backdrop-filter:blur(10px);
- border:1px solid rgba(255,255,255,.2);
- border-radius:var(--rl);
- padding:40px 36px;
- transition:var(--tr);
-}
-.ocard:hover{background:rgba(255,255,255,.18);transform:translateY(-4px)}
-.ocard-val{
- font-family:var(--fd);
- font-size:4rem;
- color:#fff;
- line-height:1;
- margin-bottom:12px;
- font-weight:300;
-}
-.ocard-val span{font-size:2rem;vertical-align:top;margin-top:6px;display:inline-block}
-.ocard h3{color:#fff;font-size:1.2rem;margin-bottom:8px;font-family:var(--fb);font-weight:500}
-.ocard p{color:rgba(255,255,255,.7);font-size:.875rem}
-.ocard-badge{
- display:inline-block;
- background:var(--tc);
- color:#fff;
- font-size:.72rem;
- font-weight:500;
- letter-spacing:.08em;
- text-transform:uppercase;
- padding:5px 14px;
- border-radius:100px;
- margin-top:14px;
-}
-.offer-foot{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
-.offer-limit{color:rgba(255,255,255,.65);font-size:.85rem;display:flex;align-items:center;gap:10px}
-.offer-limit::before{content:'⏳';font-size:1rem}
-@media(max-width:768px){
- .offer-inner{padding:44px 28px}
- .offer-cards{grid-template-columns:1fr}
- .offer-foot{flex-direction:column;gap:20px;align-items:flex-start}
-}
-
-/* Feuilles agrandies pour meilleure visibilité */
-.leaf path{filter:drop-shadow(0 1px 1px rgba(58,87,41,.15))}
-
-/* ═══════════════════════════════════════════════════
- ANIMATIONS & DÉCORS BOTANIQUES
-═══════════════════════════════════════════════════ */
-
-/* ─ Feuilles flottantes décoratives (réparties dans les sections) ─ */
-.deco-leaf{
- position:absolute;
- pointer-events:none;
- opacity:.55;
- z-index:0;
- will-change:transform;
- animation-name:driftLeaf;
- animation-duration:7s;
- animation-timing-function:ease-in-out;
- animation-iteration-count:infinite;
- animation-direction:alternate;
-}
-/* Variantes de timing pour ne pas synchroniser */
-.deco-leaf:nth-child(2n){animation-duration:8.5s;animation-delay:-1.2s}
-.deco-leaf:nth-child(3n){animation-duration:9s;animation-delay:-2.4s;animation-name:driftLeaf2}
-.deco-leaf:nth-child(4n){animation-duration:6.5s;animation-delay:-3.1s;animation-name:driftLeaf3}
-.deco-leaf:nth-child(5n){animation-duration:10s;animation-delay:-1.8s;animation-name:driftLeaf2}
-@keyframes driftLeaf{
- 0%{transform:translate(0,0) rotate(0deg)}
- 100%{transform:translate(25px,-35px) rotate(15deg)}
-}
-@keyframes driftLeaf2{
- 0%{transform:translate(0,0) rotate(0deg)}
- 100%{transform:translate(-30px,-25px) rotate(-12deg)}
-}
-@keyframes driftLeaf3{
- 0%{transform:translate(0,0) rotate(-5deg)}
- 100%{transform:translate(20px,-30px) rotate(18deg)}
-}
-
-/* ─ Figure méditation / lotus (décorative) ─ */
-.lotus-fig{
- position:absolute;
- pointer-events:none;
- opacity:.14;
- z-index:0;
-}
-.lotus-fig svg{
- width:100%;height:100%;
- animation:breathe 5s ease-in-out infinite;
-}
-@keyframes breathe{
- 0%,100%{transform:scale(1) translateY(0)}
- 50%{transform:scale(1.06) translateY(-4px)}
-}
-
-/* ─ Branches décoratives sur le côté des sections ─ */
-.deco-branch{
- position:absolute;
- pointer-events:none;
- opacity:0;
- transition:opacity 1.2s ease;
- z-index:0;
-}
-.deco-branch.vis{opacity:1}
-.deco-branch path{
- stroke-dasharray:600;
- stroke-dashoffset:600;
- transition:stroke-dashoffset 2s ease;
-}
-.deco-branch.vis path{stroke-dashoffset:0}
-
-/* ─ Cercles concentriques décoratifs ─ */
-.deco-circle{
- position:absolute;
- border-radius:50%;
- border:1px solid var(--be);
- pointer-events:none;
- z-index:0;
- opacity:.45;
- animation:pulseRing 6s ease-in-out infinite;
-}
-@keyframes pulseRing{
- 0%,100%{transform:scale(1);opacity:.35}
- 50%{transform:scale(1.08);opacity:.6}
-}
-
-/* ─ Particules flottantes (réutilisable) ─ */
-.particle{
- position:absolute;
- width:6px;height:6px;border-radius:50%;
- background:var(--sl);
- pointer-events:none;
- z-index:0;
- will-change:transform,opacity;
- animation-name:particleRise;
- animation-duration:6s;
- animation-timing-function:linear;
- animation-iteration-count:infinite;
-}
-.particle:nth-child(2){animation-duration:7s;animation-delay:-1.5s}
-.particle:nth-child(3){animation-duration:8s;animation-delay:-3s}
-.particle:nth-child(4){animation-duration:5.5s;animation-delay:-2.2s}
-.particle:nth-child(5){animation-duration:7.5s;animation-delay:-4s}
-@keyframes particleRise{
- 0%{transform:translate(0,30px);opacity:0}
- 15%{opacity:.7}
- 85%{opacity:.4}
- 100%{transform:translate(30px,-180px);opacity:0}
-}
-
-/* ─ Variantes de reveal au scroll ─ */
-/* ─ Compteur animé pour stats ─ */
-.count-up{display:inline-block;transition:opacity .4s ease}
-
-/* ─ Section relative pour les décors absolus ─ */
-.sec{position:relative;overflow:hidden}
-
-
-
-/* ═══════════════════════════════════════════════════
- REVEAL — Animations à la demande, contenu visible par défaut
-═══════════════════════════════════════════════════ */
-
-/* Animations déclenchées par .shown — fill-mode backwards = état initial appliqué avant le start */
-.rv.shown{animation:revealUp 1s cubic-bezier(.22,.61,.36,1) backwards}
-.rv-left.shown{animation:revealLeft 1s cubic-bezier(.22,.61,.36,1) backwards}
-.rv-right.shown{animation:revealRight 1s cubic-bezier(.22,.61,.36,1) backwards}
-.rv-scale.shown{animation:revealScale 1s cubic-bezier(.34,1.56,.64,1) backwards}
-
-@keyframes revealUp{from{opacity:0;transform:translateY(45px)}}
-@keyframes revealLeft{from{opacity:0;transform:translateX(-55px)}}
-@keyframes revealRight{from{opacity:0;transform:translateX(55px)}}
-@keyframes revealScale{from{opacity:0;transform:scale(0.88)}}
-
-/* Stagger : les enfants s'animent un par un via animation-delay */
-.rv-stagger.shown > *{animation:revealUp 1s cubic-bezier(.22,.61,.36,1) backwards}
-.rv-stagger.shown > *:nth-child(1){animation-delay:.05s}
-.rv-stagger.shown > *:nth-child(2){animation-delay:.15s}
-.rv-stagger.shown > *:nth-child(3){animation-delay:.25s}
-.rv-stagger.shown > *:nth-child(4){animation-delay:.35s}
-.rv-stagger.shown > *:nth-child(5){animation-delay:.45s}
-.rv-stagger.shown > *:nth-child(6){animation-delay:.55s}
-
-/* Zoom Ken Burns sur image */
-.rv-zoom.shown img{animation:revealZoom 1.5s cubic-bezier(.22,.61,.36,1) backwards}
-@keyframes revealZoom{from{transform:scale(1.18)}to{transform:scale(1)}}
 </style>
-<script>
-window.addEventListener('scroll',function(){
- var n=document.getElementById('nav');
- if(!n)return;
- if(window.scrollY>10){
- n.style.background='#ffffff';
- n.style.boxShadow='0 4px 20px rgba(42,32,27,.08)';
- n.style.padding='13px 40px';
- n.style.borderBottom='1px solid rgba(42,32,27,.05)';
- n.classList.add('sc');
- } else {
- n.style.background='';
- n.style.boxShadow='';
- n.style.padding='';
- n.style.borderBottom='';
- n.classList.remove('sc');
- }
-},{passive:true});
-</script>
 </head>
-<body>
-<div class="mm" id="mm">
-<a href="#solutions" onclick="cm()">Nos solutions</a>
-<a href="#technologies" onclick="cm()">Technologies</a>
-<a href="#equipe" onclick="cm()">Notre équipe</a>
-<a href="/blog" onclick="cm()">Blog</a>
-<a href="#contact" onclick="cm()">Contact</a>
-<a href="#reservation" class="btn bp" onclick="cm()">Réserver mon bilan offert</a>
-</div>
-<nav id="nav">
-<div class="nl"><a href="/"><img src="images/logo.png" alt="Centre Body Reset" style="height:64px;width:auto;object-fit:contain"></a></div>
-<ul class="nls">
-<li><a href="#solutions">Nos solutions</a></li>
-<li><a href="#technologies">Technologies</a></li>
-<li><a href="#equipe">Notre équipe</a></li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-<div class="nr">
-<a href="#reservation" class="btn bp" style="padding:11px 24px;font-size:.82rem;">Réserver mon bilan</a>
-</div>
-<button class="burg" id="burg" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
+<body data-nav="home">
+
+<div id="site-header"></div>
+
+<!-- ══ HERO ══ -->
 <section class="hero" id="home">
-<div class="hero-photo"><img src="images/hero-room.webp" alt="Centre Body Reset — Salle de soin" loading="eager"></div>
-<div class="hero-ov"></div>
-<div class="hl">
-<div class="hl-in">
-<div class="h-chap">Centre Body Reset &nbsp;·&nbsp; Ouvert en mai 2026</div>
-<div class="h-tag"><span class="h-dot"></span>Nouveau à Clermont-l'Hérault</div>
-<h1>
-<span class="l1">Et si votre corps</span>
-<span class="l2">n'attendait que</span>
-<span class="l3">la bonne approche ?</span>
-</h1>
-<p class="h-sub">Centre Body Reset associe expertise diététique et technologies de pointe pour un accompagnement 360° réellement personnalisé. Silhouette, ménopause, sommeil, récupération — nous traitons les vraies causes.</p>
-<div class="h-ctas">
-<a href="#reservation" class="btn bp">✦ Débuter mon bilan offert</a>
-<a href="#solutions" class="btn bo">Voir mes solutions</a>
-</div>
-<div class="h-div">
-<div class="h-div-line"></div>
-<p><strong>Charlotte & Alison</strong> — 13+ ans d'expertise chacune · Diplômes d'État</p>
-</div>
-<div class="h-stats">
-<div class="h-st"><div class="n">13+</div><div class="l">ans d'expérience<br>chacune</div></div>
-<div class="h-sdiv"></div>
-<div class="h-st"><div class="n">5</div><div class="l">technologies<br>innovantes</div></div>
-<div class="h-sdiv"></div>
-<div class="h-st"><div class="n">360°</div><div class="l">accompagnement<br>sur mesure</div></div>
-</div>
-</div>
-</div>
-<div class="hr" id="hr">
-<div class="tree-ring" style="width:280px;height:280px;bottom:15%;right:4%"></div>
-<div class="tree-ring" style="width:160px;height:160px;bottom:30%;right:24%;animation-delay:2.2s"></div>
-<svg class="tree-svg" viewBox="0 0 460 780" xmlns="http://www.w3.org/2000/svg" id="treeSVG" aria-hidden="true">
-<defs>
-<radialGradient id="grd" cx="50%" cy="92%" r="55%">
-<stop offset="0%" stop-color="#6B8C5A" stop-opacity=".1"/>
-<stop offset="100%" stop-color="#6B8C5A" stop-opacity="0"/>
-</radialGradient>
-</defs>
-<ellipse cx="240" cy="758" rx="55" ry="16" fill="url(#grd)"/>
-<path class="br lv0" d="M240.0,760.0 Q287.3,671.0 254.8,575.6" stroke="#3A5729" stroke-width="13.7" fill="none" stroke-linecap="round" opacity="1.0" style="--l:199.8;--d:0.0s;--dr:1.2s"/>
-<path class="br lv1" d="M254.8,575.6 Q210.0,519.1 195.8,448.3" stroke="#4B6E38" stroke-width="10.4" fill="none" stroke-linecap="round" opacity="1.0" style="--l:151.5;--d:0.5s;--dr:0.95s"/>
-<path class="br lv2" d="M195.8,448.3 Q173.4,400.1 124.7,378.6" stroke="#5C8147" stroke-width="7.4" fill="none" stroke-linecap="round" opacity="1.0" style="--l:107.6;--d:1.0s;--dr:0.85s"/>
-<path class="br lv3" d="M124.7,378.6 Q93.4,354.7 54.1,356.2" stroke="#6E9558" stroke-width="5.5" fill="none" stroke-linecap="round" opacity="0.89" style="--l:80.0;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M54.1,356.2 Q28.0,367.5 -0.2,364.3" stroke="#81A96B" stroke-width="4.1" fill="none" stroke-linecap="round" opacity="0.78" style="--l:59.2;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M-0.2,364.3 Q-13.8,379.9 -34.1,384.1" stroke="#97BF82" stroke-width="2.9" fill="none" stroke-linecap="round" opacity="0.67" style="--l:42.4;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M-34.1,384.1 Q-46.8,392.9 -50.5,407.8" stroke="#AED39A" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.56" style="--l:31.1;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M-34.1,384.1 Q-48.8,382.7 -60.5,391.8" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.6;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M-0.2,364.3 Q-19.4,366.7 -37.2,359.0" stroke="#97BF82" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0.67" style="--l:40.4;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M-37.2,359.0 Q-49.4,365.4 -63.3,365.5" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.0;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M-37.2,359.0 Q-46.8,349.2 -60.5,348.3" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.6;--d:2.7s;--dr:0.45s"/>
-<path class="br lv4" d="M54.1,356.2 Q27.4,349.9 9.2,329.4" stroke="#81A96B" stroke-width="3.9" fill="none" stroke-linecap="round" opacity="0.78" style="--l:56.4;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M9.2,329.4 Q-8.9,319.9 -28.6,324.9" stroke="#97BF82" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0.67" style="--l:41.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M-28.6,324.9 Q-40.5,333.7 -55.2,334.8" stroke="#AED39A" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.56" style="--l:30.6;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M-28.6,324.9 Q-42.5,323.7 -54.2,316.0" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.2;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M9.2,329.4 Q-6.6,319.5 -16.1,303.4" stroke="#97BF82" stroke-width="2.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:39.2;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M-16.1,303.4 Q-25.4,292.9 -39.5,292.5" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.8;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M-16.1,303.4 Q-25.0,294.2 -27.1,281.5" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.5;--d:2.7s;--dr:0.45s"/>
-<path class="br lv3" d="M124.7,378.6 Q98.2,353.7 86.3,319.3" stroke="#6E9558" stroke-width="5.2" fill="none" stroke-linecap="round" opacity="0.89" style="--l:76.3;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M86.3,319.3 Q61.1,311.1 45.7,289.6" stroke="#81A96B" stroke-width="3.7" fill="none" stroke-linecap="round" opacity="0.78" style="--l:54.3;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M45.7,289.6 Q29.0,279.5 9.6,282.4" stroke="#97BF82" stroke-width="2.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:39.8;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M9.6,282.4 Q-5.1,280.2 -16.8,289.3" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.4;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M9.6,282.4 Q-0.4,272.9 -14.0,271.6" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:28.0;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M45.7,289.6 Q40.1,271.5 23.4,262.6" stroke="#97BF82" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:37.9;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M23.4,262.6 Q13.3,252.3 -1.1,252.7" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:28.5;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M23.4,262.6 Q13.9,253.4 11.5,240.4" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.2;--d:2.7s;--dr:0.45s"/>
-<path class="br lv4" d="M86.3,319.3 Q74.0,297.9 73.6,273.2" stroke="#81A96B" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.78" style="--l:51.6;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M73.6,273.2 Q59.9,262.1 53.0,245.9" stroke="#97BF82" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:36.9;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M53.0,245.9 Q45.4,235.0 32.3,233.0" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.3;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M53.0,245.9 Q45.5,236.3 45.2,224.1" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.0;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M73.6,273.2 Q69.6,256.8 74.4,240.7" stroke="#97BF82" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.67" style="--l:35.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M74.4,240.7 Q67.7,230.7 66.2,218.8" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.2;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M74.4,240.7 Q82.3,231.6 81.3,219.6" stroke="#AED39A" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.56" style="--l:24.0;--d:2.7s;--dr:0.45s"/>
-<path class="br lv3" d="M124.7,378.6 Q105.7,367.2 94.1,348.4" stroke="#6E9558" stroke-width="3.2" fill="none" stroke-linecap="round" opacity="0.89" style="--l:46.4;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M94.1,348.4 Q82.3,337.3 66.1,336.0" stroke="#81A96B" stroke-width="2.3" fill="none" stroke-linecap="round" opacity="0.78" style="--l:33.0;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M66.1,336.0 Q54.7,331.4 43.6,336.7" stroke="#97BF82" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:24.3;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M66.1,336.0 Q60.5,325.8 49.1,323.0" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.2;--d:2.3s;--dr:0.55s"/>
-<path class="br lv4" d="M94.1,348.4 Q92.7,332.7 80.5,322.7" stroke="#81A96B" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.78" style="--l:31.4;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M80.5,322.7 Q73.7,313.1 62.2,310.7" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.7;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M80.5,322.7 Q81.4,311.5 74.5,302.7" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.6;--d:2.3s;--dr:0.55s"/>
-<path class="br lv2" d="M195.8,448.3 Q175.1,403.2 183.9,354.4" stroke="#5C8147" stroke-width="7.0" fill="none" stroke-linecap="round" opacity="1.0" style="--l:102.3;--d:1.0s;--dr:0.85s"/>
-<path class="br lv3" d="M183.9,354.4 Q158.9,329.2 148.2,295.4" stroke="#6E9558" stroke-width="5.1" fill="none" stroke-linecap="round" opacity="0.89" style="--l:74.5;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M148.2,295.4 Q134.4,273.2 109.6,265.2" stroke="#81A96B" stroke-width="3.6" fill="none" stroke-linecap="round" opacity="0.78" style="--l:52.9;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M109.6,265.2 Q90.8,266.6 74.1,257.8" stroke="#97BF82" stroke-width="2.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:39.2;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M74.1,257.8 Q60.1,254.7 48.3,262.9" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:28.3;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M74.1,257.8 Q61.3,255.3 51.9,246.2" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.0;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M109.6,265.2 Q103.5,247.9 87.9,238.2" stroke="#97BF82" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:37.4;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M87.9,238.2 Q78.8,227.7 64.9,227.3" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.6;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M87.9,238.2 Q79.9,228.6 77.5,216.2" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.3;--d:2.7s;--dr:0.45s"/>
-<path class="br lv4" d="M148.2,295.4 Q152.1,270.5 137.3,250.1" stroke="#81A96B" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.78" style="--l:50.3;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M137.3,250.1 Q122.2,240.1 113.8,224.0" stroke="#97BF82" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:37.9;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M113.8,224.0 Q101.2,221.2 91.4,212.8" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.1;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M113.8,224.0 Q106.1,214.5 103.7,202.5" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.7;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M137.3,250.1 Q131.0,233.6 136.0,216.7" stroke="#97BF82" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:36.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M136.0,216.7 Q135.1,203.3 124.7,194.9" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.5;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M136.0,216.7 Q134.8,204.5 140.8,193.8" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.3;--d:2.7s;--dr:0.45s"/>
-<path class="br lv3" d="M183.9,354.4 Q180.5,320.8 192.8,289.3" stroke="#6E9558" stroke-width="4.9" fill="none" stroke-linecap="round" opacity="0.89" style="--l:70.9;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M192.8,289.3 Q196.6,264.5 182.3,243.9" stroke="#81A96B" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.78" style="--l:50.4;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M182.3,243.9 Q167.6,233.5 159.6,217.4" stroke="#97BF82" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:37.7;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M159.6,217.4 Q147.2,214.1 137.6,205.6" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.9;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M159.6,217.4 Q159.4,204.6 150.2,195.7" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.6;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M182.3,243.9 Q177.4,227.3 181.7,210.6" stroke="#97BF82" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:36.0;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M181.7,210.6 Q173.9,200.9 172.2,188.6" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.9;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M181.7,210.6 Q182.0,198.8 187.7,188.6" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:24.6;--d:2.7s;--dr:0.45s"/>
-<path class="br lv4" d="M192.8,289.3 Q195.6,266.1 211.8,249.3" stroke="#81A96B" stroke-width="3.3" fill="none" stroke-linecap="round" opacity="0.78" style="--l:47.9;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M211.8,249.3 Q219.0,233.0 212.0,216.7" stroke="#97BF82" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.67" style="--l:35.2;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M212.0,216.7 Q202.5,207.9 200.0,195.1" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.7;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M212.0,216.7 Q211.2,204.6 216.5,193.6" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.4;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M211.8,249.3 Q226.9,241.6 231.6,225.4" stroke="#97BF82" stroke-width="2.3" fill="none" stroke-linecap="round" opacity="0.67" style="--l:33.5;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M231.6,225.4 Q230.8,213.3 235.6,202.2" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.4;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M231.6,225.4 Q238.4,216.0 248.7,210.9" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:24.3;--d:2.7s;--dr:0.45s"/>
-<path class="br lv3" d="M183.9,354.4 Q188.0,333.5 177.9,314.9" stroke="#6E9558" stroke-width="3.0" fill="none" stroke-linecap="round" opacity="0.89" style="--l:43.2;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M177.9,314.9 Q174.8,299.0 161.0,290.6" stroke="#81A96B" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.78" style="--l:32.0;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M161.0,290.6 Q152.5,282.2 140.7,280.9" stroke="#97BF82" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:24.3;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M161.0,290.6 Q153.7,282.1 152.1,271.0" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.2;--d:2.3s;--dr:0.55s"/>
-<path class="br lv4" d="M177.9,314.9 Q175.5,300.5 180.1,286.8" stroke="#81A96B" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.78" style="--l:30.4;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M180.1,286.8 Q181.4,275.9 174.5,267.5" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:21.7;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M180.1,286.8 Q181.6,277.1 187.3,269.1" stroke="#97BF82" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.67" style="--l:20.6;--d:2.3s;--dr:0.55s"/>
-<path class="br lv1" d="M254.8,575.6 Q299.5,518.4 289.7,446.4" stroke="#4B6E38" stroke-width="9.9" fill="none" stroke-linecap="round" opacity="1.0" style="--l:144.5;--d:0.5s;--dr:0.95s"/>
-<path class="br lv2" d="M289.7,446.4 Q261.7,401.3 265.4,348.3" stroke="#5C8147" stroke-width="7.5" fill="none" stroke-linecap="round" opacity="1.0" style="--l:109.2;--d:1.0s;--dr:0.85s"/>
-<path class="br lv3" d="M265.4,348.3 Q255.2,309.2 219.6,290.3" stroke="#6E9558" stroke-width="5.5" fill="none" stroke-linecap="round" opacity="0.89" style="--l:79.8;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M219.6,290.3 Q197.5,270.0 167.5,269.4" stroke="#81A96B" stroke-width="4.2" fill="none" stroke-linecap="round" opacity="0.78" style="--l:60.6;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M167.5,269.4 Q146.1,263.9 125.9,273.0" stroke="#97BF82" stroke-width="3.1" fill="none" stroke-linecap="round" opacity="0.67" style="--l:45.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M125.9,273.0 Q114.6,284.2 99.4,288.8" stroke="#AED39A" stroke-width="2.3" fill="none" stroke-linecap="round" opacity="0.56" style="--l:33.3;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M125.9,273.0 Q112.2,265.6 96.8,268.7" stroke="#AED39A" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.56" style="--l:31.7;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M167.5,269.4 Q148.3,262.2 134.7,246.8" stroke="#97BF82" stroke-width="3.0" fill="none" stroke-linecap="round" opacity="0.67" style="--l:43.0;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M134.7,246.8 Q120.1,246.9 107.0,240.3" stroke="#AED39A" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.56" style="--l:30.7;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M134.7,246.8 Q130.3,233.1 118.0,225.6" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.2;--d:2.7s;--dr:0.45s"/>
-<path class="br lv4" d="M219.6,290.3 Q201.3,269.7 194.4,243.0" stroke="#81A96B" stroke-width="4.0" fill="none" stroke-linecap="round" opacity="0.78" style="--l:57.8;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M194.4,243.0 Q185.6,224.2 165.8,218.0" stroke="#97BF82" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0.67" style="--l:41.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M165.8,218.0 Q150.9,218.7 137.4,212.3" stroke="#AED39A" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.56" style="--l:31.2;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M165.8,218.0 Q161.9,203.4 148.6,196.4" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.8;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M194.4,243.0 Q186.3,226.1 187.9,207.5" stroke="#97BF82" stroke-width="2.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:39.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M187.9,207.5 Q178.2,198.2 173.9,185.5" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:28.1;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M187.9,207.5 Q193.6,195.6 190.5,182.9" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.7;--d:2.7s;--dr:0.45s"/>
-<path class="br lv3" d="M265.4,348.3 Q256.4,313.0 266.3,278.0" stroke="#6E9558" stroke-width="5.2" fill="none" stroke-linecap="round" opacity="0.89" style="--l:76.0;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M266.3,278.0 Q267.5,250.5 248.1,230.9" stroke="#81A96B" stroke-width="3.7" fill="none" stroke-linecap="round" opacity="0.78" style="--l:54.5;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M248.1,230.9 Q237.6,213.5 218.4,206.8" stroke="#97BF82" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0.67" style="--l:41.3;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M218.4,206.8 Q203.7,207.3 190.9,200.3" stroke="#AED39A" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.56" style="--l:30.6;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M218.4,206.8 Q206.9,198.6 202.0,185.4" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.1;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M248.1,230.9 Q252.1,211.6 241.2,195.1" stroke="#97BF82" stroke-width="2.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:39.4;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M241.2,195.1 Q237.1,180.6 223.7,173.8" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.7;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M241.2,195.1 Q238.2,181.9 241.4,168.8" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:28.4;--d:2.7s;--dr:0.45s"/>
-<path class="br lv4" d="M266.3,278.0 Q266.6,252.9 280.6,232.2" stroke="#81A96B" stroke-width="3.6" fill="none" stroke-linecap="round" opacity="0.78" style="--l:51.8;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M280.6,232.2 Q273.0,215.5 277.0,197.6" stroke="#97BF82" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:37.6;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M277.0,197.6 Q267.8,188.2 263.8,175.7" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.6;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M277.0,197.6 Q283.5,186.3 280.4,173.5" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.3;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M280.6,232.2 Q295.1,221.8 298.6,204.4" stroke="#97BF82" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:35.7;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M298.6,204.4 Q304.8,192.5 300.8,179.7" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.8;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M298.6,204.4 Q310.0,199.0 315.2,187.6" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.5;--d:2.7s;--dr:0.45s"/>
-<path class="br lv3" d="M265.4,348.3 Q267.0,325.7 254.1,306.9" stroke="#6E9558" stroke-width="3.2" fill="none" stroke-linecap="round" opacity="0.89" style="--l:46.3;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M254.1,306.9 Q240.8,297.6 233.5,283.0" stroke="#81A96B" stroke-width="2.3" fill="none" stroke-linecap="round" opacity="0.78" style="--l:34.1;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M233.5,283.0 Q221.8,281.1 213.6,272.4" stroke="#97BF82" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:24.3;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M233.5,283.0 Q233.4,271.4 225.0,263.4" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv4" d="M254.1,306.9 Q259.0,291.8 253.3,276.9" stroke="#81A96B" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.78" style="--l:32.5;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M253.3,276.9 Q252.4,264.9 243.2,257.1" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.9;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M253.3,276.9 Q259.5,267.4 257.8,256.2" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.8;--d:2.3s;--dr:0.55s"/>
-<path class="br lv2" d="M289.7,446.4 Q299.4,397.5 331.9,359.8" stroke="#5C8147" stroke-width="7.1" fill="none" stroke-linecap="round" opacity="1.0" style="--l:104.1;--d:1.0s;--dr:0.85s"/>
-<path class="br lv3" d="M331.9,359.8 Q347.2,326.3 337.1,290.9" stroke="#6E9558" stroke-width="5.1" fill="none" stroke-linecap="round" opacity="0.89" style="--l:74.6;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M337.1,290.9 Q336.6,263.5 317.7,243.5" stroke="#81A96B" stroke-width="3.8" fill="none" stroke-linecap="round" opacity="0.78" style="--l:55.3;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M317.7,243.5 Q308.5,224.9 288.7,218.7" stroke="#97BF82" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0.67" style="--l:41.3;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M288.7,218.7 Q273.7,220.0 260.3,213.0" stroke="#AED39A" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.56" style="--l:31.2;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M288.7,218.7 Q283.9,204.8 271.4,197.1" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.8;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M317.7,243.5 Q308.5,226.6 311.5,207.6" stroke="#97BF82" stroke-width="2.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:39.4;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M311.5,207.6 Q301.1,198.5 296.1,185.7" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:28.9;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M311.5,207.6 Q317.0,195.2 313.3,182.2" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.5;--d:2.7s;--dr:0.45s"/>
-<path class="br lv4" d="M337.1,290.9 Q338.7,265.9 351.5,244.3" stroke="#81A96B" stroke-width="3.6" fill="none" stroke-linecap="round" opacity="0.78" style="--l:52.7;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M351.5,244.3 Q358.1,226.5 349.4,209.7" stroke="#97BF82" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:37.4;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M349.4,209.7 Q346.3,196.0 335.0,187.7" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:28.5;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M349.4,209.7 Q347.1,196.8 352.4,184.7" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.1;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M351.5,244.3 Q357.5,228.4 370.4,217.3" stroke="#97BF82" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.67" style="--l:35.6;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M370.4,217.3 Q369.9,205.0 375.8,194.3" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.4;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M370.4,217.3 Q381.6,213.4 388.0,203.4" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:24.2;--d:2.7s;--dr:0.45s"/>
-<path class="br lv3" d="M331.9,359.8 Q364.2,344.9 376.6,311.6" stroke="#6E9558" stroke-width="4.9" fill="none" stroke-linecap="round" opacity="0.89" style="--l:70.9;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M376.6,311.6 Q376.9,286.2 388.7,263.6" stroke="#81A96B" stroke-width="3.7" fill="none" stroke-linecap="round" opacity="0.78" style="--l:53.5;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M388.7,263.6 Q382.5,246.6 384.7,228.7" stroke="#97BF82" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:38.0;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M384.7,228.7 Q383.5,215.3 373.3,206.5" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.0;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M384.7,228.7 Q384.2,216.5 389.3,205.4" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:25.6;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M388.7,263.6 Q403.7,253.3 406.3,235.2" stroke="#97BF82" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:36.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M406.3,235.2 Q411.6,222.8 407.3,209.9" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.4;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M406.3,235.2 Q418.0,229.5 422.6,217.3" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.1;--d:2.7s;--dr:0.45s"/>
-<path class="br lv4" d="M376.6,311.6 Q401.5,305.8 414.7,283.9" stroke="#81A96B" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.78" style="--l:51.0;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M414.7,283.9 Q429.4,271.0 429.8,251.5" stroke="#97BF82" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:38.5;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M429.8,251.5 Q424.6,238.4 427.6,224.5" stroke="#AED39A" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.56" style="--l:29.3;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M429.8,251.5 Q441.1,243.7 444.8,230.5" stroke="#AED39A" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.56" style="--l:27.9;--d:2.7s;--dr:0.45s"/>
-<path class="br lv5" d="M414.7,283.9 Q428.4,272.9 445.6,269.4" stroke="#97BF82" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:36.7;--d:2.3s;--dr:0.55s"/>
-<path class="br lv6" d="M445.6,269.4 Q457.7,264.4 462.4,252.1" stroke="#AED39A" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.56" style="--l:26.1;--d:2.7s;--dr:0.45s"/>
-<path class="br lv6" d="M445.6,269.4 Q457.6,272.7 468.3,266.5" stroke="#AED39A" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.56" style="--l:24.8;--d:2.7s;--dr:0.45s"/>
-<path class="br lv2" d="M289.7,446.4 Q291.2,416.3 306.2,390.2" stroke="#5C8147" stroke-width="4.3" fill="none" stroke-linecap="round" opacity="1.0" style="--l:63.3;--d:1.0s;--dr:0.85s"/>
-<path class="br lv3" d="M306.2,390.2 Q299.1,369.8 303.1,348.6" stroke="#6E9558" stroke-width="3.1" fill="none" stroke-linecap="round" opacity="0.89" style="--l:45.0;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M303.1,348.6 Q292.2,337.4 289.9,321.8" stroke="#81A96B" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.78" style="--l:32.2;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M289.9,321.8 Q279.8,317.0 273.1,308.0" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.6;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M289.9,321.8 Q285.4,312.2 285.8,301.5" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.4;--d:2.3s;--dr:0.55s"/>
-<path class="br lv4" d="M303.1,348.6 Q302.5,334.0 309.2,320.9" stroke="#81A96B" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.78" style="--l:30.7;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M309.2,320.9 Q304.5,311.4 305.9,300.9" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.0;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M309.2,320.9 Q311.6,311.2 318.6,304.0" stroke="#97BF82" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.67" style="--l:20.9;--d:2.3s;--dr:0.55s"/>
-<path class="br lv3" d="M306.2,390.2 Q312.1,370.3 328.4,357.4" stroke="#6E9558" stroke-width="2.9" fill="none" stroke-linecap="round" opacity="0.89" style="--l:42.8;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M328.4,357.4 Q336.1,344.1 333.4,328.9" stroke="#81A96B" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.78" style="--l:31.2;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M333.4,328.9 Q334.7,317.4 327.3,308.4" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M333.4,328.9 Q335.1,318.6 341.3,310.2" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.0;--d:2.3s;--dr:0.55s"/>
-<path class="br lv4" d="M328.4,357.4 Q342.5,352.6 349.1,339.3" stroke="#81A96B" stroke-width="2.0" fill="none" stroke-linecap="round" opacity="0.78" style="--l:29.7;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M349.1,339.3 Q356.0,330.8 356.3,319.9" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.4;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M349.1,339.3 Q359.6,337.8 366.2,329.5" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:21.3;--d:2.3s;--dr:0.55s"/>
-<path class="br lv1" d="M254.8,575.6 Q272.9,536.6 263.5,494.7" stroke="#4B6E38" stroke-width="6.0" fill="none" stroke-linecap="round" opacity="1.0" style="--l:87.9;--d:0.5s;--dr:0.95s"/>
-<path class="br lv2" d="M263.5,494.7 Q266.0,462.1 243.8,438.2" stroke="#5C8147" stroke-width="4.4" fill="none" stroke-linecap="round" opacity="1.0" style="--l:64.6;--d:1.0s;--dr:0.85s"/>
-<path class="br lv3" d="M243.8,438.2 Q222.8,427.7 209.6,408.3" stroke="#6E9558" stroke-width="3.4" fill="none" stroke-linecap="round" opacity="0.89" style="--l:49.1;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M209.6,408.3 Q192.7,407.3 179.0,397.4" stroke="#81A96B" stroke-width="2.4" fill="none" stroke-linecap="round" opacity="0.78" style="--l:35.1;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M179.0,397.4 Q167.4,401.2 155.5,398.8" stroke="#97BF82" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:25.4;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M179.0,397.4 Q167.9,393.7 160.8,384.5" stroke="#97BF82" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:24.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv4" d="M209.6,408.3 Q198.1,397.3 193.3,382.1" stroke="#81A96B" stroke-width="2.3" fill="none" stroke-linecap="round" opacity="0.78" style="--l:33.4;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M193.3,382.1 Q186.8,372.2 175.6,368.9" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.8;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M193.3,382.1 Q194.8,370.8 187.9,361.8" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.7;--d:2.3s;--dr:0.55s"/>
-<path class="br lv3" d="M243.8,438.2 Q234.0,417.8 237.2,395.4" stroke="#6E9558" stroke-width="3.2" fill="none" stroke-linecap="round" opacity="0.89" style="--l:46.8;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M237.2,395.4 Q234.6,378.4 220.3,368.8" stroke="#81A96B" stroke-width="2.3" fill="none" stroke-linecap="round" opacity="0.78" style="--l:34.0;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M220.3,368.8 Q211.7,359.6 199.2,357.6" stroke="#97BF82" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.67" style="--l:25.8;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M220.3,368.8 Q213.1,359.4 211.8,347.7" stroke="#97BF82" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:24.6;--d:2.3s;--dr:0.55s"/>
-<path class="br lv4" d="M237.2,395.4 Q235.2,380.1 240.6,365.6" stroke="#81A96B" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.78" style="--l:32.3;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M240.6,365.6 Q235.4,355.9 235.2,345.0" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.0;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M240.6,365.6 Q248.4,358.0 248.8,347.1" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:21.9;--d:2.3s;--dr:0.55s"/>
-<path class="br lv2" d="M263.5,494.7 Q265.5,465.1 283.0,441.2" stroke="#5C8147" stroke-width="4.2" fill="none" stroke-linecap="round" opacity="1.0" style="--l:61.5;--d:1.0s;--dr:0.85s"/>
-<path class="br lv3" d="M283.0,441.2 Q290.3,420.2 280.9,400.1" stroke="#6E9558" stroke-width="3.0" fill="none" stroke-linecap="round" opacity="0.89" style="--l:44.5;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M280.9,400.1 Q277.9,383.9 265.0,373.6" stroke="#81A96B" stroke-width="2.3" fill="none" stroke-linecap="round" opacity="0.78" style="--l:33.4;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M265.0,373.6 Q253.4,370.4 245.6,361.3" stroke="#97BF82" stroke-width="1.7" fill="none" stroke-linecap="round" opacity="0.67" style="--l:24.8;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M265.0,373.6 Q258.8,364.1 258.1,352.8" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.6;--d:2.3s;--dr:0.55s"/>
-<path class="br lv4" d="M280.9,400.1 Q289.1,386.4 285.4,370.9" stroke="#81A96B" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.78" style="--l:31.8;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M285.4,370.9 Q279.1,361.4 278.0,350.1" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.9;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M285.4,370.9 Q286.2,360.0 292.7,351.1" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.8;--d:2.3s;--dr:0.55s"/>
-<path class="br lv3" d="M283.0,441.2 Q301.3,430.3 306.0,409.5" stroke="#6E9558" stroke-width="2.9" fill="none" stroke-linecap="round" opacity="0.89" style="--l:42.3;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M306.0,409.5 Q312.8,395.3 309.3,380.0" stroke="#81A96B" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.78" style="--l:32.0;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M309.3,380.0 Q302.8,370.6 302.1,359.3" stroke="#97BF82" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.67" style="--l:23.7;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M309.3,380.0 Q310.0,369.1 316.5,360.4" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.5;--d:2.3s;--dr:0.55s"/>
-<path class="br lv4" d="M306.0,409.5 Q313.4,396.7 326.5,390.0" stroke="#81A96B" stroke-width="2.1" fill="none" stroke-linecap="round" opacity="0.78" style="--l:30.6;--d:1.9s;--dr:0.65s"/>
-<path class="br lv5" d="M326.5,390.0 Q334.4,382.2 334.7,371.2" stroke="#97BF82" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.67" style="--l:22.1;--d:2.3s;--dr:0.55s"/>
-<path class="br lv5" d="M326.5,390.0 Q336.7,388.5 343.7,380.9" stroke="#97BF82" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.67" style="--l:21.0;--d:2.3s;--dr:0.55s"/>
-<path class="br lv2" d="M263.5,494.7 Q271.4,478.0 266.6,460.2" stroke="#5C8147" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="1.0" style="--l:37.5;--d:1.0s;--dr:0.85s"/>
-<path class="br lv3" d="M266.6,460.2 Q258.1,449.7 257.4,436.2" stroke="#6E9558" stroke-width="1.9" fill="none" stroke-linecap="round" opacity="0.89" style="--l:27.8;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M257.4,436.2 Q253.5,426.6 243.9,423.0" stroke="#81A96B" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.78" style="--l:20.3;--d:1.9s;--dr:0.65s"/>
-<path class="br lv4" d="M257.4,436.2 Q260.2,426.8 255.3,418.4" stroke="#81A96B" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.78" style="--l:19.3;--d:1.9s;--dr:0.65s"/>
-<path class="br lv3" d="M266.6,460.2 Q267.4,447.5 274.3,436.9" stroke="#6E9558" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.89" style="--l:26.5;--d:1.45s;--dr:0.75s"/>
-<path class="br lv4" d="M274.3,436.9 Q277.0,427.9 273.3,419.4" stroke="#81A96B" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.78" style="--l:18.9;--d:1.9s;--dr:0.65s"/>
-<path class="br lv4" d="M274.3,436.9 Q282.0,432.0 283.9,423.2" stroke="#81A96B" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.78" style="--l:18.0;--d:1.9s;--dr:0.65s"/>
-<g class="leaf ls0" transform="translate(-0.2,364.3) rotate(-98.5)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(-34.1,384.1) rotate(-120.4)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#8EC472" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-50.5,407.8) rotate(-145.3)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-60.5,391.8) rotate(-106.19999999999999)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#5E9444" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(-37.2,359.0) rotate(-81.80000000000001)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-63.3,365.5) rotate(-104.19999999999999)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#6BA750" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-60.5,348.3) rotate(-65.5)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(9.2,329.4) rotate(-59.19999999999999)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#8EC472" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(-28.6,324.9) rotate(-83.30000000000001)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-55.2,334.8) rotate(-110.30000000000001)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#5E9444" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-54.2,316.0) rotate(-70.80000000000001)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(-16.1,303.4) rotate(-44.30000000000001)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#6BA750" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-39.5,292.5) rotate(-65.0)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-27.1,281.5) rotate(-26.700000000000003)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#8EC472" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(45.7,289.6) rotate(-53.900000000000006)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(9.6,282.4) rotate(-78.69999999999999)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#5E9444" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-16.8,289.3) rotate(-104.80000000000001)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-14.0,271.6) rotate(-65.4)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#6BA750" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(23.4,262.6) rotate(-39.5)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(-1.1,252.7) rotate(-68.0)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#8EC472" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(11.5,240.4) rotate(-28.200000000000003)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(73.6,273.2) rotate(-15.5)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#5E9444" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(53.0,245.9) rotate(-37.0)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(32.3,233.0) rotate(-58.0)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#6BA750" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(45.2,224.1) rotate(-19.599999999999994)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(74.4,240.7) rotate(1.5)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#8EC472" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(66.2,218.8) rotate(-20.599999999999994)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(81.3,219.6) rotate(18.0)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#5E9444" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(66.1,336.0) rotate(-66.19999999999999)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(43.6,336.7) rotate(-91.69999999999999)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#6BA750" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(49.1,323.0) rotate(-52.5)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(80.5,322.7) rotate(-27.799999999999997)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#8EC472" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(62.2,310.7) rotate(-56.69999999999999)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(74.5,302.7) rotate(-16.900000000000006)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#5E9444" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(109.6,265.2) rotate(-51.900000000000006)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(74.1,257.8) rotate(-78.30000000000001)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#6BA750" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(48.3,262.9) rotate(-101.19999999999999)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(51.9,246.2) rotate(-62.400000000000006)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#8EC472" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(87.9,238.2) rotate(-38.900000000000006)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(64.9,227.3) rotate(-64.6)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#5E9444" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(77.5,216.2) rotate(-25.299999999999997)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(137.3,250.1) rotate(-13.599999999999994)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#6BA750" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(113.8,224.0) rotate(-42.0)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(91.4,212.8) rotate(-63.400000000000006)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#8EC472" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(103.7,202.5) rotate(-24.900000000000006)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(136.0,216.7) rotate(-2.200000000000003)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#5E9444" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(124.7,194.9) rotate(-27.299999999999997)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(140.8,193.8) rotate(11.799999999999997)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#6BA750" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(182.3,243.9) rotate(-13.0)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(159.6,217.4) rotate(-40.69999999999999)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#8EC472" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(137.6,205.6) rotate(-61.80000000000001)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(150.2,195.7) rotate(-23.400000000000006)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#5E9444" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(181.7,210.6) rotate(-1.0)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(172.2,188.6) rotate(-23.400000000000006)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#6BA750" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(187.7,188.6) rotate(15.299999999999997)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(211.8,249.3) rotate(25.400000000000006)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#8EC472" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(212.0,216.7) rotate(0.4000000000000057)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(200.0,195.1) rotate(-29.099999999999994)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#5E9444" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(216.5,193.6) rotate(10.900000000000006)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(231.6,225.4) rotate(39.5)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#6BA750" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(235.6,202.2) rotate(9.900000000000006)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(248.7,210.9) rotate(49.9)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#8EC472" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(161.0,290.6) rotate(-34.8)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(140.7,280.9) rotate(-64.5)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#5E9444" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(152.1,271.0) rotate(-24.5)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(180.1,286.8) rotate(4.599999999999994)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#6BA750" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(174.5,267.5) rotate(-16.400000000000006)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#7AB35E" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(187.3,269.1) rotate(22.0)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#8EC472" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls0" transform="translate(167.5,269.4) rotate(-68.1)"><path d="M0 12.8 C-9.6 6.5 -9.6 -12.8 0 -22.4 C9.6 -12.8 9.6 6.5 0 12.8" fill="#9DD07F" opacity="0.85"/><line x1="0" y1="11.2" x2="0" y2="-19.0" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls1" transform="translate(125.9,273.0) rotate(-95.1)"><path d="M0 10.4 C-7.8 5.3 -7.8 -10.4 0 -18.2 C7.8 -10.4 7.8 5.3 0 10.4" fill="#5E9444" opacity="0.85"/><line x1="0" y1="9.1" x2="0" y2="-15.5" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(99.4,288.8) rotate(-120.69999999999999)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#A6D68A" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-<g class="leaf ls2" transform="translate(96.8,268.7) rotate(-81.5)"><path d="M0 8.0 C-6.0 4.1 -6.0 -8.0 0 -14.0 C6.0 -8.0 6.0 4.1 0 8.0" fill="#6BA750" opacity="0.85"/><line x1="0" y1="7.0" x2="0" y2="-11.9" stroke="#4A6E30" stroke-width="0.6" opacity="0.4"/></g>
-</svg>
-<div class="tb tb1"><div class="tn">50€</div><div class="tl">Bilan offert<br>50 premiers clients</div></div>
-<div class="tb tb2"><div class="tn">1<sup style="font-size:.9rem">er</sup></div><div class="tl">centre EMS<br>en France</div></div>
-</div>
-<div class="scroll-ind" aria-hidden="true">
-<p class="scroll-lbl">Découvrir</p>
-<div class="scroll-bar"></div>
-</div>
+  <div class="hero-photo"><img src="images/hero-room.webp" alt="Centre Body Reset — Salle de soin" loading="eager"></div>
+  <div class="hero-ov"></div>
+  <div class="hl">
+    <div class="hl-in">
+      <div class="h-chap">Centre Body Reset &nbsp;·&nbsp; Ouvert en mai 2026</div>
+      <div class="h-tag"><span class="h-dot"></span>Nouveau à Clermont-l'Hérault</div>
+      <h1>
+        <span class="l1">Et si votre corps</span>
+        <span class="l2">n'attendait que</span>
+        <span class="l3">la bonne approche ?</span>
+      </h1>
+      <p class="h-sub">Centre Body Reset associe expertise diététique et technologies de pointe pour un accompagnement 360° réellement personnalisé. Silhouette, ménopause, sommeil, récupération — nous traitons les vraies causes.</p>
+      <div class="h-ctas">
+        <a href="pages/contact.html" class="btn bp">✦ Débuter mon bilan offert</a>
+        <a href="#solutions" class="btn bo">Voir mes solutions</a>
+      </div>
+      <div class="h-div">
+        <div class="h-div-line"></div>
+        <p><strong>Charlotte &amp; Alison</strong> — 13+ ans d'expertise chacune · Diplômes d'État</p>
+      </div>
+      <div class="h-stats">
+        <div class="h-st"><div class="n">13+</div><div class="l">ans d'expérience<br>chacune</div></div>
+        <div class="h-sdiv"></div>
+        <div class="h-st"><div class="n">5</div><div class="l">technologies<br>innovantes</div></div>
+        <div class="h-sdiv"></div>
+        <div class="h-st"><div class="n">360°</div><div class="l">accompagnement<br>sur mesure</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hr" id="hr">
+    <div class="tb tb1"><div class="tn">50€</div><div class="tl">Bilan offert<br>50 premiers clients</div></div>
+    <div class="tb tb2"><div class="tn">1<sup style="font-size:.9rem">er</sup></div><div class="tl">centre EMS<br>en France</div></div>
+  </div>
 </section>
+
+<!-- ══ MARQUEE ══ -->
 <div class="mq" aria-hidden="true"><div class="mqi">
-<span class="mi">Nutrition <span class="md"></span></span><span class="mi">Sommeil <span class="md"></span></span><span class="mi">Ménopause <span class="md"></span></span><span class="mi">Récupération <span class="md"></span></span><span class="mi">Silhouette <span class="md"></span></span><span class="mi">Bien-être urinaire <span class="md"></span></span><span class="mi">Drainage lymphatique <span class="md"></span></span><span class="mi">Performance sportive <span class="md"></span></span><span class="mi">Nutrition <span class="md"></span></span><span class="mi">Sommeil <span class="md"></span></span><span class="mi">Ménopause <span class="md"></span></span><span class="mi">Récupération <span class="md"></span></span><span class="mi">Silhouette <span class="md"></span></span><span class="mi">Bien-être urinaire <span class="md"></span></span><span class="mi">Drainage lymphatique <span class="md"></span></span><span class="mi">Performance sportive <span class="md"></span></span>
+  <span class="mi">Nutrition <span class="md"></span></span><span class="mi">Sommeil <span class="md"></span></span><span class="mi">Ménopause <span class="md"></span></span><span class="mi">Récupération <span class="md"></span></span><span class="mi">Silhouette <span class="md"></span></span><span class="mi">Bien-être urinaire <span class="md"></span></span><span class="mi">Drainage <span class="md"></span></span><span class="mi">Performance <span class="md"></span></span>
+  <span class="mi">Nutrition <span class="md"></span></span><span class="mi">Sommeil <span class="md"></span></span><span class="mi">Ménopause <span class="md"></span></span><span class="mi">Récupération <span class="md"></span></span><span class="mi">Silhouette <span class="md"></span></span><span class="mi">Bien-être urinaire <span class="md"></span></span><span class="mi">Drainage <span class="md"></span></span><span class="mi">Performance <span class="md"></span></span>
 </div></div>
+
+<!-- ══ PHILOSOPHIE ══ -->
 <section class="sec">
-<div class="deco-leaf" style="top:8%;left:3%;width:35px;height:55px;--dur:14s;--del:0.5s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#8EC472" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-leaf" style="top:15%;right:5%;width:28px;height:42px;--dur:11s;--del:1.2s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#A6D68A" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-leaf" style="bottom:12%;right:8%;width:42px;height:62px;--dur:16s;--del:2s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#97BF82" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="lotus-fig" style="top:50%;right:-30px;width:180px;height:216px;transform:translateY(-50%)"><svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<ellipse cx="100" cy="38" rx="11" ry="13" fill="#6B8C5A"/>
-<ellipse cx="100" cy="62" rx="20" ry="22" fill="#6B8C5A"/>
-<path d="M92 82 L92 92 Q100 96 108 92 L108 82 Z" fill="#6B8C5A"/>
-<path d="M65 100 Q60 130 70 160 L130 160 Q140 130 135 100 Q120 92 100 92 Q80 92 65 100 Z" fill="#6B8C5A"/>
-<path d="M70 110 Q55 130 65 155 L78 152 Q72 140 78 122 Z" fill="#6B8C5A"/>
-<path d="M130 110 Q145 130 135 155 L122 152 Q128 140 122 122 Z" fill="#6B8C5A"/>
-<ellipse cx="100" cy="148" rx="13" ry="6" fill="#6B8C5A"/>
-<path d="M93 145 L93 130 Q100 128 107 130 L107 145 Z" fill="#6B8C5A"/>
-<path d="M40 200 Q60 165 100 165 Q140 165 160 200 Q165 215 155 220 L45 220 Q35 215 40 200 Z" fill="#6B8C5A"/>
-<path d="M75 185 Q85 178 100 178 Q115 178 125 185" stroke="#4A6E30" stroke-width="1.5" fill="none" opacity=".5"/>
-</svg></div>
-<div class="wrap" style="position:relative;z-index:1">
-<div class="ig">
-<div class="iv rv-left rv-zoom"><img src="images/hero-room-2.webp" alt="Salle de soin LED — Centre Body Reset" style="border-radius:var(--rx)"><div class="fl"><div class="fn">13+</div><div class="fll">ans d'expertise chacune</div></div><div class="fl2"><strong>Concept unique</strong><p>Nutrition clinique<br>+ technologies avancées</p></div></div>
-<div class="it rv-right">
-<span class="ol">Notre philosophie</span>
-<h2>Votre corps a les ressources. Nous lui rendons les clés.</h2>
-<p>Centre Body Reset n'est pas un centre d'esthétique classique. C'est l'alliance de la rigueur de la nutrition clinique et de la puissance des technologies les plus avancées pour traiter non seulement les symptômes — mais leurs vraies causes.</p>
-<p>Parce que chaque corps est unique, chaque protocole l'est aussi. Nous créons votre parcours sur mesure à partir d'un bilan complet réalisé par nos deux expertes.</p>
-<ul class="ck">
-<li>Deux diplômes complémentaires, pas des formations express en ligne</li>
-<li>Un accompagnement global : nutrition + technologies dans un même lieu</li>
-<li>Le seul concept de ce type à Clermont-l'Hérault</li>
-<li>Résultats mesurables dès les premières séances</li>
-</ul>
-<a href="#equipe" class="btn" style="background:transparent;color:var(--br);border:1.5px solid var(--be)">Découvrir notre histoire →</a>
-</div>
-</div>
-</div>
+  <div class="wrap">
+    <div class="ig">
+      <div class="iv rv-left rv-zoom"><img src="images/hero-room-2.webp" alt="Centre Body Reset" style="border-radius:var(--rx)"><div class="fl"><div class="fn">13+</div><div class="fll">ans d'expertise chacune</div></div><div class="fl2"><strong>Concept unique</strong><p>Nutrition clinique<br>+ technologies avancées</p></div></div>
+      <div class="rv-right">
+        <span class="ol">Notre philosophie</span>
+        <h2>Votre corps a les ressources. Nous lui rendons les clés.</h2>
+        <p>Centre Body Reset n'est pas un centre d'esthétique classique. C'est l'alliance de la rigueur de la nutrition clinique et de la puissance des technologies les plus avancées pour traiter non seulement les symptômes — mais leurs vraies causes.</p>
+        <p>Parce que chaque corps est unique, chaque protocole l'est aussi. Nous créons votre parcours sur mesure à partir d'un bilan complet réalisé par nos deux expertes.</p>
+        <ul class="ck">
+          <li>Deux diplômes complémentaires, pas des formations express en ligne</li>
+          <li>Un accompagnement global : nutrition + technologies dans un même lieu</li>
+          <li>Le seul concept de ce type à Clermont-l'Hérault</li>
+          <li>Résultats mesurables dès les premières séances</li>
+        </ul>
+        <a href="pages/a-propos.html" class="btn btn-out">Découvrir notre histoire →</a>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ══ SOLUTIONS ══ -->
 <section class="sec pbs" id="solutions">
-<div class="deco-leaf" style="top:6%;left:5%;width:32px;height:48px;--dur:13s;--del:0.8s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#8EC472" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-leaf" style="top:30%;right:3%;width:26px;height:40px;--dur:10s;--del:1.5s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#A6D68A" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-leaf" style="bottom:18%;left:6%;width:38px;height:56px;--dur:15s;--del:0.3s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#97BF82" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-leaf" style="bottom:8%;right:7%;width:30px;height:46px;--dur:12s;--del:2.1s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#8EC472" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-circle" style="top:-100px;right:-100px;width:300px;height:300px"></div>
-<div class="wrap" style="position:relative;z-index:1">
-<div class="sh rv"><span class="ol">Vos objectifs, nos solutions</span><h2>Qu'est-ce qui vous amène ?</h2><p>Chaque parcours commence par comprendre votre situation réelle. Cliquez sur ce qui vous correspond — nous avons une réponse précise pour chacun.</p></div>
-<div class="pg rv-stagger">
-<a href="/solutions/silhouette" class="pc"><div class="pc-t"></div><div class="pc-i">⚖️</div><h3>Je veux perdre du poids durablement</h3><p>Vous faites des efforts mais votre corps ne répond plus ? Blocage métabolique, hormones, alimentation — nous identifions la vraie cause et agissons en profondeur.</p><span class="pc-a">Voir la solution →</span></a>
-<a href="/solutions/menopause" class="pc"><div class="pc-t"></div><div class="pc-i">🌸</div><h3>La ménopause bouleverse mon quotidien</h3><p>Prise de poids, fatigue, bouffées de chaleur, troubles du sommeil... Notre protocole agit sur les déséquilibres hormonaux avec technologies et nutrition adaptées.</p><span class="pc-a">Voir la solution →</span></a>
-<a href="/solutions/sommeil" class="pc"><div class="pc-t"></div><div class="pc-i">🌙</div><h3>Je dors mal et manque d'énergie</h3><p>Le manque de sommeil impacte tout : poids, humeur, immunité, métabolisme. Photobiomodulation LED et suivi nutritionnel relancent votre vitalité cellulaire.</p><span class="pc-a">Voir la solution →</span></a>
-<a href="/solutions/sportifs" class="pc"><div class="pc-t"></div><div class="pc-i">🏃</div><h3>Je suis sportif et veux mieux récupérer</h3><p>Trail, sport intensif ou retour de blessure. Photobiomodulation, pressothérapie et nutrition sportive pour récupérer plus vite et aller plus loin.</p><span class="pc-a">Voir la solution →</span></a>
-<a href="/solutions/bien-etre-urinaire" class="pc"><div class="pc-t"></div><div class="pc-i">✨</div><h3>Je souffre de fuites urinaires</h3><p>Post-grossesse, ménopause ou post-cancer — la chaise EMS renforce le plancher pelvien en profondeur, sans effort ni gêne. Résultats dès les premières séances.</p><span class="pc-a">Voir la solution →</span></a>
-<a href="/solutions/drainage" class="pc"><div class="pc-t"></div><div class="pc-i">💧</div><h3>Je gonfle, j'ai les jambes lourdes</h3><p>Rétention d'eau, travail debout, sédentarité... La pressothérapie associée au suivi nutritionnel drainent et libèrent votre corps en profondeur.</p><span class="pc-a">Voir la solution →</span></a>
-</div>
-</div>
+  <div class="wrap">
+    <div class="sh rv"><span class="ol">Vos objectifs, nos solutions</span><h2>Qu'est-ce qui vous amène ?</h2><p>Chaque parcours commence par comprendre votre situation réelle. Cliquez sur ce qui vous correspond — nous avons une réponse précise pour chacun.</p></div>
+    <div class="pg rv-stagger">
+      <a href="pages/solutions/silhouette.html" class="pc"><div class="pc-t"></div><div class="pc-i">⚖️</div><h3>Je veux perdre du poids durablement</h3><p>Vous faites des efforts mais votre corps ne répond plus ? Blocage métabolique, hormones, alimentation — nous identifions la vraie cause et agissons en profondeur.</p><span class="pc-a">Voir la solution →</span></a>
+      <a href="pages/solutions/menopause.html" class="pc"><div class="pc-t"></div><div class="pc-i">🌸</div><h3>La ménopause bouleverse mon quotidien</h3><p>Prise de poids, fatigue, bouffées de chaleur, troubles du sommeil... Notre protocole agit sur les déséquilibres hormonaux avec technologies et nutrition adaptées.</p><span class="pc-a">Voir la solution →</span></a>
+      <a href="pages/solutions/sommeil.html" class="pc"><div class="pc-t"></div><div class="pc-i">🌙</div><h3>Je dors mal et manque d'énergie</h3><p>Le manque de sommeil impacte tout : poids, humeur, immunité, métabolisme. Photobiomodulation LED et suivi nutritionnel relancent votre vitalité cellulaire.</p><span class="pc-a">Voir la solution →</span></a>
+      <a href="pages/solutions/sportifs.html" class="pc"><div class="pc-t"></div><div class="pc-i">🏃</div><h3>Je suis sportif et veux mieux récupérer</h3><p>Trail, sport intensif ou retour de blessure. Photobiomodulation, pressothérapie et nutrition sportive pour récupérer plus vite et aller plus loin.</p><span class="pc-a">Voir la solution →</span></a>
+      <a href="pages/solutions/bien-etre-urinaire.html" class="pc"><div class="pc-t"></div><div class="pc-i">✨</div><h3>Je souffre de fuites urinaires</h3><p>Post-grossesse, ménopause ou post-cancer — la chaise EMS renforce le plancher pelvien en profondeur, sans effort ni gêne. Résultats dès les premières séances.</p><span class="pc-a">Voir la solution →</span></a>
+      <a href="pages/solutions/drainage.html" class="pc"><div class="pc-t"></div><div class="pc-i">💧</div><h3>Je gonfle, j'ai les jambes lourdes</h3><p>Rétention d'eau, travail debout, sédentarité... La pressothérapie associée au suivi nutritionnel drainent et libèrent votre corps en profondeur.</p><span class="pc-a">Voir la solution →</span></a>
+    </div>
+  </div>
 </section>
+
+<!-- ══ PARCOURS ══ -->
 <section class="sec">
-<div class="lotus-fig" style="top:50%;left:-50px;width:220px;height:260px;transform:translateY(-50%)"><svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<ellipse cx="100" cy="38" rx="11" ry="13" fill="#6B8C5A"/>
-<ellipse cx="100" cy="62" rx="20" ry="22" fill="#6B8C5A"/>
-<path d="M92 82 L92 92 Q100 96 108 92 L108 82 Z" fill="#6B8C5A"/>
-<path d="M65 100 Q60 130 70 160 L130 160 Q140 130 135 100 Q120 92 100 92 Q80 92 65 100 Z" fill="#6B8C5A"/>
-<path d="M70 110 Q55 130 65 155 L78 152 Q72 140 78 122 Z" fill="#6B8C5A"/>
-<path d="M130 110 Q145 130 135 155 L122 152 Q128 140 122 122 Z" fill="#6B8C5A"/>
-<ellipse cx="100" cy="148" rx="13" ry="6" fill="#6B8C5A"/>
-<path d="M93 145 L93 130 Q100 128 107 130 L107 145 Z" fill="#6B8C5A"/>
-<path d="M40 200 Q60 165 100 165 Q140 165 160 200 Q165 215 155 220 L45 220 Q35 215 40 200 Z" fill="#6B8C5A"/>
-<path d="M75 185 Q85 178 100 178 Q115 178 125 185" stroke="#4A6E30" stroke-width="1.5" fill="none" opacity=".5"/>
-</svg></div>
-<div class="deco-circle" style="top:-80px;left:-80px;width:260px;height:260px"></div>
-<div class="deco-circle" style="bottom:-100px;right:-80px;width:300px;height:300px"></div>
-<div class="deco-leaf" style="top:14%;right:8%;width:34px;height:50px;--dur:14s;--del:1s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#97BF82" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-leaf" style="bottom:18%;left:50%;width:28px;height:42px;--dur:11s;--del:1.8s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#A6D68A" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="wrap" style="position:relative;z-index:1">
-<div class="sh rv"><span class="ol">Le parcours Body Reset</span><h2>Votre programme sur-mesure commence ici</h2><p>Parce que chaque corps est unique, le bilan personnalisé est le point de départ obligatoire — et il est offert pour les 50 premiers clients.</p></div>
-<div class="sw">
-<div class="sc2" aria-hidden="true"></div>
-<div class="st rv-left"><div class="stn">1</div><h3>Le bilan personnalisé</h3><p>60 minutes avec nos deux expertes. Analyse corporelle, bilan nutritionnel, objectifs et contraintes — rien n'est laissé au hasard.</p><span class="stg">✓ Offert — valeur 60€</span></div>
-<div class="st rv-scale"><div class="stn">2</div><h3>Votre protocole sur mesure</h3><p>Combinaison personnalisée de technologies et de suivi nutritionnel, définie selon votre corps, votre mode de vie et vos objectifs précis.</p><span class="stg">✓ 100% individualisé</span></div>
-<div class="st rv-right"><div class="stn">3</div><h3>Des résultats qui durent</h3><p>Suivi régulier, ajustements en cours de cure et accompagnement dans la durée pour des transformations qui perdurent au-delà des séances.</p><span class="stg">✓ Résultats mesurables</span></div>
-</div>
-<div class="scta2 rv"><a href="#reservation" class="btn bp">Prendre mon bilan offert</a><small>Offre limitée aux 50 premiers clients &nbsp;·&nbsp; −30% sur votre cure si prise le jour du bilan</small></div>
-</div>
+  <div class="wrap">
+    <div class="sh rv"><span class="ol">Le parcours Body Reset</span><h2>Votre programme sur-mesure commence ici</h2><p>Parce que chaque corps est unique, le bilan personnalisé est le point de départ obligatoire — et il est offert pour les 50 premiers clients.</p></div>
+    <div class="sw">
+      <div class="sc2"></div>
+      <div class="st rv-left"><div class="stn">1</div><h3>Le bilan personnalisé</h3><p>60 minutes avec nos deux expertes. Analyse corporelle, bilan nutritionnel, objectifs et contraintes — rien n'est laissé au hasard.</p><span class="stg">✓ Offert — valeur 60€</span></div>
+      <div class="st rv-scale"><div class="stn">2</div><h3>Votre protocole sur mesure</h3><p>Combinaison personnalisée de technologies et de suivi nutritionnel, définie selon votre corps, votre mode de vie et vos objectifs précis.</p><span class="stg">✓ 100% individualisé</span></div>
+      <div class="st rv-right"><div class="stn">3</div><h3>Des résultats qui durent</h3><p>Suivi régulier, ajustements en cours de cure et accompagnement dans la durée pour des transformations qui perdurent au-delà des séances.</p><span class="stg">✓ Résultats mesurables</span></div>
+    </div>
+    <div class="scta2 rv"><a href="pages/contact.html" class="btn bp">Prendre mon bilan offert</a><small>Offre limitée aux 50 premiers clients &nbsp;·&nbsp; −30% sur votre cure si prise le jour du bilan</small></div>
+  </div>
 </section>
+
+<!-- ══ OFFRE DE LANCEMENT ══ -->
 <section class="sec offer-sec" id="offre">
-<div class="wrap">
-<div class="offer-inner">
-<div class="offer-head rv">
-<span class="ol">Offre d'ouverture · Mai 2026</span>
-<h2>Il est temps de redéfinir la relation avec votre corps</h2>
-<p>Body Reset n'est pas un centre d'esthétique classique — c'est un espace de haute technologie et d'accompagnement humain dédié à la santé globale et à l'équilibre féminin et masculin.</p>
-</div>
-<div class="offer-cards rv-stagger">
-<div class="ocard">
-<div class="ocard-val"><span>valeur </span>60€</div>
-<h3>Bilan personnalisé offert</h3>
-<p>Analyse complète de votre situation + protocole sur mesure défini par nos deux expertes lors d'une consultation de 60 minutes.</p>
-<span class="ocard-badge">✓ Inclus dans l'offre</span>
-</div>
-<div class="ocard">
-<div class="ocard-val">-30<span>%</span></div>
-<h3>Sur votre cure</h3>
-<p>Si votre cure est prise le jour même du bilan, bénéficiez de 30% de réduction sur l'ensemble de votre programme personnalisé.</p>
-<span class="ocard-badge">✓ Le jour du bilan uniquement</span>
-</div>
-</div>
-<div class="offer-foot">
-<p class="offer-limit">Offre limitée aux 50 premiers clients — places disponibles</p>
-<a href="#reservation" class="btn" style="background:#fff;color:var(--sd);font-weight:500;padding:15px 40px;border-radius:100px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s ease">
- Réserver mon bilan offert →
- </a>
-</div>
-</div>
-</div>
+  <div class="wrap">
+    <div class="offer-inner">
+      <div class="offer-head rv">
+        <span class="ol">Offre d'ouverture · Mai 2026</span>
+        <h2>Il est temps de redéfinir la relation avec votre corps</h2>
+        <p>Body Reset n'est pas un centre d'esthétique classique — c'est un espace de haute technologie et d'accompagnement humain dédié à la santé globale et à l'équilibre féminin et masculin.</p>
+      </div>
+      <div class="offer-cards rv-stagger">
+        <div class="ocard"><div class="ocard-val"><span>valeur </span>60€</div><h3>Bilan personnalisé offert</h3><p>Analyse complète de votre situation + protocole sur mesure défini par nos deux expertes lors d'une consultation de 60 minutes.</p><span class="ocard-badge">✓ Inclus dans l'offre</span></div>
+        <div class="ocard"><div class="ocard-val">-30<span>%</span></div><h3>Sur votre cure</h3><p>Si votre cure est prise le jour même du bilan, bénéficiez de 30% de réduction sur l'ensemble de votre programme personnalisé.</p><span class="ocard-badge">✓ Le jour du bilan uniquement</span></div>
+      </div>
+      <div class="offer-foot">
+        <p class="offer-limit">Offre limitée aux 50 premiers clients — places disponibles</p>
+        <a href="pages/contact.html" class="btn bw">Réserver mon bilan offert →</a>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ══ TECHNOLOGIES ══ -->
 <section class="sec tecs" id="technologies">
-<div class="deco-circle" style="top:-150px;left:-100px;width:400px;height:400px;border-color:rgba(196,112,74,.2)"></div>
-<div class="deco-circle" style="bottom:-200px;right:-150px;width:500px;height:500px;border-color:rgba(168,193,154,.15)"></div>
-<div class="particle" style="top:15%;left:8%;--dur:9s;--del:0s;--dx:20px;background:rgba(212,169,154,.5)"></div>
-<div class="particle" style="top:30%;left:25%;--dur:11s;--del:2s;--dx:-15px;background:rgba(168,193,154,.5)"></div>
-<div class="particle" style="top:60%;left:75%;--dur:13s;--del:1s;--dx:25px;background:rgba(212,169,154,.5)"></div>
-<div class="particle" style="top:45%;left:50%;--dur:10s;--del:3s;--dx:-20px;background:rgba(168,193,154,.5)"></div>
-<div class="particle" style="top:75%;left:15%;--dur:12s;--del:1.5s;--dx:18px;background:rgba(212,169,154,.5)"></div>
-<div class="wrap" style="position:relative;z-index:1">
-<div class="sh rv"><span class="ol">Nos technologies</span><h2>5 technologies de pointe, 1 résultat : vous</h2><p>Aucun autre centre à Clermont-l'Hérault ne combine expertise diététique diplômée et ces 5 technologies innovantes dans un accompagnement aussi personnalisé.</p></div>
-<div class="tg rv-stagger">
-<a href="/technologies/cryolipolyse" class="tc"><img src="images/tech-cryolipolyse.webp" alt="Cryolipolyse" class="tc-img"><h3>Cryolipolyse</h3><p>Élimination des graisses localisées par le froid. Non invasif, indolore, résultats visibles.</p><span class="tcb">Silhouette</span></a>
-<a href="/technologies/adipologie" class="tc"><img src="images/tech-adipologie.webp" alt="Adipologie" class="tc-img"><h3>Adipologie</h3><p>Remodelage haute précision du tissu adipeux pour sculpter et raffermir durablement.</p><span class="tcb">Silhouette & tonus</span></a>
-<a href="/technologies/led" class="tc"><img src="images/tech-led.webp" alt="Photobiomodulation LED" class="tc-img"><h3>LED Infrarouge</h3><p>Récupération, anti-inflammatoire, anti-chute capillaire, éclat de peau.</p><span class="tcb">Récupération & peau</span></a>
-<a href="/technologies/pressotherapie" class="tc"><img src="images/tech-pressotherapie.webp" alt="Pressothérapie" class="tc-img"><h3>Pressothérapie</h3><p>Drainage lymphatique mécanique profond pour la légèreté et la circulation.</p><span class="tcb">Drainage & légèreté</span></a>
-<a href="/technologies/chaise-ems" class="tc"><img src="images/tech-chaise-ems.webp" alt="Chaise EMS" class="tc-img"><h3>Chaise EMS</h3><p>Renforcement du plancher pelvien par ondes électromagnétiques de pointe.</p><span class="tcb">1er centre en France</span></a>
-</div>
-<div class="tecf rv"><p>Toutes nos technologies sont combinées avec un suivi nutritionnel diplômé — c'est ce qui fait toute la différence.</p><a href="/technologies" class="btn bgh">Explorer toutes les technologies →</a></div>
-</div>
+  <div class="wrap">
+    <div class="sh rv"><span class="ol">Nos technologies</span><h2>5 technologies de pointe, 1 résultat : vous</h2><p>Aucun autre centre à Clermont-l'Hérault ne combine expertise diététique diplômée et ces 5 technologies innovantes dans un accompagnement aussi personnalisé.</p></div>
+    <div class="tg rv-stagger">
+      <a href="pages/technologies/cryolipolyse.html" class="tc"><img src="images/tech-cryolipolyse.webp" alt="Cryolipolyse" class="tc-img"><h3>Cryolipolyse</h3><p>Élimination des graisses localisées par le froid. Non invasif, indolore.</p><span class="tcb">Silhouette</span></a>
+      <a href="pages/technologies/adipologie.html" class="tc"><img src="images/tech-adipologie.webp" alt="Adipologie" class="tc-img"><h3>Adipologie</h3><p>Remodelage haute précision du tissu adipeux pour sculpter et raffermir.</p><span class="tcb">Silhouette &amp; tonus</span></a>
+      <a href="pages/technologies/led.html" class="tc"><img src="images/tech-led.webp" alt="LED" class="tc-img"><h3>LED Infrarouge</h3><p>Récupération, anti-inflammatoire, anti-chute capillaire, éclat de peau.</p><span class="tcb">Récupération</span></a>
+      <a href="pages/technologies/pressotherapie.html" class="tc"><img src="images/tech-pressotherapie.webp" alt="Pressothérapie" class="tc-img"><h3>Pressothérapie</h3><p>Drainage lymphatique mécanique profond pour la légèreté.</p><span class="tcb">Drainage</span></a>
+      <a href="pages/technologies/chaise-ems.html" class="tc"><img src="images/tech-chaise-ems.webp" alt="Chaise EMS" class="tc-img"><h3>Chaise EMS</h3><p>Renforcement du plancher pelvien par ondes électromagnétiques.</p><span class="tcb">1er en France</span></a>
+    </div>
+    <div class="tecf rv"><p>Toutes nos technologies sont combinées avec un suivi nutritionnel diplômé — c'est ce qui fait toute la différence.</p></div>
+  </div>
 </section>
+
+<!-- ══ ÉQUIPE ══ -->
 <section class="sec" id="equipe">
-<div class="deco-leaf" style="top:10%;right:4%;width:42px;height:62px;--dur:15s;--del:0.4s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#8EC472" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-leaf" style="bottom:14%;left:4%;width:36px;height:54px;--dur:13s;--del:1.3s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#A6D68A" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-leaf" style="top:38%;left:6%;width:28px;height:42px;--dur:11s;--del:2.2s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#97BF82" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="wrap" style="position:relative;z-index:1">
-<div class="sh rv">
-<span class="ol">Charlotte & Alison</span>
-<h2>Deux expertes, une vision commune</h2>
-<p>Un concept né de l'alliance de deux diplômes complémentaires et de plus de 13 ans d'expérience chacune. Pas des formations internet en quelques jours — une expertise réelle, rigoureuse, au service de votre équilibre.</p>
-</div>
-<div class="team-main rv-scale">
-<div class="team-photo">
-<img src="images/team.webp" alt="Charlotte et Alison, fondatrices du Centre Body Reset — Clermont-l'Hérault">
-</div>
-<div class="team-bios">
-<div class="tbio">
-<h3>Charlotte</h3>
-<span class="role">Diététicienne-Nutritionniste Spécialisée</span>
-<p>Experte du métabolisme depuis 2009, Charlotte déchiffre vos blocages — hormonaux, digestifs, liés au stress — pour concevoir une stratégie nutritionnelle sur mesure, sans privation, axée sur la relance durable de votre énergie et de votre vitalité.</p>
-<div class="bds">
-<span class="bd">+13 ans d'expérience</span>
-<span class="bd">Diplôme d'État</span>
-<span class="bd">Nutrition clinique</span>
-</div>
-</div>
-<div class="tbio">
-<h3>Alison</h3>
-<span class="role">Esthéticienne & Experte en Technologies Avancées</span>
-<p>Spécialisée en technologies esthétiques avancées depuis 2012, Alison pilote votre plateau technique avec précision. Elle sélectionne et combine les protocoles adaptés à votre profil pour des résultats mesurables, rapides et durables.</p>
-<div class="bds">
-<span class="bd">+13 ans d'expérience</span>
-<span class="bd">Technologies avancées</span>
-<span class="bd">Dirigeante</span>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <div class="wrap">
+    <div class="sh rv"><span class="ol">Charlotte &amp; Alison</span><h2>Deux expertes, une vision commune</h2><p>Un concept né de l'alliance de deux diplômes complémentaires et de plus de 13 ans d'expérience chacune. Pas des formations internet — une expertise authentique et rigoureuse.</p></div>
+    <div class="team-main rv-scale">
+      <div class="team-photo"><img src="images/team.webp" alt="Charlotte et Alison, fondatrices du Centre Body Reset"></div>
+      <div class="team-bios">
+        <div class="tbio">
+          <h3>Charlotte</h3>
+          <span class="role">Diététicienne-Nutritionniste Spécialisée</span>
+          <p>Experte du métabolisme depuis 2009, Charlotte déchiffre vos blocages — hormonaux, digestifs, liés au stress — pour concevoir une stratégie nutritionnelle sur mesure, sans privation, axée sur la relance durable de votre énergie et de votre vitalité.</p>
+          <div class="bds"><span class="bd">+13 ans d'expérience</span><span class="bd">Diplôme d'État</span><span class="bd">Nutrition clinique</span></div>
+        </div>
+        <div class="tbio">
+          <h3>Alison</h3>
+          <span class="role">Esthéticienne &amp; Experte en Technologies Avancées</span>
+          <p>Spécialisée en technologies esthétiques avancées depuis 2012, Alison pilote votre plateau technique avec précision. Elle sélectionne et combine les protocoles adaptés à votre profil pour des résultats mesurables, rapides et durables.</p>
+          <div class="bds"><span class="bd">+13 ans d'expérience</span><span class="bd">Technologies avancées</span><span class="bd">Dirigeante</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ══ TÉMOIGNAGES ══ -->
 <section class="sec qss">
-<div class="deco-leaf" style="top:12%;left:3%;width:30px;height:46px;--dur:12s;--del:0.6s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#8EC472" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="deco-leaf" style="bottom:10%;right:5%;width:34px;height:50px;--dur:14s;--del:1.8s"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-<path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#97BF82" opacity=".7"/>
-<path d="M20 5 L20 55" stroke="#4A6E30" stroke-width="0.6" opacity=".4"/>
-<path d="M20 15 Q14 18 12 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 15 Q26 18 28 25" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q12 32 10 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-<path d="M20 30 Q28 32 30 40" stroke="#4A6E30" stroke-width="0.4" opacity=".3" fill="none"/>
-</svg></div>
-<div class="wrap" style="position:relative;z-index:1">
-<div class="sh rv"><span class="ol">Ce qu'ils disent</span><h2>Des résultats qui parlent</h2></div>
-<div class="qg rv-stagger">
-<div class="qc"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><blockquote>Après 3 mois de ménopause très difficile, j'ai enfin trouvé une équipe qui comprend réellement ce que je vis. Le bilan a tout changé. Je me retrouve enfin dans mon corps.</blockquote><div class="qa"><div class="av">M</div><div><div class="an">Marie-Claire, 52 ans</div><div class="at">Accompagnement ménopause</div></div></div></div>
-<div class="qc"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><blockquote>Traileur depuis 10 ans, jamais je n'avais récupéré aussi vite. La combinaison LED, pressothérapie et nutrition est redoutable. Je recommande à tous les sportifs de la région.</blockquote><div class="qa"><div class="av">T</div><div><div class="an">Thomas, 38 ans</div><div class="at">Récupération sportive</div></div></div></div>
-<div class="qc"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><blockquote>4 kg en 2 mois sans me priver. Charlotte a identifié mes vrais blocages métaboliques. C'est la première fois que je perds du poids en me sentant vraiment bien.</blockquote><div class="qa"><div class="av">S</div><div><div class="an">Sandrine, 45 ans</div><div class="at">Perte de poids</div></div></div></div>
-</div>
-</div>
+  <div class="wrap">
+    <div class="sh rv"><span class="ol">Ce qu'ils disent</span><h2>Des résultats qui parlent</h2></div>
+    <div class="qg rv-stagger">
+      <div class="qc"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><blockquote>Après 3 mois de ménopause très difficile, j'ai enfin trouvé une équipe qui comprend réellement ce que je vis. Le bilan a tout changé. Je me retrouve enfin dans mon corps.</blockquote><div class="qa"><div class="av">M</div><div><div class="an">Marie-Claire, 52 ans</div><div class="at">Accompagnement ménopause</div></div></div></div>
+      <div class="qc"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><blockquote>Traileur depuis 10 ans, jamais je n'avais récupéré aussi vite. La combinaison LED, pressothérapie et nutrition est redoutable.</blockquote><div class="qa"><div class="av">T</div><div><div class="an">Thomas, 38 ans</div><div class="at">Récupération sportive</div></div></div></div>
+      <div class="qc"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><blockquote>4 kg en 2 mois sans me priver. Charlotte a identifié mes vrais blocages métaboliques. C'est la première fois que je perds du poids en me sentant vraiment bien.</blockquote><div class="qa"><div class="av">S</div><div><div class="an">Sandrine, 45 ans</div><div class="at">Perte de poids</div></div></div></div>
+    </div>
+  </div>
 </section>
-<section class="rss" id="reservation">
-<div class="wrap">
-<span class="ol">Prendre rendez-vous</span>
-<h2>Votre bilan offert vous attend</h2>
-<p>60 minutes avec nos deux expertes. Une analyse complète. Un protocole sur mesure. Offert pour les 50 premiers clients.</p>
-<div class="rsb rv-scale">
-<h3>Réservez votre bilan</h3>
-<p>Via notre partenaire Planity — disponible 24h/24, 7j/7</p>
-<div class="pph">
-<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="10" width="36" height="32" rx="4" stroke="currentColor" stroke-width="2"/><path d="M6 18H42" stroke="currentColor" stroke-width="2"/><path d="M16 6V14M32 6V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="14" y="24" width="6" height="6" rx="1" fill="currentColor" opacity=".3"/><rect x="22" y="24" width="6" height="6" rx="1" fill="currentColor" opacity=".3"/><rect x="30" y="24" width="6" height="6" rx="1" fill="currentColor" opacity=".3"/></svg>
-<strong>Module de réservation Planity</strong>
-<span>Le calendrier en ligne sera intégré ici lors de la mise en production.</span>
-<a href="https://planity.com" target="_blank" rel="noopener" class="btn bp" style="margin-top:6px">Réserver sur Planity →</a>
-</div>
-<p class="rst">Vous préférez appeler ? <a href="tel:0467442127">04 67 44 21 27</a> &nbsp;·&nbsp; <a href="mailto:centrebodyreset@gmail.com">centrebodyreset@gmail.com</a></p>
-</div>
-</div>
-</section>
-<section class="nls2">
-<div class="wrap">
-<div class="nli rv-left">
-<div class="nlt"><span class="ol" style="color:rgba(255,255,255,.65)">Restez informé·e</span><h2>Conseils bien-être & offres exclusives</h2><p>Rejoignez notre communauté et recevez chaque mois conseils nutrition, actualités et offres réservées à nos abonnés.</p></div>
-<form class="nlf" onsubmit="return nlS(event)">
-<input type="text" placeholder="Votre prénom" required autocomplete="given-name">
-<input type="email" placeholder="Votre adresse email" required autocomplete="email">
-<button type="submit" class="btn bw">S'abonner à la newsletter →</button>
-<p class="nlg">Pas de spam. Désinscription en un clic. Données confidentielles.</p>
-</form>
-</div>
-</div>
-</section>
+
+<!-- ══ CONTACT BAR ══ -->
 <div class="cb" id="contact">
-<div class="wrap">
-<div class="cg">
-<div class="ci"><div class="cii">📍</div><h4>Adresse</h4><a href="https://maps.google.com/?q=7+Rue+du+Chardonnay+34800+Clermont" target="_blank">7 Rue du Chardonnay<br>34800 Clermont-l'Hérault</a></div>
-<div class="ci"><div class="cii">📞</div><h4>Téléphone</h4><a href="tel:0467442127">04 67 44 21 27</a></div>
-<div class="ci"><div class="cii">✉️</div><h4>Email</h4><a href="mailto:centrebodyreset@gmail.com">centrebodyreset@gmail.com</a></div>
+  <div class="wrap">
+    <div class="cg">
+      <div class="ci"><div class="cii">📍</div><h4>Adresse</h4><a href="https://maps.google.com/?q=7+Rue+du+Chardonnay+34800+Clermont" target="_blank">7 Rue du Chardonnay<br>34800 Clermont-l'Hérault</a></div>
+      <div class="ci"><div class="cii">📞</div><h4>Téléphone</h4><a href="tel:0467442127">04 67 44 21 27</a></div>
+      <div class="ci"><div class="cii">✉️</div><h4>Email</h4><a href="mailto:centrebodyreset@gmail.com">centrebodyreset@gmail.com</a></div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-<footer>
-<div class="wrap">
-<div class="fg">
-<div class="fb"><img src="images/logo.png" alt="Centre Body Reset" style="height:56px;width:auto;object-fit:contain"><p style="margin-top:18px">Centre Body Reset — Clermont-l'Hérault<br>L'alliance unique de la nutrition clinique et des technologies de pointe.</p><div class="fso"><a href="https://instagram.com/centre.body.reset" target="_blank" rel="noopener" aria-label="Instagram">📷</a><a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">📘</a><a href="https://doctolib.fr" target="_blank" rel="noopener" aria-label="Doctolib">🩺</a></div></div>
-<div class="fc"><h4>Navigation</h4><ul><li><a href="/">Accueil</a></li><li><a href="/a-propos">À propos</a></li><li><a href="/tarifs">Tarifs</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul></div>
-<div class="fc"><h4>Nos solutions</h4><ul><li><a href="/solutions/silhouette">Silhouette & poids</a></li><li><a href="/solutions/menopause">Ménopause</a></li><li><a href="/solutions/sommeil">Sommeil & vitalité</a></li><li><a href="/solutions/sportifs">Récupération sportive</a></li><li><a href="/solutions/bien-etre-urinaire">Bien-être urinaire</a></li><li><a href="/solutions/drainage">Drainage lymphatique</a></li></ul></div>
-<div class="fc"><h4>Technologies</h4><ul><li><a href="/technologies/cryolipolyse">Cryolipolyse</a></li><li><a href="/technologies/adipologie">Adipologie</a></li><li><a href="/technologies/led">LED Infrarouge</a></li><li><a href="/technologies/pressotherapie">Pressothérapie</a></li><li><a href="/technologies/chaise-ems">Chaise EMS</a></li></ul></div>
-</div>
-<hr class="fdv">
-<div class="fbt"><span>© 2026 Centre Body Reset. Site réalisé par <a href="https://agence-pmc-marketing.com" style="color:rgba(255,255,255,.28);text-decoration:none">PMC Marketing</a>.</span><div class="fbl"><a href="/mentions-legales">Mentions légales</a><a href="/politique-confidentialite">Confidentialité</a><a href="/cgv">CGV</a></div></div>
-</div>
-</footer>
-<a href="#reservation" class="scta btn bp" id="scta">✦ Réserver mon bilan</a>
-<script>
-/* NAV — Force le style inline (immunisé aux conflits CSS) */
-const nav=document.getElementById('nav');
-function updateNav(){
- if(!nav)return;
- const scrolled=window.scrollY>10;
- if(scrolled){
- nav.classList.add('sc');
- nav.style.background='#ffffff';
- nav.style.boxShadow='0 4px 20px rgba(42,32,27,.08)';
- nav.style.borderBottom='1px solid rgba(42,32,27,.05)';
- nav.style.padding='13px 40px';
- nav.style.backdropFilter='blur(24px)';
- nav.style.webkitBackdropFilter='blur(24px)';
- } else {
- nav.classList.remove('sc');
- nav.style.background='';
- nav.style.boxShadow='';
- nav.style.borderBottom='';
- nav.style.padding='';
- nav.style.backdropFilter='';
- nav.style.webkitBackdropFilter='';
- }
-}
-window.addEventListener('scroll',updateNav,{passive:true});
-window.addEventListener('load',updateNav);
-window.addEventListener('resize',updateNav,{passive:true});
-document.addEventListener('DOMContentLoaded',updateNav);
-updateNav();
 
-/* MOBILE MENU */
-const burg=document.getElementById('burg'),mm2=document.getElementById('mm');
-let op=false;
-function cm(){mm2.classList.remove('op');op=false;document.body.style.overflow='';burg.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';})}
-burg.addEventListener('click',()=>{op=!op;mm2.classList.toggle('op',op);document.body.style.overflow=op?'hidden':'';burg.querySelectorAll('span').forEach((s,i)=>{if(op){if(i===0)s.style.transform='translateY(6px) rotate(45deg)';if(i===1)s.style.opacity='0';if(i===2)s.style.transform='translateY(-6px) rotate(-45deg)';}else{s.style.transform='';s.style.opacity='';}}})});
-
-/* REVEAL — détection scroll directe, ajoute .shown pour déclencher l'animation */
-function checkReveal(){
- const selectors = '.rv, .rv-left, .rv-right, .rv-scale, .rv-zoom, .rv-stagger';
- const elements = document.querySelectorAll(selectors);
- const trigger = window.innerHeight * 0.88;
- elements.forEach(el => {
- if(el.classList.contains('shown')) return;
- const rect = el.getBoundingClientRect();
- if(rect.top < trigger && rect.bottom > 0){
- el.classList.add('shown');
- }
- });
-}
-
-let ticking = false;
-window.addEventListener('scroll', () => {
- if(!ticking){
- requestAnimationFrame(() => { checkReveal(); ticking = false; });
- ticking = true;
- }
-}, {passive:true});
-
-window.addEventListener('resize', checkReveal, {passive:true});
-window.addEventListener('load', checkReveal);
-document.addEventListener('DOMContentLoaded', checkReveal);
-
-checkReveal(); ticking = false; });
- ticking = true;
- }
-}, {passive:true});
-
-window.addEventListener('resize', checkReveal, {passive:true});
-window.addEventListener('load', checkReveal);
-
-// Premier check immédiat (DOM probablement prêt à ce stade puisque on est en bas du body)
-checkReveal();
-
-/* ══════════════════════════════════════════════
- ARBRE — Animation scroll-linked
- Branches lv4-6 : dashoffset contrôlé au scroll
- Feuilles ls0/ls1/ls2 : apparaissent par seuil
-══════════════════════════════════════════════ */
-(function(){
- const deep=document.querySelectorAll('.br.lv4,.br.lv5,.br.lv6');
- deep.forEach(b=>{
- const len=parseFloat(b.style.getPropertyValue('--l'))||20;
- b.style.animation='none';
- b.style.strokeDashoffset=len;
- b.style.opacity=0;
- });
-
- /* Seuils feuilles */
- const ls0=document.querySelectorAll('.leaf.ls0');
- const ls1=document.querySelectorAll('.leaf.ls1');
- const ls2=document.querySelectorAll('.leaf.ls2');
-
- /* Délai staggeré entre feuilles du même groupe */
- [ls0,ls1,ls2].forEach(group=>{
- group.forEach((l,i)=>{
- l.style.transitionDelay=(i*0.04)+'s';
- l.style.setProperty('--fd2',(i*0.18+Math.random()*1.5)+'s');
- });
- });
-
- let raf=false;
- let ls0done=false,ls1done=false,ls2done=false;
-
- function update(){
- const p=Math.min(scrollY/680,1);
-
- /* Branches profondes — dashoffset direct */
- deep.forEach(b=>{
- const lv=+[...b.classList].find(c=>c.startsWith('lv')).slice(2);
- const t=(lv-4)*0.22;
- const lp=Math.max(0,Math.min(1,(p-t)/0.28));
- const len=parseFloat(b.style.getPropertyValue('--l'))||20;
- b.style.strokeDashoffset=len*(1-lp);
- b.style.opacity=lp>0?parseFloat(b.getAttribute('opacity')||'0.6'):0;
- });
-
- /* Feuilles — ajout de classe .vis par seuil de scroll */
- if(!ls0done && p>=0.28){ls0.forEach(l=>l.classList.add('vis'));ls0done=true;}
- if(!ls1done && p>=0.45){ls1.forEach(l=>l.classList.add('vis'));ls1done=true;}
- if(!ls2done && p>=0.62){ls2.forEach(l=>l.classList.add('vis'));ls2done=true;}
-
- raf=false;
- }
- window.addEventListener('scroll',()=>{if(!raf){raf=true;requestAnimationFrame(update);}},{passive:true});
-
- /* Particules flottantes */
- const hr=document.getElementById('hr');
- if(hr){
- for(let i=0;i<16;i++){
- const p=document.createElement('div');
- p.className='fp';
- const sz=2+Math.random()*4;
- const dx=(Math.random()-.5)*28;
- p.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(25+Math.random()*58)+'%;bottom:'+(10+Math.random()*65)+'%;animation-duration:'+(3.5+Math.random()*4)+'s;animation-delay:'+(3.2+Math.random()*9)+'s;--dx:'+dx+'px';
- hr.appendChild(p);
- }
- }
-})();
-
-/* STICKY CTA */
-const sc=document.getElementById('scta');
-if(sc){const h=document.querySelector('.hero')?.offsetHeight||800;window.addEventListener('scroll',()=>{const s=scrollY>h*.4;sc.style.opacity=s?'1':'0';sc.style.pointerEvents=s?'auto':'none';},{passive:true});}
-
-/* NEWSLETTER */
-function nlS(e){e.preventDefault();const b=e.target.querySelector('button');const o=b.textContent;b.textContent='✓ Inscription enregistrée !';b.style.background='var(--sg)';b.style.color='#fff';setTimeout(()=>{b.textContent=o;b.style.background='';b.style.color='';e.target.reset();},3200);return false;}
-
-/* SMOOTH ANCHORS */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-76,behavior:'smooth'});}})});
-
-/* ── Activation des décors botaniques au scroll ── */
-(function(){
- const decos = document.querySelectorAll('.deco-leaf, .lotus-fig, .deco-branch, .deco-circle, .particle');
- if(decos.length === 0) return;
- 
- const dObs = new IntersectionObserver(entries=>{
- entries.forEach(e=>{
- if(e.isIntersecting){
- e.target.classList.add('vis');
- dObs.unobserve(e.target);
- }
- });
- }, {threshold:0.05, rootMargin:'0px 0px -50px 0px'});
- 
- decos.forEach(el=>dObs.observe(el));
- 
- // Fallback
- setTimeout(()=>{
- document.querySelectorAll('.deco-leaf:not(.vis),.lotus-fig:not(.vis),.deco-branch:not(.vis),.deco-circle:not(.vis),.particle:not(.vis)').forEach(el=>el.classList.add('vis'));
- }, 2500);
-})();
-
-/* ── Compteur animé pour les stats (h-st .n) ── */
-(function(){
- const counters = document.querySelectorAll('[data-count]');
- if(counters.length === 0) return;
- 
- const animate = (el)=>{
- const target = parseFloat(el.dataset.count);
- const suffix = el.dataset.suffix || '';
- const duration = 1500;
- const start = performance.now();
- function step(now){
- const p = Math.min((now-start)/duration, 1);
- const eased = 1 - Math.pow(1-p, 3); // ease-out cubic
- const val = target * eased;
- el.textContent = (target % 1 === 0 ? Math.round(val) : val.toFixed(1)) + suffix;
- if(p < 1) requestAnimationFrame(step);
- }
- requestAnimationFrame(step);
- };
- 
- const cObs = new IntersectionObserver(entries=>{
- entries.forEach(e=>{
- if(e.isIntersecting){
- animate(e.target);
- cObs.unobserve(e.target);
- }
- });
- }, {threshold:0.4});
- 
- counters.forEach(el=>cObs.observe(el));
-})();
-
-/* ── Parallax subtil sur les décors avec data-parallax ── */
-(function(){
- const items = document.querySelectorAll('[data-parallax]');
- if(items.length === 0) return;
- let raf = false;
- function update(){
- const sc = window.scrollY;
- items.forEach(el=>{
- const speed = parseFloat(el.dataset.parallax) || 0.2;
- const rect = el.getBoundingClientRect();
- const offset = (window.innerHeight - rect.top) * speed;
- el.style.transform = `translateY(${-offset * 0.1}px)`;
- });
- raf = false;
- }
- window.addEventListener('scroll', ()=>{
- if(!raf){raf = true; requestAnimationFrame(update);}
- }, {passive:true});
-})();
-</script>
+<div id="site-footer"></div>
+<script src="js/layout.js"></script>
 </body>
 </html>

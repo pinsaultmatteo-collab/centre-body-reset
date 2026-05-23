@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Réservez votre bilan personnalisé offert au Centre Body Reset à Clermont-l'Hérault. Contactez Charlotte et Alison pour démarrer votre accompagnement sur-mesure.">
+<title>Contact &amp; Réservation — Centre Body Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:60px}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.info-card{background:#fff;border-radius:var(--rm);padding:28px;display:flex;align-items:flex-start;gap:20px;border:1px solid var(--be);transition:var(--tf)}
+.info-card:hover{border-color:var(--tc);transform:translateY(-2px)}
+.info-icon{width:54px;height:54px;border-radius:14px;background:var(--cd);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.info-content h4{font-family:var(--fb);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:8px}
+.info-content a,.info-content p{font-size:1rem;color:var(--br);text-decoration:none;line-height:1.6;display:block}
+.info-content a:hover{color:var(--tc)}
+.info-content small{font-size:.8rem;color:var(--mu);margin-top:4px;display:block}
+
+.contact-form{background:#fff;border-radius:var(--rl);padding:44px;box-shadow:0 12px 40px rgba(42,32,27,.08)}
+.contact-form h2{font-size:1.7rem;margin-bottom:8px;color:var(--br)}
+.contact-form > p{font-size:.9rem;margin-bottom:30px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.78rem;font-weight:500;color:var(--bm);margin-bottom:6px;letter-spacing:.03em}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 16px;border:1.5px solid var(--be);border-radius:12px;font-family:var(--fb);font-size:.92rem;color:var(--br);background:var(--c);transition:var(--tf)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--tc);background:#fff}
+.form-group textarea{resize:vertical;min-height:120px;font-family:var(--fb)}
+.checkbox-group{display:flex;align-items:flex-start;gap:10px;margin:20px 0}
+.checkbox-group input{width:18px;height:18px;margin-top:3px;flex-shrink:0;accent-color:var(--tc)}
+.checkbox-group label{font-size:.82rem;color:var(--mu);line-height:1.6;font-weight:400;letter-spacing:0;margin:0}
+.contact-form .btn{width:100%;margin-top:12px}
+.form-success{display:none;background:var(--sx);border:1px solid var(--sg);border-radius:12px;padding:20px;text-align:center;color:var(--sd);margin-bottom:20px}
+.form-success.show{display:block}
+
+.map-section{background:var(--cd);padding:80px 0}
+.map-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;background:#fff;border-radius:var(--rl);overflow:hidden;box-shadow:0 12px 40px rgba(42,32,27,.06)}
+.map-text{padding:50px 50px 50px 60px}
+.map-text h3{font-size:1.8rem;margin-bottom:14px;color:var(--br)}
+.map-text p{font-size:.92rem;margin-bottom:24px}
+.map-embed{aspect-ratio:1/1;background:var(--cm);position:relative}
+.map-embed iframe{width:100%;height:100%;border:none}
+
+.hours-card{background:var(--cm);border-radius:var(--rm);padding:32px;margin-top:20px}
+.hours-card h4{font-family:var(--fb);font-size:.76rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mu);margin-bottom:18px}
+.hours-list{list-style:none}
+.hours-list li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--be);font-size:.92rem;color:var(--bm)}
+.hours-list li:last-child{border:none}
+.hours-list li span:first-child{font-weight:500}
+.hours-list li span:last-child{color:var(--mu)}
+
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .map-wrap{grid-template-columns:1fr}
+  .map-text{padding:36px 30px}
+  .contact-form{padding:30px}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body data-nav="contact">
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="bread"><a href="../index.html">Accueil</a><span>›</span><span>Contact</span></nav>
+    <span class="ol">Réservation &amp; contact</span>
+    <h1>Démarrez votre <em style="color:var(--tc)">parcours Body Reset</em></h1>
+    <p class="lead">Réservez votre bilan personnalisé offert (valeur 60€) ou contactez-nous pour toute question. Charlotte et Alison vous répondent personnellement sous 24h.</p>
+  </div>
+  <div class="deco-leaf" style="top:30%;right:8%;width:38px;height:56px"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#8EC472" opacity=".7"/></svg></div>
+</section>
+
+<!-- Contact section -->
+<section class="sec">
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <!-- Infos -->
+      <div class="contact-info rv-left">
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div class="info-content">
+            <h4>Adresse</h4>
+            <a href="https://maps.google.com/?q=7+Rue+du+Chardonnay+34800+Clermont" target="_blank" rel="noopener">7 Rue du Chardonnay<br>34800 Clermont-l'Hérault</a>
+            <small>Parking gratuit à proximité</small>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div class="info-content">
+            <h4>Téléphone</h4>
+            <a href="tel:0467442127">04 67 44 21 27</a>
+            <a href="tel:0679813804" style="margin-top:4px">06 79 81 38 04</a>
+            <small>Lun-Ven 9h-19h · Sam 9h-13h</small>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">✉️</div>
+          <div class="info-content">
+            <h4>Email</h4>
+            <a href="mailto:centrebodyreset@gmail.com">centrebodyreset@gmail.com</a>
+            <small>Réponse sous 24h ouvrées</small>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon">📷</div>
+          <div class="info-content">
+            <h4>Instagram</h4>
+            <a href="https://instagram.com/centre.body.reset" target="_blank" rel="noopener">@centre.body.reset</a>
+            <small>Suivez nos coulisses et conseils</small>
+          </div>
+        </div>
+
+        <div class="hours-card">
+          <h4>Horaires d'ouverture</h4>
+          <ul class="hours-list">
+            <li><span>Lundi</span><span>9h00 — 19h00</span></li>
+            <li><span>Mardi</span><span>9h00 — 19h00</span></li>
+            <li><span>Mercredi</span><span>9h00 — 19h00</span></li>
+            <li><span>Jeudi</span><span>9h00 — 19h00</span></li>
+            <li><span>Vendredi</span><span>9h00 — 19h00</span></li>
+            <li><span>Samedi</span><span>9h00 — 13h00</span></li>
+            <li><span>Dimanche</span><span>Fermé</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form rv-right">
+        <h2>Réservez votre bilan</h2>
+        <p>Remplissez ce formulaire et nous vous recontactons sous 24h pour fixer un rendez-vous.</p>
+
+        <div class="form-success" id="formOk">✓ Merci ! Votre demande a bien été envoyée. Nous vous recontactons rapidement.</div>
+
+        <form id="contactForm" onsubmit="return submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom *</label>
+              <input type="text" id="prenom" name="prenom" required autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" name="nom" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Téléphone *</label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="objet">Quel est votre objectif principal ?</label>
+            <select id="objet" name="objet">
+              <option value="">— Sélectionnez —</option>
+              <option>Perte de poids / silhouette</option>
+              <option>Accompagnement ménopause</option>
+              <option>Sommeil &amp; vitalité</option>
+              <option>Récupération sportive</option>
+              <option>Bien-être urinaire</option>
+              <option>Drainage / rétention d'eau</option>
+              <option>Bilan général / autre</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" placeholder="Décrivez brièvement votre situation, vos questions ou disponibilités..."></textarea>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="rgpd" required>
+            <label for="rgpd">J'accepte que mes données soient utilisées pour me recontacter. Mes informations restent strictement confidentielles. <a href="confidentialite.html" style="color:var(--tc)">En savoir plus</a></label>
+          </div>
+
+          <button type="submit" class="btn bp">Envoyer ma demande →</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Map section -->
+<section class="map-section">
+  <div class="wrap">
+    <div class="map-wrap rv-scale">
+      <div class="map-text">
+        <span class="ol">Nous trouver</span>
+        <h3>Au cœur de Clermont-l'Hérault</h3>
+        <p>Notre centre est situé au 7 Rue du Chardonnay, dans un emplacement facile d'accès avec parking à proximité. À 30 minutes de Montpellier, accessible depuis Béziers, Pézenas, Lodève et toute la vallée de l'Hérault.</p>
+        <a href="https://maps.google.com/?q=7+Rue+du+Chardonnay+34800+Clermont" target="_blank" rel="noopener" class="btn bp">Ouvrir dans Google Maps →</a>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps?q=7+Rue+du+Chardonnay+34800+Clermont-l-Herault&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation Centre Body Reset"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../js/layout.js"></script>
+<script>
+function submitForm(e){
+  e.preventDefault();
+  // En production : envoyer via Formspree, Netlify Forms ou un endpoint custom
+  // Exemple Formspree : action="https://formspree.io/f/YOUR_FORM_ID"
+  document.getElementById('formOk').classList.add('show');
+  document.getElementById('contactForm').reset();
+  setTimeout(()=>{
+    document.getElementById('formOk').classList.remove('show');
+  }, 6000);
+  return false;
+}
+</script>
+</body>
+</html>

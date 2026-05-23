@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Le blog du Centre Body Reset : articles, conseils et expertises sur la nutrition, la ménopause, le sommeil, la récupération sportive et nos technologies.">
+<title>Blog — Centre Body Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+.blog-filters{display:flex;gap:10px;justify-content:center;margin-bottom:50px;flex-wrap:wrap}
+.bfilter{background:#fff;border:1px solid var(--be);padding:8px 18px;border-radius:100px;font-size:.82rem;color:var(--bm);cursor:pointer;transition:var(--tf);font-family:var(--fb)}
+.bfilter:hover,.bfilter.active{background:var(--tc);color:#fff;border-color:var(--tc)}
+
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
+.bcard{background:#fff;border-radius:var(--rm);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:var(--tr);border:1px solid transparent}
+.bcard:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(42,32,27,.1);border-color:var(--be)}
+.bcard-img{aspect-ratio:16/10;background:var(--cd) center/cover;overflow:hidden}
+.bcard-img-inner{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .6s ease}
+.bcard:hover .bcard-img-inner{transform:scale(1.05)}
+.bcard-body{padding:26px 28px 30px;flex:1;display:flex;flex-direction:column}
+.bcard-meta{display:flex;align-items:center;gap:10px;font-size:.74rem;color:var(--mu);margin-bottom:14px}
+.bcard-cat{background:var(--tx);color:var(--td);padding:3px 10px;border-radius:100px;font-weight:500;letter-spacing:.04em}
+.bcard h3{font-size:1.2rem;color:var(--br);margin-bottom:12px;line-height:1.35}
+.bcard p{font-size:.88rem;line-height:1.7;margin-bottom:18px;flex:1}
+.bcard-read{font-size:.78rem;color:var(--tc);font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.bcard:hover .bcard-read{gap:10px}
+
+.newsletter{background:var(--cm);padding:60px;border-radius:var(--rl);text-align:center;margin-top:80px}
+.newsletter h3{font-size:1.8rem;margin-bottom:10px;color:var(--br)}
+.newsletter p{max-width:520px;margin:0 auto 26px;font-size:.92rem}
+.newsletter form{display:flex;gap:10px;max-width:480px;margin:0 auto}
+.newsletter input{flex:1;padding:14px 18px;border:1.5px solid var(--be);border-radius:100px;font-family:var(--fb);font-size:.92rem;background:#fff}
+.newsletter input:focus{outline:none;border-color:var(--tc)}
+
+@media(max-width:1024px){
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .blog-grid{grid-template-columns:1fr}
+  .newsletter{padding:36px 28px}
+  .newsletter form{flex-direction:column}
+  .newsletter form .btn{width:100%}
+}
+</style>
+</head>
+<body data-nav="blog">
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="bread"><a href="../index.html">Accueil</a><span>›</span><span>Blog</span></nav>
+    <span class="ol">Articles &amp; conseils</span>
+    <h1>Le blog <em style="color:var(--tc)">Body Reset</em></h1>
+    <p class="lead">Nos articles, conseils et expertises pour mieux comprendre votre corps et reprendre le contrôle de votre bien-être. Écrits par Charlotte et Alison à partir de leur expérience terrain.</p>
+  </div>
+  <div class="deco-leaf" style="top:25%;right:6%;width:38px;height:56px"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#8EC472" opacity=".7"/></svg></div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+
+    <div class="blog-filters rv">
+      <button class="bfilter active">Tous les articles</button>
+      <button class="bfilter">Ménopause</button>
+      <button class="bfilter">Nutrition</button>
+      <button class="bfilter">Technologies</button>
+      <button class="bfilter">Sommeil</button>
+      <button class="bfilter">Sport</button>
+    </div>
+
+    <div class="blog-grid rv-stagger">
+
+      <a href="blog/menopause-prise-de-poids.html" class="bcard">
+        <div class="bcard-img"><div class="bcard-img-inner" style="background-image:url('../images/tech-led.webp')"></div></div>
+        <div class="bcard-body">
+          <div class="bcard-meta"><span class="bcard-cat">Ménopause</span><span>·</span><span>8 min de lecture</span></div>
+          <h3>Ménopause et prise de poids : comprendre pour mieux agir</h3>
+          <p>Pourquoi prend-on du poids à la ménopause même sans changer ses habitudes ? Décryptage des mécanismes hormonaux et des solutions qui fonctionnent réellement.</p>
+          <span class="bcard-read">Lire l'article →</span>
+        </div>
+      </a>
+
+      <a href="blog/sommeil-recuperation.html" class="bcard">
+        <div class="bcard-img"><div class="bcard-img-inner" style="background-image:url('../images/tech-pressotherapie.webp')"></div></div>
+        <div class="bcard-body">
+          <div class="bcard-meta"><span class="bcard-cat">Sommeil</span><span>·</span><span>6 min de lecture</span></div>
+          <h3>Sommeil et récupération : pourquoi c'est la clé de tout</h3>
+          <p>Mal dormir impacte tout : poids, immunité, performance, humeur. Découvrez pourquoi le sommeil est le pilier oublié de la santé — et comment le restaurer.</p>
+          <span class="bcard-read">Lire l'article →</span>
+        </div>
+      </a>
+
+      <a href="blog/chaise-ems-quest-ce-que-c-est.html" class="bcard">
+        <div class="bcard-img"><div class="bcard-img-inner" style="background-image:url('../images/tech-chaise-ems.webp')"></div></div>
+        <div class="bcard-body">
+          <div class="bcard-meta"><span class="bcard-cat">Technologies</span><span>·</span><span>7 min de lecture</span></div>
+          <h3>La Chaise EMS : qu'est-ce que c'est exactement ?</h3>
+          <p>Découvrez la technologie qui révolutionne le traitement des troubles du plancher pelvien — et pourquoi Body Reset est le premier centre en France à la proposer.</p>
+          <span class="bcard-read">Lire l'article →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter rv-scale">
+      <span class="ol">Newsletter</span>
+      <h3>Restez informé·e</h3>
+      <p>Recevez nos meilleurs articles, conseils et actualités du centre — environ une fois par mois, sans spam.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('input').value=''; alert('Merci pour votre inscription !');">
+        <input type="email" placeholder="Votre email" required>
+        <button type="submit" class="btn bp">S'inscrire</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../js/layout.js"></script>
+</body>
+</html>
