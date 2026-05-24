@@ -75,24 +75,11 @@
 
 /* ─ Feuilles SVG — apparaissent au scroll ─ */
 .leaf{
- transform-origin:center bottom;
  opacity:0;
- transform:scale(0);
- transition:opacity .9s cubic-bezier(.34,1.56,.64,1), transform .9s cubic-bezier(.34,1.56,.64,1);
+ transition:opacity .9s cubic-bezier(.34,1.56,.64,1);
 }
 .leaf.vis{
  opacity:1;
- transform:scale(1);
-}
-/* Frémissement une fois poussées */
-.leaf.vis{
- animation:leafFlutter 5s ease-in-out infinite;
- animation-delay:var(--fd2,0s);
-}
-@keyframes leafFlutter{
- 0%,100%{transform:scale(1) rotate(0deg)}
- 33%{transform:scale(1.03) rotate(1.5deg)}
- 66%{transform:scale(0.98) rotate(-1.2deg)}
 }
 
 /* ─ Particules flottantes ─ */
