@@ -181,5 +181,4 @@ footer{background:var(--br);color:#fff;padding:70px 0 32px}
 @media(max-width:480px){
   .wrap{padding:0 24px}
   h2{font-size:1.85rem}
-  .fg{grid-template-columns:1fr}
 }
