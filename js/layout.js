@@ -93,8 +93,13 @@ const FOOTER_HTML = `
       </div>
     </div>
     <hr class="fdv">
+    <a href="https://www.agence-pmc-marketing.com/" target="_blank" rel="noopener" class="pmc-credit">
+      <span class="pmc-credit-label">Conçu par</span>
+      <img src="${BP}images/pmc-logo.png" alt="PMC Marketing">
+    </a>
+    <hr class="fdv" style="margin-top:24px">
     <div class="fbt">
-      <span class="fbt-credit">© 2026 Centre Body Reset · Conçu par <a href="https://www.agence-pmc-marketing.com/" target="_blank" rel="noopener" class="pmc-credit"><img src="${BP}images/pmc-logo.png" alt="PMC Marketing"></a></span>
+      <span class="fbt-credit">© 2026 Centre Body Reset — Tous droits réservés</span>
       <div class="fbl">
         <a href="${BP}pages/mentions-legales.html">Mentions légales</a>
         <a href="${BP}pages/confidentialite.html">Confidentialité</a>
