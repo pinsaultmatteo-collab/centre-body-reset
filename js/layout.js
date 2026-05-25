@@ -94,7 +94,7 @@ const FOOTER_HTML = `
     </div>
     <hr class="fdv">
     <div class="fbt">
-      <span>© 2026 Centre Body Reset. Site réalisé par <a href="https://agence-pmc-marketing.com" style="color:inherit;text-decoration:none">PMC Marketing</a>.</span>
+      <span class="fbt-credit">© 2026 Centre Body Reset · Conçu par <a href="https://www.agence-pmc-marketing.com/" target="_blank" rel="noopener" class="pmc-credit"><img src="${BP}images/pmc-logo.png" alt="PMC Marketing"></a></span>
       <div class="fbl">
         <a href="${BP}pages/mentions-legales.html">Mentions légales</a>
         <a href="${BP}pages/confidentialite.html">Confidentialité</a>
