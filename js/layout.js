@@ -87,7 +87,7 @@ const FOOTER_HTML = `
           <li><a href="${BP}pages/technologies/cryolipolyse.html">Cryolipolyse</a></li>
           <li><a href="${BP}pages/technologies/adipologie.html">Adipologie</a></li>
           <li><a href="${BP}pages/technologies/led.html">LED Infrarouge</a></li>
-          <li><a href="${BP}pages/technologies/pressotherapie.html">Pressothérapie</a></li>
+          <li><a href="${BP}pages/technologies/pressotherapie.html">Pressodynamie</a></li>
           <li><a href="${BP}pages/technologies/chaise-ems.html">Chaise EMS</a></li>
         </ul>
       </div>
