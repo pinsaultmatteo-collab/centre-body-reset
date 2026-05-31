@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Réservez votre rendez-vous en ligne au Centre Body Reset à Clermont-l'Hérault. Choisissez votre créneau, votre prestation, et confirmez en quelques clics.">
+<title>Réservation en ligne — Centre Body Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+<style>
+.reservation-section{padding:60px 0 100px}
+.reservation-intro{max-width:780px;margin:0 auto 50px;text-align:center}
+.reservation-intro p{font-size:1rem;color:var(--mu);line-height:1.75}
+
+.planity-wrap{max-width:980px;margin:0 auto;background:#fff;border-radius:var(--rl);box-shadow:0 18px 50px rgba(42,32,27,.08);overflow:hidden;border:1px solid var(--be);min-height:600px;position:relative}
+
+.planity-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;z-index:1;transition:opacity .4s ease}
+.planity-loading.hidden{opacity:0;pointer-events:none}
+.planity-loading-spinner{width:42px;height:42px;border:3px solid var(--be);border-top-color:var(--tc);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:18px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.planity-loading p{font-size:.92rem;color:var(--mu)}
+
+#planity-container{padding:8px}
+
+.alt-contact{max-width:780px;margin:60px auto 0;padding:36px 40px;background:var(--cm);border-radius:var(--rm);text-align:center}
+.alt-contact h3{font-size:1.3rem;color:var(--br);margin-bottom:8px;font-family:var(--fd);font-weight:400}
+.alt-contact p{font-size:.92rem;color:var(--mu);margin-bottom:20px}
+.alt-contact-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+@media(max-width:768px){
+  .reservation-section{padding:30px 0 60px}
+  .planity-wrap{border-radius:var(--rm);min-height:500px;margin:0 16px}
+  .alt-contact{margin:40px 20px 0;padding:28px 24px}
+  .alt-contact-actions{flex-direction:column}
+  .alt-contact-actions .btn{width:100%}
+}
+</style>
+</head>
+<body data-nav="contact">
+
+<div id="site-header"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="bread"><a href="../index.html">Accueil</a><span>›</span><span>Réservation en ligne</span></nav>
+    <span class="ol">Prise de rendez-vous</span>
+    <h1>Réservez votre <em style="color:var(--tc)">créneau en ligne</em></h1>
+    <p class="lead">Choisissez votre prestation, votre date et votre horaire — et confirmez votre rendez-vous en quelques clics. Disponible 24h/24, 7j/7.</p>
+  </div>
+  <div class="deco-leaf" style="top:30%;right:8%;width:38px;height:56px"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#A8C19A" opacity=".7"/></svg></div>
+</section>
+
+<!-- Module Planity -->
+<section class="reservation-section">
+  <div class="wrap">
+    <div class="reservation-intro rv">
+      <p>Notre agenda est synchronisé en temps réel — les créneaux affichés sont garantis disponibles. Vous recevrez une confirmation par email immédiatement après votre réservation.</p>
+    </div>
+
+    <div class="planity-wrap rv-scale">
+      <div class="planity-loading" id="planityLoading">
+        <div class="planity-loading-spinner"></div>
+        <p>Chargement du module de réservation…</p>
+      </div>
+      <div id="planity-container"></div>
+    </div>
+
+    <div class="alt-contact rv">
+      <h3>Vous préférez nous appeler ?</h3>
+      <p>Notre équipe est disponible aux horaires d'ouverture pour répondre à toutes vos questions et vous accompagner dans votre prise de rendez-vous.</p>
+      <div class="alt-contact-actions">
+        <a href="tel:0467442127" class="btn bp">📞 04 67 44 21 27</a>
+        <a href="contact.html" class="btn btn-out">Nous écrire →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="../js/layout.js"></script>
+
+<!-- ═══ MODULE PLANITY ═══ -->
+<script>
+  var container = document.getElementById('planity-container');
+  window.planity = {
+    key: '-OnNDxQvjC2QWbs7QzFR',
+    primaryColor: '#C4704A',
+    container: container
+  };
+  // Masquer le loader une fois le module chargé
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      var loader = document.getElementById('planityLoading');
+      if(loader) loader.classList.add('hidden');
+    }, 1200);
+  });
+</script>
+<script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
+<script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
+
+</body>
+</html>

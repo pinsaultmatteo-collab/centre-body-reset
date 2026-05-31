@@ -29,7 +29,7 @@ const HEADER_HTML = `
     <li><a href="${BP}pages/contact.html" data-nav="contact">Contact</a></li>
   </ul>
   <div class="nr">
-    <a href="${BP}pages/contact.html" class="btn bp" style="padding:11px 24px;font-size:.82rem;">Réserver mon bilan</a>
+    <a href="${BP}pages/reservation.html" class="btn bp" style="padding:11px 24px;font-size:.82rem;">Réserver en ligne</a>
   </div>
   <button class="burg" id="burg" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
@@ -42,7 +42,7 @@ const HEADER_HTML = `
   <a href="${BP}pages/tarifs.html">Tarifs</a>
   <a href="${BP}pages/blog.html">Blog</a>
   <a href="${BP}pages/contact.html">Contact</a>
-  <a href="${BP}pages/contact.html" class="btn bp">Réserver mon bilan offert</a>
+  <a href="${BP}pages/reservation.html" class="btn bp">Réserver en ligne</a>
 </div>
 `;
 
