@@ -10,31 +10,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/main.css">
 <style>
-.reservation-section{padding:60px 0 100px}
-.reservation-intro{max-width:780px;margin:0 auto 50px;text-align:center}
-.reservation-intro p{font-size:1rem;color:var(--mu);line-height:1.75}
+/* Hero compact */
+.page-hero{padding:140px 0 40px}
+.page-hero h1{font-size:clamp(1.9rem,3.6vw,3rem);margin-bottom:14px}
+.page-hero .lead{font-size:.98rem;max-width:580px;margin-bottom:0}
 
-.planity-wrap{max-width:980px;margin:0 auto;background:#fff;border-radius:var(--rl);box-shadow:0 18px 50px rgba(42,32,27,.08);overflow:hidden;border:1px solid var(--be);min-height:600px;position:relative}
+/* Info bar */
+.quick-info{padding:30px 0;background:var(--cm)}
+.qi-grid{display:flex;justify-content:center;gap:36px;flex-wrap:wrap;text-align:center}
+.qi-item{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--bm);text-align:left}
+.qi-item-i{width:34px;height:34px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;box-shadow:0 2px 8px rgba(42,32,27,.06)}
+.qi-item strong{color:var(--br);display:block;font-size:.92rem;line-height:1.2;font-weight:500}
+.qi-item span{font-size:.78rem;color:var(--mu)}
 
-.planity-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;z-index:1;transition:opacity .4s ease}
-.planity-loading.hidden{opacity:0;pointer-events:none}
-.planity-loading-spinner{width:42px;height:42px;border:3px solid var(--be);border-top-color:var(--tc);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:18px}
+/* Widget section */
+.widget-section{padding:50px 0 80px;background:linear-gradient(180deg,var(--cm) 0%,var(--c) 100%)}
+
+.planity-frame{max-width:920px;margin:0 auto;background:#fff;border-radius:24px;box-shadow:0 24px 60px rgba(42,32,27,.10),0 4px 12px rgba(42,32,27,.04);overflow:hidden;border:1px solid var(--be);position:relative;min-height:520px}
+
+#planity-container{padding:0;position:relative;z-index:2}
+
+.planity-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;z-index:10;transition:opacity .5s ease,visibility .5s ease}
+.planity-loading.hidden{opacity:0;visibility:hidden}
+.pl-spinner{width:46px;height:46px;border:3px solid var(--be);border-top-color:var(--tc);border-radius:50%;animation:spin .9s linear infinite;margin-bottom:20px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.planity-loading p{font-size:.92rem;color:var(--mu)}
+.planity-loading p{font-size:.92rem;color:var(--mu);font-weight:500;letter-spacing:.02em}
+.planity-loading small{display:block;margin-top:6px;color:var(--li);font-size:.78rem}
 
-#planity-container{padding:8px}
-
-.alt-contact{max-width:780px;margin:60px auto 0;padding:36px 40px;background:var(--cm);border-radius:var(--rm);text-align:center}
-.alt-contact h3{font-size:1.3rem;color:var(--br);margin-bottom:8px;font-family:var(--fd);font-weight:400}
-.alt-contact p{font-size:.92rem;color:var(--mu);margin-bottom:20px}
-.alt-contact-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* Alternative contact */
+.alt-contact{max-width:920px;margin:50px auto 0;padding:32px 40px;background:#fff;border-radius:var(--rm);border:1px solid var(--be);display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.alt-contact-text{flex:1;min-width:240px}
+.alt-contact-text h3{font-family:var(--fd);font-size:1.4rem;color:var(--br);margin-bottom:6px;font-weight:400}
+.alt-contact-text p{font-size:.9rem;color:var(--mu);margin:0;line-height:1.6}
+.alt-contact-btns{display:flex;gap:10px;flex-wrap:wrap}
 
 @media(max-width:768px){
-  .reservation-section{padding:30px 0 60px}
-  .planity-wrap{border-radius:var(--rm);min-height:500px;margin:0 16px}
-  .alt-contact{margin:40px 20px 0;padding:28px 24px}
-  .alt-contact-actions{flex-direction:column}
-  .alt-contact-actions .btn{width:100%}
+  .page-hero{padding:120px 0 30px}
+  .quick-info{padding:24px 0}
+  .qi-grid{gap:18px;flex-direction:column;align-items:center}
+  .widget-section{padding:30px 0 50px}
+  .planity-frame{margin:0 12px;border-radius:18px;min-height:480px}
+  .alt-contact{margin:30px 12px 0;padding:24px 22px;flex-direction:column;text-align:center;gap:18px}
+  .alt-contact-btns{width:100%;flex-direction:column}
+  .alt-contact-btns .btn{width:100%}
 }
 </style>
 </head>
@@ -46,33 +64,49 @@
   <div class="wrap">
     <nav class="bread"><a href="../index.html">Accueil</a><span>›</span><span>Réservation en ligne</span></nav>
     <span class="ol">Prise de rendez-vous</span>
-    <h1>Réservez votre <em style="color:var(--tc)">créneau en ligne</em></h1>
-    <p class="lead">Choisissez votre prestation, votre date et votre horaire — et confirmez votre rendez-vous en quelques clics. Disponible 24h/24, 7j/7.</p>
+    <h1>Réservez votre <em style="color:var(--tc)">rendez-vous</em> en ligne</h1>
+    <p class="lead">Choisissez votre prestation, votre créneau et confirmez en quelques clics.</p>
   </div>
-  <div class="deco-leaf" style="top:30%;right:8%;width:38px;height:56px"><svg viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><path d="M20 5 C8 15 8 35 20 55 C32 35 32 15 20 5 Z" fill="#A8C19A" opacity=".7"/></svg></div>
 </section>
 
-<!-- Module Planity -->
-<section class="reservation-section">
+<section class="quick-info">
   <div class="wrap">
-    <div class="reservation-intro rv">
-      <p>Notre agenda est synchronisé en temps réel — les créneaux affichés sont garantis disponibles. Vous recevrez une confirmation par email immédiatement après votre réservation.</p>
+    <div class="qi-grid">
+      <div class="qi-item">
+        <div class="qi-item-i">⏱</div>
+        <div><strong>Disponible 24h/24</strong><span>7 jours sur 7</span></div>
+      </div>
+      <div class="qi-item">
+        <div class="qi-item-i">✓</div>
+        <div><strong>Confirmation immédiate</strong><span>Email envoyé instantanément</span></div>
+      </div>
+      <div class="qi-item">
+        <div class="qi-item-i">🔄</div>
+        <div><strong>Agenda synchronisé</strong><span>Créneaux garantis disponibles</span></div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="planity-wrap rv-scale">
+<section class="widget-section">
+  <div class="wrap">
+    <div class="planity-frame rv-scale">
       <div class="planity-loading" id="planityLoading">
-        <div class="planity-loading-spinner"></div>
-        <p>Chargement du module de réservation…</p>
+        <div class="pl-spinner"></div>
+        <p>Chargement de votre agenda</p>
+        <small>Quelques secondes seulement…</small>
       </div>
       <div id="planity-container"></div>
     </div>
 
     <div class="alt-contact rv">
-      <h3>Vous préférez nous appeler ?</h3>
-      <p>Notre équipe est disponible aux horaires d'ouverture pour répondre à toutes vos questions et vous accompagner dans votre prise de rendez-vous.</p>
-      <div class="alt-contact-actions">
+      <div class="alt-contact-text">
+        <h3>Vous préférez nous appeler ?</h3>
+        <p>Notre équipe vous répond aux horaires d'ouverture pour toute question ou besoin spécifique.</p>
+      </div>
+      <div class="alt-contact-btns">
         <a href="tel:0467442127" class="btn bp">📞 04 67 44 21 27</a>
-        <a href="contact.html" class="btn btn-out">Nous écrire →</a>
+        <a href="contact.html" class="btn btn-out">Nous écrire</a>
       </div>
     </div>
   </div>
@@ -81,7 +115,6 @@
 <div id="site-footer"></div>
 <script src="../js/layout.js"></script>
 
-<!-- ═══ MODULE PLANITY ═══ -->
 <script>
   var container = document.getElementById('planity-container');
   window.planity = {
@@ -89,13 +122,32 @@
     primaryColor: '#C4704A',
     container: container
   };
-  // Masquer le loader une fois le module chargé
-  window.addEventListener('load', function(){
-    setTimeout(function(){
-      var loader = document.getElementById('planityLoading');
-      if(loader) loader.classList.add('hidden');
-    }, 1200);
-  });
+
+  (function(){
+    var loader = document.getElementById('planityLoading');
+    var target = document.getElementById('planity-container');
+
+    function hideLoader(){
+      if(loader && !loader.classList.contains('hidden')){
+        loader.classList.add('hidden');
+      }
+    }
+
+    if(window.MutationObserver && target){
+      var observer = new MutationObserver(function(mutations){
+        for(var i=0; i<mutations.length; i++){
+          if(mutations[i].addedNodes.length > 0){
+            setTimeout(hideLoader, 600);
+            observer.disconnect();
+            break;
+          }
+        }
+      });
+      observer.observe(target, {childList:true, subtree:true});
+    }
+
+    setTimeout(hideLoader, 5000);
+  })();
 </script>
 <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
 <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
