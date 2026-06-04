@@ -4,4 +4,4 @@ Disallow: /pages/mentions-legales.html
 Disallow: /pages/cgv.html
 Disallow: /pages/confidentialite.html
 
-Sitemap: https://centre-body-reset.vercel.app/sitemap.xml
+Sitemap: https://www.centrebodyreset.fr/sitemap.xml

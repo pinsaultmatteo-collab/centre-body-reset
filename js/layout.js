@@ -19,7 +19,7 @@ const BP = getBasePath();
 // ── HTML du Header ──
 const HEADER_HTML = `
 <nav id="nav">
-  <div class="nl"><a href="${BP}index.html"><img src="${BP}images/logo.png" alt="Centre Body Reset"></a></div>
+  <div class="nl"><a href="${BP}index.html"><img src="${BP}images/logo.webp" alt="Centre Body Reset" width="120" height="109"></a></div>
   <ul class="nls">
     <li><a href="${BP}index.html#solutions" data-nav="solutions">Nos solutions</a></li>
     <li><a href="${BP}index.html#technologies" data-nav="technologies">Technologies</a></li>
@@ -52,7 +52,7 @@ const FOOTER_HTML = `
   <div class="wrap">
     <div class="fg">
       <div class="fb">
-        <img src="${BP}images/logo.png" alt="Centre Body Reset">
+        <img src="${BP}images/logo.webp" alt="Centre Body Reset" width="120" height="109">
         <p>Centre Body Reset — Clermont-l'Hérault<br>L'alliance unique de la nutrition clinique et des technologies de pointe.</p>
         <div class="fso">
           <a href="https://instagram.com/centre.body.reset" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
