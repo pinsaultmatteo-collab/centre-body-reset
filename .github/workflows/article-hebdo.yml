@@ -42,7 +42,7 @@ jobs:
           git config user.email "bot@centrebodyreset.fr"
           # Ne committer que s'il y a réellement des changements
           if [ -n "$(git status --porcelain)" ]; then
-            git add pages/blog/ pages/blog.html sitemap.xml automation/calendrier-editorial.json images/blog/
+            git add -A
             git commit -m "Article blog auto : ${{ steps.generate.outputs.article_titre }}"
             git push
             echo "✓ Article publié et poussé"
