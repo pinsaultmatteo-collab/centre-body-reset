@@ -69,7 +69,9 @@ def marquer_publie(calendrier, sujet_id):
 # 2. GÉNÉRATION DU CONTENU VIA CLAUDE
 # ─────────────────────────────────────────────────────────
 def generer_article(client, sujet):
-    """Appelle l'API Claude et renvoie un dict avec le contenu structuré."""
+    """Appelle l'API Claude et renvoie un dict avec le contenu structuré.
+    Utilise un 'tool' pour forcer une sortie JSON structurée et valide,
+    ce qui évite les erreurs de parsing sur les longs textes."""
 
     prompt = f"""Tu es la plume éditoriale du Centre Body Reset, un centre de bien-être et santé globale à Clermont-l'Hérault, cofondé par Charlotte (diététicienne-nutritionniste diplômée depuis 2009, co-gérante) et Alison (esthéticienne et experte en technologies avancées depuis 2012, co-gérante).
 
@@ -88,44 +90,73 @@ CONSIGNES DE RÉDACTION :
 - Public : grand public français, principalement des femmes 35-65 ans.
 - Structure : 4 à 6 sections H2, avec quelques H3 si pertinent.
 - Intègre les mots-clés naturellement (pas de bourrage).
-- Termine toujours par une section "En résumé".
 - Évite les promesses médicales exagérées. Reste factuel.
 
-CONSIGNES DE FORMAT (réponds UNIQUEMENT en JSON valide, sans texte autour, sans backticks) :
-{{
-  "titre": "Le titre final de l'article (peut différer du titre indicatif, accrocheur, < 70 caractères)",
-  "titre_html": "Le titre avec UN segment de 2-4 mots entouré de <em> pour le mettre en valeur en terracotta",
-  "meta_description": "Meta description SEO, 150-160 caractères, avec mot-clé principal",
-  "chapeau": "Phrase d'introduction en italique sous le titre (le 'lead'), 2-3 phrases accrocheuses",
-  "temps_lecture": "X min de lecture (estime selon la longueur, ex: '7 min de lecture')",
-  "corps_html": "Le corps COMPLET de l'article en HTML. Utilise UNIQUEMENT ces balises : <p>, <h2>, <h3>, <ul>/<li>, <strong>, <em>, <blockquote>. Pour les liens internes vers les pages du centre, utilise ces chemins relatifs EXACTS quand c'est pertinent : technologies <a href=\\"../technologies/cryolipolyse.html\\">, <a href=\\"../technologies/adipologie.html\\">, <a href=\\"../technologies/led.html\\">, <a href=\\"../technologies/pressotherapie.html\\">, <a href=\\"../technologies/chaise-ems.html\\"> ; solutions <a href=\\"../solutions/menopause.html\\">, <a href=\\"../solutions/sommeil.html\\">, <a href=\\"../solutions/sportifs.html\\">, <a href=\\"../solutions/silhouette.html\\">. Insère 2 à 4 liens internes pertinents. Inclus UN <blockquote> avec une citation forte. Inclus si pertinent UN encart au format : <div class=\\"callout\\"><strong>Titre encart</strong><p>Contenu</p></div>. NE PAS inclure de section CTA ni de 'En résumé' dans le corps : ils sont gérés séparément. Termine le corps juste avant la conclusion.",
-  "resume_html": "Le contenu de la section 'En résumé' : 2 paragraphes <p> qui synthétisent l'article."
-}}
+CONSIGNES POUR LE CHAMP corps_html :
+Utilise UNIQUEMENT ces balises HTML : <p>, <h2>, <h3>, <ul>/<li>, <strong>, <em>, <blockquote>.
+Pour les liens internes, utilise ces chemins relatifs EXACTS quand c'est pertinent :
+- technologies : ../technologies/cryolipolyse.html, ../technologies/adipologie.html, ../technologies/led.html, ../technologies/pressotherapie.html, ../technologies/chaise-ems.html
+- solutions : ../solutions/menopause.html, ../solutions/sommeil.html, ../solutions/sportifs.html, ../solutions/silhouette.html
+Insère 2 à 4 liens internes pertinents. Inclus UN <blockquote> avec une citation forte. Inclus si pertinent UN encart : <div class="callout"><strong>Titre</strong><p>Contenu</p></div>.
+NE PAS inclure de section CTA ni de 'En résumé' dans le corps : gérés séparément."""
 
-Réponds en JSON pur, rien d'autre."""
+    # Définition de l'outil : force une sortie JSON structurée et valide
+    tool = {
+        "name": "publier_article",
+        "description": "Enregistre l'article de blog rédigé avec tous ses composants structurés.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "titre": {
+                    "type": "string",
+                    "description": "Titre final accrocheur, moins de 70 caractères.",
+                },
+                "titre_html": {
+                    "type": "string",
+                    "description": "Le titre avec UN segment de 2-4 mots entouré de <em> pour le mettre en valeur.",
+                },
+                "meta_description": {
+                    "type": "string",
+                    "description": "Meta description SEO, 150-160 caractères, avec le mot-clé principal.",
+                },
+                "chapeau": {
+                    "type": "string",
+                    "description": "Phrase d'introduction (lead), 2-3 phrases accrocheuses. Texte brut sans balises ni astérisques.",
+                },
+                "temps_lecture": {
+                    "type": "string",
+                    "description": "Estimation, ex: '7 min de lecture'.",
+                },
+                "corps_html": {
+                    "type": "string",
+                    "description": "Le corps complet de l'article en HTML (sans CTA ni conclusion).",
+                },
+                "resume_html": {
+                    "type": "string",
+                    "description": "La section 'En résumé' : 2 paragraphes <p> qui synthétisent l'article.",
+                },
+            },
+            "required": ["titre", "titre_html", "meta_description", "chapeau",
+                         "temps_lecture", "corps_html", "resume_html"],
+        },
+    }
 
     print(f"  → Appel API Claude (modèle {MODELE})...")
     message = client.messages.create(
         model=MODELE,
         max_tokens=4000,
+        tools=[tool],
+        tool_choice={"type": "tool", "name": "publier_article"},
         messages=[{"role": "user", "content": prompt}],
     )
 
-    raw = message.content[0].text.strip()
+    # Extraire le bloc tool_use (sortie JSON structurée garantie valide)
+    for block in message.content:
+        if block.type == "tool_use":
+            return block.input
 
-    # Nettoyage : enlever d'éventuels backticks markdown
-    raw = re.sub(r'^```json\s*', '', raw)
-    raw = re.sub(r'^```\s*', '', raw)
-    raw = re.sub(r'\s*```$', '', raw)
-
-    try:
-        data = json.loads(raw)
-    except json.JSONDecodeError as e:
-        print(f"  ✗ Erreur parsing JSON : {e}")
-        print(f"  Réponse brute :\n{raw[:500]}")
-        raise
-
-    return data
+    # Si on arrive ici, aucun tool_use trouvé (ne devrait pas arriver avec tool_choice forcé)
+    raise RuntimeError("Réponse Claude sans bloc tool_use — génération échouée")
 
 
 # ─────────────────────────────────────────────────────────
