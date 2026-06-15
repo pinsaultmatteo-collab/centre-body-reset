@@ -13,8 +13,6 @@ import sys
 import json
 import html
 import re
-import urllib.request
-import urllib.parse
 from datetime import datetime
 from pathlib import Path
 
@@ -28,13 +26,9 @@ BLOG_DIR = ROOT / "pages" / "blog"
 BLOG_INDEX = ROOT / "pages" / "blog.html"
 SITEMAP = ROOT / "sitemap.xml"
 CALENDRIER = ROOT / "automation" / "calendrier-editorial.json"
-IMAGES_DIR = ROOT / "images" / "blog"  # dossier des images d'articles
 
 SITE_URL = "https://www.centrebodyreset.fr"
 MODELE = "claude-sonnet-4-6"  # modèle utilisé pour la rédaction
-
-# Image de secours si le téléchargement Pexels échoue (photo déjà présente sur le site)
-IMAGE_FALLBACK = "tech-led.webp"
 
 MOIS_FR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
            "août", "septembre", "octobre", "novembre", "décembre"]
@@ -160,141 +154,48 @@ NE PAS inclure de section CTA ni de 'En résumé' dans le corps : gérés sépar
 
 
 # ─────────────────────────────────────────────────────────
-# 2bis. TÉLÉCHARGEMENT DE L'IMAGE
+# 2bis. CHOIX DE L'IMAGE (parmi les photos du centre)
 # ─────────────────────────────────────────────────────────
-def _convertir_webp(dest, slug):
-    """Convertit l'image téléchargée en WebP optimisé. Retourne le chemin relatif."""
-    try:
-        from PIL import Image
-        img = Image.open(dest).convert("RGB")
-        if img.width > 1400:
-            ratio = 1400 / img.width
-            img = img.resize((1400, int(img.height * ratio)), Image.LANCZOS)
-        webp_dest = IMAGES_DIR / f"{slug}.webp"
-        img.save(webp_dest, "WEBP", quality=82, method=6)
-        dest.unlink()  # supprimer l'original, garder le WebP
-        print(f"  ✓ Converti en WebP : images/blog/{slug}.webp")
-        return f"../../images/blog/{slug}.webp"
-    except ImportError:
-        # Pillow absent : on garde le fichier d'origine
-        return f"../../images/blog/{dest.name}"
+# À chaque catégorie d'article, on associe un pool de photos pertinentes
+# déjà présentes sur le site (dossier images/). Pour limiter les répétitions,
+# on tourne dans le pool selon le nombre d'articles déjà publiés.
+
+PHOTOS_PAR_CATEGORIE = {
+    "Technologies": ["tech-cryolipolyse.webp", "tech-led.webp", "tech-adipologie.webp",
+                     "tech-chaise-ems.webp", "tech-pressotherapie.webp"],
+    "Nutrition":    ["salon-consultation.webp", "team.webp", "hero-room.webp"],
+    "Menopause":    ["salon-consultation.webp", "tech-led.webp", "hero-room-2.webp"],
+    "Sommeil":      ["tech-led.webp", "hero-room.webp", "hero-room-2.webp"],
+    "Sport":        ["tech-pressotherapie.webp", "tech-chaise-ems.webp", "hero-room.webp"],
+    "Bien-etre":    ["salon-accueil.webp", "hero-room.webp", "hero-room-2.webp",
+                     "tech-led.webp", "salon-consultation.webp"],
+}
+
+# Photo par défaut si la catégorie n'est pas reconnue
+PHOTO_DEFAUT = "hero-room.webp"
 
 
-def _essayer_pexels(query, slug):
-    """Tente de télécharger une photo Pexels. Retourne le chemin relatif ou None."""
-    pexels_key = os.environ.get("PEXELS_API_KEY")
-    if not pexels_key:
-        print("  ⚠ PEXELS_API_KEY absente")
-        return None
-
-    # Nettoyer la clé (espaces / sauts de ligne accidentels au copier-coller)
-    pexels_key = pexels_key.strip()
-    print(f"  → Pexels : clé reçue (longueur {len(pexels_key)}, début '{pexels_key[:6]}…')")
-
-    try:
-        url = (
-            "https://api.pexels.com/v1/search?"
-            + urllib.parse.urlencode({
-                "query": query,
-                "orientation": "landscape",
-                "per_page": 10,
-                "size": "large",
-            })
-        )
-        req = urllib.request.Request(url, headers={"Authorization": pexels_key})
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            result = json.loads(resp.read().decode("utf-8"))
-
-        photos = result.get("photos", [])
-        if not photos:
-            print(f"  ⚠ Aucune photo Pexels pour « {query} »")
-            return None
-
-        photo = photos[0]
-        img_url = photo["src"]["large"]
-
-        IMAGES_DIR.mkdir(parents=True, exist_ok=True)
-        dest = IMAGES_DIR / f"{slug}.jpg"
-        img_req = urllib.request.Request(img_url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(img_req, timeout=30) as img_resp:
-            dest.write_bytes(img_resp.read())
-
-        photographe = photo.get("photographer", "Pexels")
-        print(f"  ✓ Photo Pexels téléchargée (© {photographe})")
-        return _convertir_webp(dest, slug)
-
-    except urllib.error.HTTPError as e:
-        if e.code == 403:
-            print(f"  ⚠ Pexels HTTP 403 : clé refusée. Vérifiez le secret PEXELS_API_KEY.")
-        else:
-            print(f"  ⚠ Pexels HTTP {e.code} : {e.reason}")
-        return None
-    except Exception as e:
-        print(f"  ⚠ Pexels erreur : {e}")
-        return None
-
-
-def _essayer_openverse(query, slug):
-    """Secours sans clé : Openverse (images Creative Commons). Retourne chemin relatif ou None."""
-    try:
-        url = (
-            "https://api.openverse.org/v1/images/?"
-            + urllib.parse.urlencode({
-                "q": query,
-                "license_type": "commercial",  # utilisable commercialement
-                "page_size": 5,
-                "mature": "false",
-            })
-        )
-        req = urllib.request.Request(url, headers={"User-Agent": "BodyResetBot/1.0"})
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            result = json.loads(resp.read().decode("utf-8"))
-
-        results = result.get("results", [])
-        if not results:
-            print(f"  ⚠ Aucune image Openverse pour « {query} »")
-            return None
-
-        img_url = results[0].get("url")
-        if not img_url:
-            return None
-
-        IMAGES_DIR.mkdir(parents=True, exist_ok=True)
-        dest = IMAGES_DIR / f"{slug}.jpg"
-        img_req = urllib.request.Request(img_url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(img_req, timeout=30) as img_resp:
-            dest.write_bytes(img_resp.read())
-
-        print(f"  ✓ Photo Openverse téléchargée (secours)")
-        return _convertir_webp(dest, slug)
-
-    except Exception as e:
-        print(f"  ⚠ Openverse erreur : {e}")
-        return None
-
-
-def telecharger_image(sujet, slug):
+def choisir_image(sujet, calendrier):
     """
-    Télécharge une photo libre de droits unique pour l'article.
-    Essaie Pexels d'abord (qualité), puis Openverse en secours (sans clé).
-    Retourne le chemin relatif (depuis pages/blog/) ou None si tout échoue.
+    Choisit une photo du centre adaptée à la catégorie de l'article.
+    Fait tourner dans le pool de la catégorie pour limiter les répétitions :
+    on se base sur le nombre d'articles DÉJÀ publiés dans cette catégorie.
+    Retourne le chemin relatif depuis pages/blog/ (donc ../../images/...).
     """
-    query = sujet.get("image_query", "wellness spa")
+    categorie = sujet.get("categorie", "")
+    pool = PHOTOS_PAR_CATEGORIE.get(categorie, [PHOTO_DEFAUT])
 
-    # 1) Pexels (meilleure qualité, nécessite une clé)
-    chemin = _essayer_pexels(query, slug)
-    if chemin:
-        return chemin
+    # Compter combien d'articles de cette catégorie sont déjà publiés
+    deja_publies = sum(
+        1 for s in calendrier["sujets"]
+        if s.get("categorie") == categorie and s.get("statut") == "publie"
+    )
 
-    # 2) Openverse (secours, sans clé)
-    print("  → Tentative avec Openverse (secours sans clé)…")
-    chemin = _essayer_openverse(query, slug)
-    if chemin:
-        return chemin
+    # Tourner dans le pool selon ce compteur
+    photo = pool[deja_publies % len(pool)]
+    print(f"  ✓ Image choisie ({categorie}) : images/{photo}")
 
-    # 3) Échec total → image de secours générique du site
-    print("  ⚠ Aucune source d'image disponible — image de secours du site")
-    return None
+    return f"../../images/{photo}"
 
 
 # ─────────────────────────────────────────────────────────
@@ -516,17 +417,10 @@ def main():
     slug = sujet["id"]
     fichier = BLOG_DIR / f"{slug}.html"
 
-    # Télécharger une image Pexels unique pour cet article
-    image_dl = telecharger_image(sujet, slug)
-    if image_dl:
-        # image_dl est au format "../../images/blog/{slug}.webp" (depuis pages/blog/)
-        image_cover = image_dl
-        # Pour la carte sur blog.html (depuis pages/), le chemin est "../images/blog/..."
-        image_card = image_dl.replace("../../images/", "../images/")
-    else:
-        # Image de secours déjà présente sur le site
-        image_cover = f"../../images/{IMAGE_FALLBACK}"
-        image_card = f"../images/{IMAGE_FALLBACK}"
+    # Choisir une photo du centre adaptée à la catégorie
+    image_cover = choisir_image(sujet, calendrier)  # "../../images/xxx.webp"
+    # Pour la carte sur blog.html (depuis pages/), le chemin est "../images/xxx.webp"
+    image_card = image_cover.replace("../../images/", "../images/")
 
     html_content = construire_html(sujet, data, slug, image_cover)
     fichier.write_text(html_content, encoding="utf-8")
