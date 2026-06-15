@@ -160,24 +160,38 @@ NE PAS inclure de section CTA ni de 'En résumé' dans le corps : gérés sépar
 
 
 # ─────────────────────────────────────────────────────────
-# 2bis. TÉLÉCHARGEMENT DE L'IMAGE (Pexels)
+# 2bis. TÉLÉCHARGEMENT DE L'IMAGE
 # ─────────────────────────────────────────────────────────
-def telecharger_image(sujet, slug):
-    """
-    Télécharge une photo libre de droits depuis Pexels selon les mots-clés
-    du sujet, la sauvegarde dans images/blog/{slug}.jpg.
-    Retourne le chemin relatif de l'image (depuis pages/blog/) ou None.
-    Si Pexels échoue, on retourne None et on utilisera l'image de secours.
-    """
-    pexels_key = os.environ.get("PEXELS_API_KEY")
-    query = sujet.get("image_query", "wellness spa")
+def _convertir_webp(dest, slug):
+    """Convertit l'image téléchargée en WebP optimisé. Retourne le chemin relatif."""
+    try:
+        from PIL import Image
+        img = Image.open(dest).convert("RGB")
+        if img.width > 1400:
+            ratio = 1400 / img.width
+            img = img.resize((1400, int(img.height * ratio)), Image.LANCZOS)
+        webp_dest = IMAGES_DIR / f"{slug}.webp"
+        img.save(webp_dest, "WEBP", quality=82, method=6)
+        dest.unlink()  # supprimer l'original, garder le WebP
+        print(f"  ✓ Converti en WebP : images/blog/{slug}.webp")
+        return f"../../images/blog/{slug}.webp"
+    except ImportError:
+        # Pillow absent : on garde le fichier d'origine
+        return f"../../images/blog/{dest.name}"
 
+
+def _essayer_pexels(query, slug):
+    """Tente de télécharger une photo Pexels. Retourne le chemin relatif ou None."""
+    pexels_key = os.environ.get("PEXELS_API_KEY")
     if not pexels_key:
-        print("  ⚠ PEXELS_API_KEY absente — image de secours utilisée")
+        print("  ⚠ PEXELS_API_KEY absente")
         return None
 
+    # Nettoyer la clé (espaces / sauts de ligne accidentels au copier-coller)
+    pexels_key = pexels_key.strip()
+    print(f"  → Pexels : clé reçue (longueur {len(pexels_key)}, début '{pexels_key[:6]}…')")
+
     try:
-        # Recherche sur l'API Pexels (paysage, qualité)
         url = (
             "https://api.pexels.com/v1/search?"
             + urllib.parse.urlencode({
@@ -193,45 +207,94 @@ def telecharger_image(sujet, slug):
 
         photos = result.get("photos", [])
         if not photos:
-            print(f"  ⚠ Aucune photo Pexels pour « {query} » — image de secours")
+            print(f"  ⚠ Aucune photo Pexels pour « {query} »")
             return None
 
-        # On prend la 1ère photo. Pour varier, on pourrait utiliser un index
-        # basé sur le slug, mais la recherche renvoie déjà des résultats variés.
         photo = photos[0]
-        img_url = photo["src"]["large"]  # ~1880px de large, bonne qualité
+        img_url = photo["src"]["large"]
 
-        # Télécharger l'image
         IMAGES_DIR.mkdir(parents=True, exist_ok=True)
         dest = IMAGES_DIR / f"{slug}.jpg"
         img_req = urllib.request.Request(img_url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(img_req, timeout=30) as img_resp:
             dest.write_bytes(img_resp.read())
 
-        # Crédit photographe (bonne pratique Pexels, on le garde en commentaire data)
         photographe = photo.get("photographer", "Pexels")
-        print(f"  ✓ Photo Pexels téléchargée (© {photographe}) : images/blog/{slug}.jpg")
+        print(f"  ✓ Photo Pexels téléchargée (© {photographe})")
+        return _convertir_webp(dest, slug)
 
-        # Tenter une conversion WebP si Pillow est dispo (sinon on garde le JPG)
-        try:
-            from PIL import Image
-            img = Image.open(dest).convert("RGB")
-            # Redimensionner si trop large (max 1400px)
-            if img.width > 1400:
-                ratio = 1400 / img.width
-                img = img.resize((1400, int(img.height * ratio)), Image.LANCZOS)
-            webp_dest = IMAGES_DIR / f"{slug}.webp"
-            img.save(webp_dest, "WEBP", quality=82, method=6)
-            dest.unlink()  # supprimer le JPG, garder le WebP
-            print(f"  ✓ Converti en WebP : images/blog/{slug}.webp")
-            return f"../../images/blog/{slug}.webp"
-        except ImportError:
-            # Pillow absent : on garde le JPG
-            return f"../../images/blog/{slug}.jpg"
+    except urllib.error.HTTPError as e:
+        if e.code == 403:
+            print(f"  ⚠ Pexels HTTP 403 : clé refusée. Vérifiez le secret PEXELS_API_KEY.")
+        else:
+            print(f"  ⚠ Pexels HTTP {e.code} : {e.reason}")
+        return None
+    except Exception as e:
+        print(f"  ⚠ Pexels erreur : {e}")
+        return None
+
+
+def _essayer_openverse(query, slug):
+    """Secours sans clé : Openverse (images Creative Commons). Retourne chemin relatif ou None."""
+    try:
+        url = (
+            "https://api.openverse.org/v1/images/?"
+            + urllib.parse.urlencode({
+                "q": query,
+                "license_type": "commercial",  # utilisable commercialement
+                "page_size": 5,
+                "mature": "false",
+            })
+        )
+        req = urllib.request.Request(url, headers={"User-Agent": "BodyResetBot/1.0"})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+
+        results = result.get("results", [])
+        if not results:
+            print(f"  ⚠ Aucune image Openverse pour « {query} »")
+            return None
+
+        img_url = results[0].get("url")
+        if not img_url:
+            return None
+
+        IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+        dest = IMAGES_DIR / f"{slug}.jpg"
+        img_req = urllib.request.Request(img_url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(img_req, timeout=30) as img_resp:
+            dest.write_bytes(img_resp.read())
+
+        print(f"  ✓ Photo Openverse téléchargée (secours)")
+        return _convertir_webp(dest, slug)
 
     except Exception as e:
-        print(f"  ⚠ Erreur téléchargement Pexels : {e} — image de secours")
+        print(f"  ⚠ Openverse erreur : {e}")
         return None
+
+
+def telecharger_image(sujet, slug):
+    """
+    Télécharge une photo libre de droits unique pour l'article.
+    Essaie Pexels d'abord (qualité), puis Openverse en secours (sans clé).
+    Retourne le chemin relatif (depuis pages/blog/) ou None si tout échoue.
+    """
+    query = sujet.get("image_query", "wellness spa")
+
+    # 1) Pexels (meilleure qualité, nécessite une clé)
+    chemin = _essayer_pexels(query, slug)
+    if chemin:
+        return chemin
+
+    # 2) Openverse (secours, sans clé)
+    print("  → Tentative avec Openverse (secours sans clé)…")
+    chemin = _essayer_openverse(query, slug)
+    if chemin:
+        return chemin
+
+    # 3) Échec total → image de secours générique du site
+    print("  ⚠ Aucune source d'image disponible — image de secours du site")
+    return None
 
 
 # ─────────────────────────────────────────────────────────
