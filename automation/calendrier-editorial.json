@@ -1,0 +1,85 @@
+{
+  "_comment": "Calendrier éditorial du blog Centre Body Reset. Chaque entrée = un sujet d'article. Le script publie le premier sujet non encore publié (statut 'a_publier'), puis le passe en 'publie'. Ajoutez de nouveaux sujets ici quand la liste se vide. Catégories valides : Technologies, Nutrition, Menopause, Sommeil, Sport, Bien-etre.",
+  "sujets": [
+    {
+      "id": "led-bienfaits-peau-sommeil",
+      "titre_indicatif": "La photobiomodulation LED : quels bienfaits réels pour la peau et le sommeil ?",
+      "categorie": "Technologies",
+      "mots_cles": ["photobiomodulation", "LED", "luminothérapie", "peau", "sommeil", "collagène"],
+      "angle": "Expliquer le mécanisme de la lumière rouge et infrarouge sur les cellules, les bienfaits prouvés (peau, sommeil, inflammation), et démystifier sans survendre.",
+      "image": "tech-led.webp",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "pressotherapie-jambes-lourdes",
+      "titre_indicatif": "Jambes lourdes : la pressodynamie peut-elle vraiment soulager ?",
+      "categorie": "Bien-etre",
+      "mots_cles": ["jambes lourdes", "pressodynamie", "drainage lymphatique", "rétention d'eau", "circulation"],
+      "angle": "Cibler la problématique très recherchée des jambes lourdes. Expliquer le drainage lymphatique mécanique, pour qui c'est adapté, à quelle fréquence.",
+      "image": "tech-pressotherapie.webp",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-perte-poids-durable",
+      "titre_indicatif": "Pourquoi les régimes échouent (et ce qui fonctionne vraiment)",
+      "categorie": "Nutrition",
+      "mots_cles": ["régime", "perte de poids", "nutrition", "métabolisme", "effet yo-yo", "rééquilibrage alimentaire"],
+      "angle": "Déconstruire le mythe des régimes restrictifs. Expliquer l'effet yo-yo, le rôle du métabolisme, et l'approche d'un accompagnement nutritionnel durable par une diététicienne diplômée.",
+      "image": "tech-led.webp",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "menopause-sommeil-bouffees",
+      "titre_indicatif": "Ménopause et troubles du sommeil : comprendre et agir",
+      "categorie": "Menopause",
+      "mots_cles": ["ménopause", "sommeil", "bouffées de chaleur", "hormones", "insomnie", "périménopause"],
+      "angle": "Aborder l'impact hormonal de la ménopause sur le sommeil. Bouffées de chaleur nocturnes, réveils. Solutions naturelles, nutritionnelles et apport de la LED.",
+      "image": "tech-led.webp",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "recuperation-sportive-technologies",
+      "titre_indicatif": "Récupération sportive : les technologies qui accélèrent la régénération",
+      "categorie": "Sport",
+      "mots_cles": ["récupération sportive", "performance", "courbatures", "régénération musculaire", "drainage", "LED"],
+      "angle": "S'adresser aux sportifs. Expliquer comment la pressodynamie et la LED optimisent la récupération musculaire, réduisent les courbatures et préviennent les blessures.",
+      "image": "tech-pressotherapie.webp",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "cellulite-comprendre-agir",
+      "titre_indicatif": "Cellulite : comprendre les 3 types pour mieux la traiter",
+      "categorie": "Technologies",
+      "mots_cles": ["cellulite", "peau d'orange", "cellulite adipeuse", "cellulite fibreuse", "adipologie", "silhouette"],
+      "angle": "Article pédagogique sur les types de cellulite (adipeuse, aqueuse, fibreuse), pourquoi les crèmes ne suffisent pas, et l'approche par adipologie et drainage.",
+      "image": "tech-adipologie.webp",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "plancher-pelvien-importance",
+      "titre_indicatif": "Plancher pelvien : pourquoi en prendre soin change tout",
+      "categorie": "Bien-etre",
+      "mots_cles": ["plancher pelvien", "périnée", "confort intime", "post-grossesse", "chaise EMS", "tonification"],
+      "angle": "Sujet sensible mais très recherché. Expliquer le rôle du plancher pelvien, les causes de relâchement (grossesse, ménopause, âge), et l'apport de la chaise EMS en toute pudeur.",
+      "image": "tech-chaise-ems.webp",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "stress-cortisol-poids",
+      "titre_indicatif": "Stress et prise de poids : le rôle méconnu du cortisol",
+      "categorie": "Nutrition",
+      "mots_cles": ["stress", "cortisol", "prise de poids", "graisse abdominale", "gestion du stress", "hormones"],
+      "angle": "Expliquer le lien entre stress chronique, cortisol et stockage des graisses (surtout abdominales). Approche globale : nutrition, sommeil, technologies relaxantes.",
+      "image": "tech-led.webp",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+name: Article hebdomadaire
+
+# Publie automatiquement un article de blog chaque mardi à 8h00 (heure de Paris)
+on:
+  schedule:
+    # GitHub Actions utilise UTC. 8h Paris = 6h UTC (été) / 7h UTC (hiver).
+    # On met 6h UTC : l'article paraîtra à 8h en été, 7h en hiver — toujours le matin.
+    - cron: "0 6 * * 2"
+  # Permet aussi de lancer manuellement depuis l'onglet Actions (bouton "Run workflow")
+  workflow_dispatch:
+
+# Autorise le workflow à pousser des commits sur le repo
+permissions:
+  contents: write
+
+jobs:
+  publier-article:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code du repo
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer les dépendances
+        run: pip install -r automation/requirements.txt
+
+      - name: Générer et publier l'article
+        id: generate
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python automation/generate_article.py
+
+      - name: Commit et push des changements
+        run: |
+          git config user.name "Body Reset Bot"
+          git config user.email "bot@centrebodyreset.fr"
+          # Ne committer que s'il y a réellement des changements
+          if [ -n "$(git status --porcelain)" ]; then
+            git add pages/blog/ pages/blog.html sitemap.xml automation/calendrier-editorial.json
+            git commit -m "Article blog auto : ${{ steps.generate.outputs.article_titre }}"
+            git push
+            echo "✓ Article publié et poussé"
+          else
+            echo "ℹ Aucun changement à committer (calendrier probablement vide)"
+          fi
