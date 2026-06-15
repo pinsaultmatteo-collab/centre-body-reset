@@ -1,5 +1,5 @@
 {
-  "_comment": "Calendrier éditorial du blog Centre Body Reset. Chaque entrée = un sujet d'article. Le script publie le premier sujet non encore publié (statut 'a_publier'), puis le passe en 'publie'. Ajoutez de nouveaux sujets ici quand la liste se vide. Catégories valides : Technologies, Nutrition, Menopause, Sommeil, Sport, Bien-etre.",
+  "_comment": "Calendrier éditorial du blog Centre Body Reset. Le script publie le premier sujet 'a_publier', puis le passe en 'publie'. Catégories : Technologies, Nutrition, Menopause, Sommeil, Sport, Bien-etre. Le champ 'image_query' fournit les mots-clés (en anglais) pour la recherche de photo Pexels.",
   "sujets": [
     {
       "id": "led-bienfaits-peau-sommeil",
@@ -14,10 +14,9 @@
         "collagène"
       ],
       "angle": "Expliquer le mécanisme de la lumière rouge et infrarouge sur les cellules, les bienfaits prouvés (peau, sommeil, inflammation), et démystifier sans survendre.",
-      "image": "tech-led.webp",
+      "image_query": "led light therapy skin",
       "auteur": "Alison",
-      "statut": "publie",
-      "date_publication": "2026-06-15"
+      "statut": "a_publier"
     },
     {
       "id": "pressotherapie-jambes-lourdes",
@@ -31,7 +30,7 @@
         "circulation"
       ],
       "angle": "Cibler la problématique très recherchée des jambes lourdes. Expliquer le drainage lymphatique mécanique, pour qui c'est adapté, à quelle fréquence.",
-      "image": "tech-pressotherapie.webp",
+      "image_query": "legs wellness relax",
       "auteur": "Alison",
       "statut": "a_publier"
     },
@@ -47,8 +46,8 @@
         "effet yo-yo",
         "rééquilibrage alimentaire"
       ],
-      "angle": "Déconstruire le mythe des régimes restrictifs. Expliquer l'effet yo-yo, le rôle du métabolisme, et l'approche d'un accompagnement nutritionnel durable par une diététicienne diplômée.",
-      "image": "tech-led.webp",
+      "angle": "Déconstruire le mythe des régimes restrictifs. Expliquer l'effet yo-yo, le rôle du métabolisme, et l'approche d'un accompagnement nutritionnel durable.",
+      "image_query": "healthy food vegetables",
       "auteur": "Charlotte",
       "statut": "a_publier"
     },
@@ -65,7 +64,7 @@
         "périménopause"
       ],
       "angle": "Aborder l'impact hormonal de la ménopause sur le sommeil. Bouffées de chaleur nocturnes, réveils. Solutions naturelles, nutritionnelles et apport de la LED.",
-      "image": "tech-led.webp",
+      "image_query": "woman sleeping peaceful",
       "auteur": "Charlotte",
       "statut": "a_publier"
     },
@@ -82,7 +81,7 @@
         "LED"
       ],
       "angle": "S'adresser aux sportifs. Expliquer comment la pressodynamie et la LED optimisent la récupération musculaire, réduisent les courbatures et préviennent les blessures.",
-      "image": "tech-pressotherapie.webp",
+      "image_query": "athlete recovery sport",
       "auteur": "Alison",
       "statut": "a_publier"
     },
@@ -99,7 +98,7 @@
         "silhouette"
       ],
       "angle": "Article pédagogique sur les types de cellulite (adipeuse, aqueuse, fibreuse), pourquoi les crèmes ne suffisent pas, et l'approche par adipologie et drainage.",
-      "image": "tech-adipologie.webp",
+      "image_query": "body skin care",
       "auteur": "Alison",
       "statut": "a_publier"
     },
@@ -115,8 +114,8 @@
         "chaise EMS",
         "tonification"
       ],
-      "angle": "Sujet sensible mais très recherché. Expliquer le rôle du plancher pelvien, les causes de relâchement (grossesse, ménopause, âge), et l'apport de la chaise EMS en toute pudeur.",
-      "image": "tech-chaise-ems.webp",
+      "angle": "Sujet sensible mais recherché. Expliquer le rôle du plancher pelvien, les causes de relâchement, et l'apport de la chaise EMS en toute pudeur.",
+      "image_query": "woman wellness calm",
       "auteur": "Alison",
       "statut": "a_publier"
     },
@@ -132,8 +131,860 @@
         "gestion du stress",
         "hormones"
       ],
-      "angle": "Expliquer le lien entre stress chronique, cortisol et stockage des graisses (surtout abdominales). Approche globale : nutrition, sommeil, technologies relaxantes.",
-      "image": "tech-led.webp",
+      "angle": "Expliquer le lien entre stress chronique, cortisol et stockage des graisses. Approche globale : nutrition, sommeil, technologies relaxantes.",
+      "image_query": "stress relax meditation",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-sucre-faux-amis",
+      "titre_indicatif": "Sucre caché : les faux amis de votre alimentation quotidienne",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "sucre caché",
+        "alimentation",
+        "index glycémique",
+        "étiquettes",
+        "produits transformés"
+      ],
+      "angle": "Identifier les sources de sucre cachées dans l'alimentation courante, lire les étiquettes, comprendre l'index glycémique.",
+      "image_query": "sugar food healthy",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-proteines-importance",
+      "titre_indicatif": "Protéines : pourquoi en manquez-vous probablement",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "protéines",
+        "masse musculaire",
+        "satiété",
+        "alimentation",
+        "métabolisme"
+      ],
+      "angle": "Expliquer le rôle des protéines, les besoins réels, les bonnes sources, et pourquoi la plupart des gens en consomment trop peu.",
+      "image_query": "protein healthy meal",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-micronutriments-carences",
+      "titre_indicatif": "Fatigue chronique : et si c'était une carence ?",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "carences",
+        "fer",
+        "magnésium",
+        "vitamine D",
+        "fatigue",
+        "micronutriments"
+      ],
+      "angle": "Aborder les carences fréquentes (fer, magnésium, vitamine D, B12) et leurs signaux, et l'importance d'un bilan nutritionnel.",
+      "image_query": "vitamins healthy nutrition",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-intestin-microbiote",
+      "titre_indicatif": "Microbiote intestinal : votre deuxième cerveau",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "microbiote",
+        "intestin",
+        "digestion",
+        "fibres",
+        "probiotiques",
+        "santé"
+      ],
+      "angle": "Vulgariser le rôle du microbiote dans la santé globale, l'immunité, l'humeur. Comment en prendre soin par l'alimentation.",
+      "image_query": "gut health food",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-hydratation-role",
+      "titre_indicatif": "L'hydratation : le pilier le plus sous-estimé de la santé",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "hydratation",
+        "eau",
+        "métabolisme",
+        "peau",
+        "énergie",
+        "rétention d'eau"
+      ],
+      "angle": "Expliquer l'importance de l'hydratation sur le métabolisme, la peau, l'énergie, et comment bien s'hydrater au quotidien.",
+      "image_query": "water hydration glass",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-petit-dejeuner-mythes",
+      "titre_indicatif": "Le petit-déjeuner est-il vraiment le repas le plus important ?",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "petit-déjeuner",
+        "jeûne intermittent",
+        "métabolisme",
+        "satiété",
+        "habitudes"
+      ],
+      "angle": "Démêler le vrai du faux sur le petit-déjeuner, aborder le jeûne intermittent sans dogmatisme, et l'écoute de ses signaux.",
+      "image_query": "breakfast healthy morning",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-grignotage-solutions",
+      "titre_indicatif": "Grignotage : comprendre les vraies causes pour s'en libérer",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "grignotage",
+        "faim émotionnelle",
+        "satiété",
+        "sucre",
+        "habitudes alimentaires"
+      ],
+      "angle": "Distinguer faim physique et émotionnelle, comprendre les pulsions sucrées, et des stratégies concrètes pour réduire le grignotage.",
+      "image_query": "snacking healthy food",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-anti-inflammatoire",
+      "titre_indicatif": "L'alimentation anti-inflammatoire : mythe ou réalité ?",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "inflammation",
+        "alimentation anti-inflammatoire",
+        "oméga-3",
+        "antioxydants",
+        "santé"
+      ],
+      "angle": "Expliquer l'inflammation chronique de bas grade, les aliments qui l'aggravent ou l'apaisent, sans tomber dans les régimes miracles.",
+      "image_query": "anti inflammatory food",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-batch-cooking",
+      "titre_indicatif": "Manger sainement quand on manque de temps : nos astuces",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "batch cooking",
+        "organisation repas",
+        "alimentation équilibrée",
+        "meal prep",
+        "gain de temps"
+      ],
+      "angle": "Donner des solutions pratiques pour bien manger malgré un emploi du temps chargé : préparation, organisation, choix malins.",
+      "image_query": "meal prep cooking",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-edulcorants-verite",
+      "titre_indicatif": "Édulcorants : sont-ils vraiment une bonne alternative au sucre ?",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "édulcorants",
+        "aspartame",
+        "stévia",
+        "sucre",
+        "glycémie",
+        "santé"
+      ],
+      "angle": "Faire le point objectif sur les édulcorants, leurs effets sur le microbiote et l'appétit, et les alternatives.",
+      "image_query": "sweetener sugar alternative",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-emotionnelle",
+      "titre_indicatif": "Faim émotionnelle : quand les émotions dictent nos repas",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "faim émotionnelle",
+        "alimentation émotionnelle",
+        "stress",
+        "grignotage",
+        "comportement alimentaire"
+      ],
+      "angle": "Explorer le lien entre émotions et alimentation, reconnaître la faim émotionnelle, et des pistes pour retrouver une relation apaisée à la nourriture.",
+      "image_query": "emotional eating mindful",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "nutrition-saison-automne",
+      "titre_indicatif": "Renforcer son immunité naturellement à l'approche de l'hiver",
+      "categorie": "Nutrition",
+      "mots_cles": [
+        "immunité",
+        "vitamine C",
+        "vitamine D",
+        "alimentation",
+        "hiver",
+        "défenses naturelles"
+      ],
+      "angle": "Conseils nutritionnels pour soutenir le système immunitaire en automne-hiver : aliments clés, vitamines, habitudes.",
+      "image_query": "immune food citrus",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "menopause-prise-poids-ventre",
+      "titre_indicatif": "Ménopause : pourquoi la graisse se loge sur le ventre",
+      "categorie": "Menopause",
+      "mots_cles": [
+        "ménopause",
+        "graisse abdominale",
+        "œstrogènes",
+        "métabolisme",
+        "prise de poids"
+      ],
+      "angle": "Expliquer la redistribution des graisses vers l'abdomen à la ménopause, le rôle des œstrogènes, et les solutions ciblées.",
+      "image_query": "woman health wellness",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "menopause-bouffees-chaleur",
+      "titre_indicatif": "Bouffées de chaleur : comprendre et atténuer naturellement",
+      "categorie": "Menopause",
+      "mots_cles": [
+        "bouffées de chaleur",
+        "ménopause",
+        "hormones",
+        "phytothérapie",
+        "alimentation"
+      ],
+      "angle": "Décrire le mécanisme des bouffées de chaleur, les facteurs déclenchants, et les approches naturelles et nutritionnelles pour les atténuer.",
+      "image_query": "woman calm relax",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "menopause-os-sante",
+      "titre_indicatif": "Préserver sa santé osseuse après 50 ans",
+      "categorie": "Menopause",
+      "mots_cles": [
+        "ostéoporose",
+        "calcium",
+        "vitamine D",
+        "ménopause",
+        "os",
+        "activité physique"
+      ],
+      "angle": "Sensibiliser à la perte osseuse post-ménopause, le rôle du calcium et de la vitamine D, et l'importance du mouvement.",
+      "image_query": "bone health calcium",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "menopause-libido-bienetre",
+      "titre_indicatif": "Ménopause et bien-être intime : briser les tabous",
+      "categorie": "Menopause",
+      "mots_cles": [
+        "ménopause",
+        "libido",
+        "confort intime",
+        "sécheresse",
+        "plancher pelvien",
+        "bien-être"
+      ],
+      "angle": "Aborder avec délicatesse les changements intimes à la ménopause, et les solutions dont la tonification pelvienne.",
+      "image_query": "woman wellness serene",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "menopause-humeur-emotions",
+      "titre_indicatif": "Ménopause et montagnes russes émotionnelles : c'est hormonal",
+      "categorie": "Menopause",
+      "mots_cles": [
+        "ménopause",
+        "humeur",
+        "émotions",
+        "hormones",
+        "irritabilité",
+        "bien-être mental"
+      ],
+      "angle": "Expliquer l'impact hormonal sur l'humeur pendant la ménopause, déculpabiliser, et donner des pistes globales.",
+      "image_query": "woman peaceful mindful",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "menopause-sport-adapte",
+      "titre_indicatif": "Quelle activité physique privilégier à la ménopause ?",
+      "categorie": "Menopause",
+      "mots_cles": [
+        "ménopause",
+        "sport",
+        "renforcement musculaire",
+        "cardio",
+        "métabolisme",
+        "activité physique"
+      ],
+      "angle": "Conseiller sur le type d'activité physique le plus bénéfique à la ménopause : renforcement, cardio doux, régularité.",
+      "image_query": "woman exercise fitness",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "menopause-perimenopause-signes",
+      "titre_indicatif": "Périménopause : reconnaître les premiers signes",
+      "categorie": "Menopause",
+      "mots_cles": [
+        "périménopause",
+        "ménopause",
+        "cycles",
+        "hormones",
+        "symptômes",
+        "quarantaine"
+      ],
+      "angle": "Décrire les signes de la périménopause souvent méconnus, dès la quarantaine, et l'intérêt d'un accompagnement précoce.",
+      "image_query": "woman health forties",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "menopause-alimentation-phyto",
+      "titre_indicatif": "Alimentation et ménopause : les aliments alliés",
+      "categorie": "Menopause",
+      "mots_cles": [
+        "ménopause",
+        "phytoœstrogènes",
+        "soja",
+        "alimentation",
+        "hormones",
+        "oméga-3"
+      ],
+      "angle": "Présenter les aliments bénéfiques à la ménopause (phytoœstrogènes, oméga-3, calcium) dans une approche équilibrée.",
+      "image_query": "healthy food woman",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-cryo-vs-chirurgie",
+      "titre_indicatif": "Cryolipolyse ou chirurgie : comment choisir ?",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "cryolipolyse",
+        "liposuccion",
+        "chirurgie esthétique",
+        "amas graisseux",
+        "silhouette"
+      ],
+      "angle": "Comparer objectivement cryolipolyse et chirurgie : indications, résultats, risques, pour aider à faire un choix éclairé.",
+      "image_query": "wellness beauty treatment",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-ems-explication",
+      "titre_indicatif": "L'électrostimulation EMS : la révolution du renforcement musculaire",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "EMS",
+        "électrostimulation",
+        "plancher pelvien",
+        "renforcement musculaire",
+        "chaise EMS"
+      ],
+      "angle": "Expliquer la technologie EMS, comment elle contracte les muscles en profondeur, et ses applications notamment pelviennes.",
+      "image_query": "muscle fitness technology",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-led-couleurs",
+      "titre_indicatif": "Lumière rouge, bleue, infrarouge : que font les différentes LED ?",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "LED",
+        "lumière rouge",
+        "lumière bleue",
+        "infrarouge",
+        "photobiomodulation",
+        "peau"
+      ],
+      "angle": "Détailler les effets des différentes longueurs d'onde LED sur la peau et les tissus, de façon pédagogique.",
+      "image_query": "led light therapy",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-adipologie-lfu",
+      "titre_indicatif": "La technologie LFU® : les ultrasons au service de votre silhouette",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "adipologie",
+        "LFU",
+        "ultrasons",
+        "tissu adipeux",
+        "silhouette",
+        "amincissement"
+      ],
+      "angle": "Présenter la technologie LFU® de l'adipologie, son mécanisme par ultrasons multi-focalisés, et ses résultats.",
+      "image_query": "ultrasound body treatment",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-securite-protocoles",
+      "titre_indicatif": "Technologies esthétiques : comment garantir leur sécurité ?",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "sécurité",
+        "technologies esthétiques",
+        "protocoles",
+        "contre-indications",
+        "bilan"
+      ],
+      "angle": "Rassurer sur la sécurité des technologies, l'importance du bilan préalable et des protocoles encadrés par des professionnelles.",
+      "image_query": "professional wellness clinic",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-combinaison-synergie",
+      "titre_indicatif": "Pourquoi combiner plusieurs technologies décuple les résultats",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "synergie",
+        "protocole combiné",
+        "cryolipolyse",
+        "drainage",
+        "LED",
+        "silhouette"
+      ],
+      "angle": "Expliquer l'intérêt de combiner les technologies (cryo + drainage + LED) dans un protocole cohérent et personnalisé.",
+      "image_query": "wellness spa treatment",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-resultats-realistes",
+      "titre_indicatif": "Technologies minceur : quels résultats espérer réellement ?",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "résultats",
+        "minceur",
+        "technologies",
+        "attentes réalistes",
+        "silhouette",
+        "durabilité"
+      ],
+      "angle": "Poser des attentes réalistes sur les résultats des technologies, l'importance de la régularité et de l'hygiène de vie.",
+      "image_query": "body wellness measure",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-drainage-detox",
+      "titre_indicatif": "Drainage lymphatique : mythe détox ou vraie efficacité ?",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "drainage lymphatique",
+        "détox",
+        "pressodynamie",
+        "rétention",
+        "circulation",
+        "toxines"
+      ],
+      "angle": "Faire le point honnête sur le drainage lymphatique, ce qu'il fait vraiment, au-delà du marketing détox.",
+      "image_query": "lymphatic massage wellness",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-peau-fermete",
+      "titre_indicatif": "Raffermir sa peau sans chirurgie : les solutions qui marchent",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "fermeté",
+        "peau",
+        "collagène",
+        "LED",
+        "radiofréquence",
+        "raffermissement"
+      ],
+      "angle": "Présenter les approches non invasives pour raffermir la peau (LED, stimulation du collagène) et leurs limites.",
+      "image_query": "skin care firm beauty",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "techno-premiere-seance",
+      "titre_indicatif": "Votre première séance technologie : à quoi s'attendre",
+      "categorie": "Technologies",
+      "mots_cles": [
+        "première séance",
+        "technologie",
+        "déroulement",
+        "bilan",
+        "sensations",
+        "accompagnement"
+      ],
+      "angle": "Rassurer et décrire concrètement le déroulé d'une première séance, du bilan à la prise en charge.",
+      "image_query": "spa treatment relaxing",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sommeil-routine-coucher",
+      "titre_indicatif": "La routine du soir idéale pour un sommeil réparateur",
+      "categorie": "Sommeil",
+      "mots_cles": [
+        "sommeil",
+        "routine du soir",
+        "mélatonine",
+        "écrans",
+        "détente",
+        "endormissement"
+      ],
+      "angle": "Donner une routine concrète du soir pour favoriser l'endormissement : lumière, écrans, température, détente.",
+      "image_query": "bedtime routine calm",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sommeil-alimentation-lien",
+      "titre_indicatif": "Ce que vous mangez influence comment vous dormez",
+      "categorie": "Sommeil",
+      "mots_cles": [
+        "sommeil",
+        "alimentation",
+        "tryptophane",
+        "magnésium",
+        "caféine",
+        "dîner"
+      ],
+      "angle": "Explorer le lien entre alimentation et sommeil : aliments favorables, à éviter le soir, timing des repas.",
+      "image_query": "healthy dinner evening",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sommeil-dette-recuperation",
+      "titre_indicatif": "Dette de sommeil : peut-on vraiment la rattraper ?",
+      "categorie": "Sommeil",
+      "mots_cles": [
+        "dette de sommeil",
+        "récupération",
+        "sieste",
+        "weekend",
+        "rythme circadien"
+      ],
+      "angle": "Expliquer la notion de dette de sommeil, si on peut la rattraper, et l'importance de la régularité.",
+      "image_query": "sleep rest peaceful",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sommeil-stress-insomnie",
+      "titre_indicatif": "Quand le stress vous empêche de dormir : que faire ?",
+      "categorie": "Sommeil",
+      "mots_cles": [
+        "insomnie",
+        "stress",
+        "cortisol",
+        "relaxation",
+        "sommeil",
+        "anxiété"
+      ],
+      "angle": "Aborder le cercle vicieux stress-insomnie et des techniques concrètes de relaxation et d'hygiène de sommeil.",
+      "image_query": "relaxation calm sleep",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sommeil-led-melatonine",
+      "titre_indicatif": "Comment la lumière LED peut améliorer votre sommeil",
+      "categorie": "Sommeil",
+      "mots_cles": [
+        "LED",
+        "mélatonine",
+        "rythme circadien",
+        "photobiomodulation",
+        "sommeil",
+        "luminothérapie"
+      ],
+      "angle": "Expliquer comment la photobiomodulation LED agit sur les rythmes circadiens et la mélatonine pour un meilleur sommeil.",
+      "image_query": "light therapy sleep",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sport-debutant-demarrer",
+      "titre_indicatif": "Reprendre le sport après une longue pause : le guide",
+      "categorie": "Sport",
+      "mots_cles": [
+        "reprise du sport",
+        "débutant",
+        "motivation",
+        "progressivité",
+        "blessures",
+        "activité physique"
+      ],
+      "angle": "Guider la reprise d'activité physique en douceur, éviter les blessures, rester motivé.",
+      "image_query": "fitness beginner exercise",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sport-recuperation-musculaire",
+      "titre_indicatif": "Courbatures : comprendre et accélérer la récupération",
+      "categorie": "Sport",
+      "mots_cles": [
+        "courbatures",
+        "récupération musculaire",
+        "drainage",
+        "étirements",
+        "performance"
+      ],
+      "angle": "Expliquer les courbatures, et les méthodes pour récupérer plus vite dont le drainage et la LED.",
+      "image_query": "muscle recovery sport",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sport-nutrition-performance",
+      "titre_indicatif": "Nutrition du sportif : manger pour performer",
+      "categorie": "Sport",
+      "mots_cles": [
+        "nutrition sportive",
+        "protéines",
+        "glucides",
+        "performance",
+        "récupération",
+        "hydratation"
+      ],
+      "angle": "Aborder les bases de la nutrition sportive : avant, pendant, après l'effort, pour la performance et la récupération.",
+      "image_query": "sport nutrition healthy",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sport-technologies-athletes",
+      "titre_indicatif": "Comment les technologies optimisent la performance sportive",
+      "categorie": "Sport",
+      "mots_cles": [
+        "performance",
+        "technologies",
+        "récupération",
+        "LED",
+        "pressodynamie",
+        "athlètes"
+      ],
+      "angle": "Montrer comment les technologies de récupération aident les sportifs amateurs comme confirmés.",
+      "image_query": "athlete training recovery",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "sport-sedentarite-risques",
+      "titre_indicatif": "Sédentarité : les dangers invisibles de rester assis",
+      "categorie": "Sport",
+      "mots_cles": [
+        "sédentarité",
+        "position assise",
+        "circulation",
+        "santé",
+        "activité physique",
+        "métabolisme"
+      ],
+      "angle": "Alerter sur les effets de la sédentarité, et des solutions simples pour bouger plus au quotidien.",
+      "image_query": "active lifestyle movement",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-stress-gestion",
+      "titre_indicatif": "5 techniques scientifiques pour gérer son stress au quotidien",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "stress",
+        "gestion du stress",
+        "respiration",
+        "cohérence cardiaque",
+        "relaxation",
+        "bien-être"
+      ],
+      "angle": "Proposer des techniques validées de gestion du stress : respiration, cohérence cardiaque, ancrage.",
+      "image_query": "stress relief calm",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-confiance-corps",
+      "titre_indicatif": "Réconcilier avec son corps : au-delà de l'apparence",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "confiance en soi",
+        "image corporelle",
+        "bien-être",
+        "estime de soi",
+        "acceptation"
+      ],
+      "angle": "Aborder le rapport au corps avec bienveillance, au-delà de l'esthétique, vers une santé globale.",
+      "image_query": "self care wellness woman",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-circulation-veineuse",
+      "titre_indicatif": "Mauvaise circulation : signes, causes et solutions",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "circulation veineuse",
+        "jambes lourdes",
+        "rétention",
+        "drainage",
+        "varices",
+        "bien-être"
+      ],
+      "angle": "Expliquer les troubles de la circulation veineuse, leurs signes, et les solutions dont le drainage.",
+      "image_query": "legs circulation wellness",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-retention-eau",
+      "titre_indicatif": "Rétention d'eau : pourquoi et comment s'en débarrasser",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "rétention d'eau",
+        "drainage",
+        "alimentation",
+        "sel",
+        "circulation",
+        "gonflement"
+      ],
+      "angle": "Comprendre les causes de la rétention d'eau (alimentation, hormones, circulation) et les solutions efficaces.",
+      "image_query": "water retention wellness",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-detox-verite",
+      "titre_indicatif": "Détox : ce qui marche vraiment (et ce qui ne sert à rien)",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "détox",
+        "foie",
+        "alimentation",
+        "drainage",
+        "cures détox",
+        "santé"
+      ],
+      "angle": "Démystifier les cures détox à la mode, expliquer comment le corps se détoxifie vraiment et comment le soutenir.",
+      "image_query": "detox healthy water",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-energie-vitalite",
+      "titre_indicatif": "Retrouver son énergie : les leviers qui font la différence",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "énergie",
+        "fatigue",
+        "vitalité",
+        "sommeil",
+        "nutrition",
+        "activité physique"
+      ],
+      "angle": "Identifier les causes de la fatigue et les leviers concrets pour retrouver de l'énergie au quotidien.",
+      "image_query": "energy vitality wellness",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-routine-matinale",
+      "titre_indicatif": "La routine matinale qui transforme vos journées",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "routine matinale",
+        "énergie",
+        "habitudes",
+        "bien-être",
+        "productivité",
+        "lumière du jour"
+      ],
+      "angle": "Proposer une routine du matin bénéfique pour l'énergie et le bien-être : lumière, hydratation, mouvement.",
+      "image_query": "morning routine wellness",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-posture-dos",
+      "titre_indicatif": "Mal de dos : et si c'était votre posture ?",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "mal de dos",
+        "posture",
+        "sédentarité",
+        "renforcement",
+        "ergonomie",
+        "bien-être"
+      ],
+      "angle": "Aborder le mal de dos lié à la posture et la sédentarité, et des solutions de renforcement et d'ergonomie.",
+      "image_query": "back posture wellness",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-respiration-cohérence",
+      "titre_indicatif": "La cohérence cardiaque : 5 minutes pour apaiser votre système nerveux",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "cohérence cardiaque",
+        "respiration",
+        "stress",
+        "système nerveux",
+        "relaxation",
+        "bien-être"
+      ],
+      "angle": "Expliquer et guider la pratique de la cohérence cardiaque, ses bienfaits sur le stress et le sommeil.",
+      "image_query": "breathing meditation calm",
+      "auteur": "Charlotte",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-hiver-moral",
+      "titre_indicatif": "Déprime hivernale : comprendre et combattre le manque de lumière",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "déprime hivernale",
+        "luminothérapie",
+        "sérotonine",
+        "lumière",
+        "moral",
+        "saisons"
+      ],
+      "angle": "Aborder la dépression saisonnière, le rôle de la lumière, et les solutions dont la luminothérapie.",
+      "image_query": "winter light wellness",
+      "auteur": "Alison",
+      "statut": "a_publier"
+    },
+    {
+      "id": "bienetre-equilibre-global",
+      "titre_indicatif": "Santé globale : pourquoi tout est connecté",
+      "categorie": "Bien-etre",
+      "mots_cles": [
+        "santé globale",
+        "équilibre",
+        "nutrition",
+        "sommeil",
+        "stress",
+        "approche holistique"
+      ],
+      "angle": "Article transversal sur l'approche globale de la santé : comment nutrition, sommeil, stress et mouvement s'influencent.",
+      "image_query": "holistic health balance",
       "auteur": "Charlotte",
       "statut": "a_publier"
     }

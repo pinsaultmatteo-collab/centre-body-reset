@@ -13,6 +13,8 @@ import sys
 import json
 import html
 import re
+import urllib.request
+import urllib.parse
 from datetime import datetime
 from pathlib import Path
 
@@ -26,9 +28,13 @@ BLOG_DIR = ROOT / "pages" / "blog"
 BLOG_INDEX = ROOT / "pages" / "blog.html"
 SITEMAP = ROOT / "sitemap.xml"
 CALENDRIER = ROOT / "automation" / "calendrier-editorial.json"
+IMAGES_DIR = ROOT / "images" / "blog"  # dossier des images d'articles
 
 SITE_URL = "https://www.centrebodyreset.fr"
 MODELE = "claude-sonnet-4-6"  # modèle utilisé pour la rédaction
+
+# Image de secours si le téléchargement Pexels échoue (photo déjà présente sur le site)
+IMAGE_FALLBACK = "tech-led.webp"
 
 MOIS_FR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
            "août", "septembre", "octobre", "novembre", "décembre"]
@@ -123,15 +129,90 @@ Réponds en JSON pur, rien d'autre."""
 
 
 # ─────────────────────────────────────────────────────────
+# 2bis. TÉLÉCHARGEMENT DE L'IMAGE (Pexels)
+# ─────────────────────────────────────────────────────────
+def telecharger_image(sujet, slug):
+    """
+    Télécharge une photo libre de droits depuis Pexels selon les mots-clés
+    du sujet, la sauvegarde dans images/blog/{slug}.jpg.
+    Retourne le chemin relatif de l'image (depuis pages/blog/) ou None.
+    Si Pexels échoue, on retourne None et on utilisera l'image de secours.
+    """
+    pexels_key = os.environ.get("PEXELS_API_KEY")
+    query = sujet.get("image_query", "wellness spa")
+
+    if not pexels_key:
+        print("  ⚠ PEXELS_API_KEY absente — image de secours utilisée")
+        return None
+
+    try:
+        # Recherche sur l'API Pexels (paysage, qualité)
+        url = (
+            "https://api.pexels.com/v1/search?"
+            + urllib.parse.urlencode({
+                "query": query,
+                "orientation": "landscape",
+                "per_page": 10,
+                "size": "large",
+            })
+        )
+        req = urllib.request.Request(url, headers={"Authorization": pexels_key})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+
+        photos = result.get("photos", [])
+        if not photos:
+            print(f"  ⚠ Aucune photo Pexels pour « {query} » — image de secours")
+            return None
+
+        # On prend la 1ère photo. Pour varier, on pourrait utiliser un index
+        # basé sur le slug, mais la recherche renvoie déjà des résultats variés.
+        photo = photos[0]
+        img_url = photo["src"]["large"]  # ~1880px de large, bonne qualité
+
+        # Télécharger l'image
+        IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+        dest = IMAGES_DIR / f"{slug}.jpg"
+        img_req = urllib.request.Request(img_url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(img_req, timeout=30) as img_resp:
+            dest.write_bytes(img_resp.read())
+
+        # Crédit photographe (bonne pratique Pexels, on le garde en commentaire data)
+        photographe = photo.get("photographer", "Pexels")
+        print(f"  ✓ Photo Pexels téléchargée (© {photographe}) : images/blog/{slug}.jpg")
+
+        # Tenter une conversion WebP si Pillow est dispo (sinon on garde le JPG)
+        try:
+            from PIL import Image
+            img = Image.open(dest).convert("RGB")
+            # Redimensionner si trop large (max 1400px)
+            if img.width > 1400:
+                ratio = 1400 / img.width
+                img = img.resize((1400, int(img.height * ratio)), Image.LANCZOS)
+            webp_dest = IMAGES_DIR / f"{slug}.webp"
+            img.save(webp_dest, "WEBP", quality=82, method=6)
+            dest.unlink()  # supprimer le JPG, garder le WebP
+            print(f"  ✓ Converti en WebP : images/blog/{slug}.webp")
+            return f"../../images/blog/{slug}.webp"
+        except ImportError:
+            # Pillow absent : on garde le JPG
+            return f"../../images/blog/{slug}.jpg"
+
+    except Exception as e:
+        print(f"  ⚠ Erreur téléchargement Pexels : {e} — image de secours")
+        return None
+
+
+# ─────────────────────────────────────────────────────────
 # 3. CONSTRUCTION DU FICHIER HTML
 # ─────────────────────────────────────────────────────────
-def construire_html(sujet, data, slug):
-    """Génère le HTML complet de l'article à partir du template."""
+def construire_html(sujet, data, slug, image_cover):
+    """Génère le HTML complet de l'article à partir du template.
+    image_cover : chemin relatif (depuis pages/blog/) de l'image de couverture."""
 
     maintenant = datetime.now()
     date_fr = f"{MOIS_FR[maintenant.month - 1].capitalize()} {maintenant.year}"
     initiale = sujet["auteur"][0].upper()
-    image = sujet["image"]
 
     # Bio auteur
     bios = {
@@ -226,7 +307,7 @@ def construire_html(sujet, data, slug):
 </section>
 
 <div class="article-cover rv-zoom">
-  <div class="article-cover-img" style="background-image:url('../../images/{image}')"></div>
+  <div class="article-cover-img" style="background-image:url('{image_cover}')"></div>
 </div>
 
 <article class="article-body">
@@ -262,11 +343,11 @@ def construire_html(sujet, data, slug):
 # ─────────────────────────────────────────────────────────
 # 4. MISE À JOUR DE blog.html (ajout de la carte)
 # ─────────────────────────────────────────────────────────
-def ajouter_carte_blog(sujet, data, slug):
+def ajouter_carte_blog(sujet, data, slug, image_card):
     c = BLOG_INDEX.read_text(encoding="utf-8")
 
     nouvelle_carte = f"""      <a href="blog/{slug}.html" class="bcard">
-        <div class="bcard-img"><div class="bcard-img-inner" style="background-image:url('../images/{sujet['image']}')"></div></div>
+        <div class="bcard-img"><div class="bcard-img-inner" style="background-image:url('{image_card}')"></div></div>
         <div class="bcard-body">
           <div class="bcard-meta"><span class="bcard-cat">{html.escape(sujet['categorie'])}</span><span>·</span><span>{html.escape(data['temps_lecture'])}</span></div>
           <h3>{html.escape(data['titre'])}</h3>
@@ -341,11 +422,23 @@ def main():
     slug = sujet["id"]
     fichier = BLOG_DIR / f"{slug}.html"
 
-    html_content = construire_html(sujet, data, slug)
+    # Télécharger une image Pexels unique pour cet article
+    image_dl = telecharger_image(sujet, slug)
+    if image_dl:
+        # image_dl est au format "../../images/blog/{slug}.webp" (depuis pages/blog/)
+        image_cover = image_dl
+        # Pour la carte sur blog.html (depuis pages/), le chemin est "../images/blog/..."
+        image_card = image_dl.replace("../../images/", "../images/")
+    else:
+        # Image de secours déjà présente sur le site
+        image_cover = f"../../images/{IMAGE_FALLBACK}"
+        image_card = f"../images/{IMAGE_FALLBACK}"
+
+    html_content = construire_html(sujet, data, slug, image_cover)
     fichier.write_text(html_content, encoding="utf-8")
     print(f"✓ Fichier créé : pages/blog/{slug}.html")
 
-    ajouter_carte_blog(sujet, data, slug)
+    ajouter_carte_blog(sujet, data, slug, image_card)
     print("✓ blog.html mis à jour (nouvelle carte)")
 
     ajouter_sitemap(slug)
