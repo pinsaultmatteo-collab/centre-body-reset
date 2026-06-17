@@ -154,6 +154,7 @@
         <div class="form-success" id="formOk">✓ Merci ! Votre demande a bien été envoyée. Nous vous recontactons rapidement.</div>
 
         <form id="contactForm" onsubmit="return submitForm(event)">
+          <input type="hidden" name="_subject" value="Nouvelle demande de contact — site Body Reset">
           <div class="form-row">
             <div class="form-group">
               <label for="prenom">Prénom *</label>
@@ -230,19 +231,43 @@
 <script>
 function submitForm(e){
   e.preventDefault();
-  // En production : envoyer via Formspree, Netlify Forms ou un endpoint custom
-  // Exemple Formspree : action="https://formspree.io/f/YOUR_FORM_ID"
 
-  // GA4 : lead confirmé (soumission du formulaire de contact)
-  if(window.gtag){
-    window.gtag('event', 'lead', { source: 'formulaire_contact' });
-  }
+  // ⚠️ REMPLACER par l'URL fournie par Formspree (formspree.io)
+  // Format : https://formspree.io/f/VOTRE_ID
+  var FORMSPREE_URL = "https://formspree.io/f/mojzzayb";
 
-  document.getElementById('formOk').classList.add('show');
-  document.getElementById('contactForm').reset();
-  setTimeout(()=>{
-    document.getElementById('formOk').classList.remove('show');
-  }, 6000);
+  var form = document.getElementById('contactForm');
+  var bouton = form.querySelector('button[type="submit"], .btn');
+  var btnTexteInitial = bouton ? bouton.textContent : '';
+  if(bouton){ bouton.disabled = true; bouton.textContent = 'Envoi en cours…'; }
+
+  fetch(FORMSPREE_URL, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+  .then(function(response){
+    if(response.ok){
+      // GA4 : lead confirmé (uniquement si l'envoi a réussi)
+      if(window.gtag){
+        window.gtag('event', 'lead', { source: 'formulaire_contact' });
+      }
+      document.getElementById('formOk').classList.add('show');
+      form.reset();
+      setTimeout(function(){
+        document.getElementById('formOk').classList.remove('show');
+      }, 6000);
+    } else {
+      alert("Une erreur est survenue lors de l'envoi. Merci de réessayer ou de nous contacter par téléphone.");
+    }
+  })
+  .catch(function(){
+    alert("Impossible d'envoyer le message. Vérifiez votre connexion ou contactez-nous par téléphone.");
+  })
+  .finally(function(){
+    if(bouton){ bouton.disabled = false; bouton.textContent = btnTexteInitial; }
+  });
+
   return false;
 }
 </script>
