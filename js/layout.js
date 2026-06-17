@@ -5,7 +5,25 @@
 
 (function(){
 
-// ── Détermine le préfixe de chemin selon la profondeur de la page ──
+// ═══════════════════════════════════════════════════
+// GOOGLE ANALYTICS 4 — chargé sur toutes les pages
+// ID de mesure : G-84DJJK2WR7
+// ═══════════════════════════════════════════════════
+(function loadGA4(){
+  var GA_ID = 'G-84DJJK2WR7';
+  // Injecter le script gtag.js
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+  // Initialiser la dataLayer + config
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', GA_ID);
+})();
+
+
 // Si la page est dans /pages/blog/article.html, ../../ pour remonter à la racine
 function getBasePath(){
   const path = window.location.pathname;
@@ -19,7 +37,7 @@ const BP = getBasePath();
 // ── HTML du Header ──
 const HEADER_HTML = `
 <nav id="nav">
-  <div class="nl"><a href="${BP}index.html"><img src="${BP}images/logo.webp" alt="Centre Body Reset" width="120" height="109"></a></div>
+  <div class="nl"><a href="${BP}index.html"><img src="${BP}images/logo.png" alt="Centre Body Reset"></a></div>
   <ul class="nls">
     <li><a href="${BP}index.html#solutions" data-nav="solutions">Nos solutions</a></li>
     <li><a href="${BP}index.html#technologies" data-nav="technologies">Technologies</a></li>
@@ -52,7 +70,7 @@ const FOOTER_HTML = `
   <div class="wrap">
     <div class="fg">
       <div class="fb">
-        <img src="${BP}images/logo.webp" alt="Centre Body Reset" width="120" height="109">
+        <img src="${BP}images/logo.png" alt="Centre Body Reset">
         <p>Centre Body Reset — Clermont-l'Hérault<br>L'alliance unique de la nutrition clinique et des technologies de pointe.</p>
         <div class="fso">
           <a href="https://instagram.com/centre.body.reset" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
@@ -209,5 +227,50 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+// ═══════════════════════════════════════════════════
+// GA4 — ÉVÉNEMENTS PERSONNALISÉS
+// ═══════════════════════════════════════════════════
+(function trackEvents(){
+  function ga(){ if(window.gtag) window.gtag.apply(null, arguments); }
+  var path = window.location.pathname;
+
+  // ── 1 & 2. Pages à forte intention : /reservation et /contact ──
+  if(path.indexOf('/reservation') !== -1 || path.endsWith('reservation.html')){
+    ga('event', 'intention', { type_page: 'reservation' });
+  }
+  if(path.indexOf('/contact') !== -1 || path.endsWith('contact.html')){
+    ga('event', 'intention', { type_page: 'contact' });
+  }
+
+  // ── 4. Clic sur un lien téléphone (tel:) ──
+  document.addEventListener('click', function(e){
+    var lien = e.target.closest && e.target.closest('a[href^="tel:"]');
+    if(lien){
+      ga('event', 'call', {
+        numero: lien.getAttribute('href').replace('tel:', '')
+      });
+    }
+  });
+
+  // ── 5. Engagement réservation Planity ──
+  // Le widget Planity gère la confirmation dans son propre système (non accessible
+  // depuis ici). On suit donc l'engagement : le visiteur a chargé l'agenda.
+  if(path.indexOf('/reservation') !== -1 || path.endsWith('reservation.html')){
+    var conteneur = document.getElementById('planity-container');
+    if(conteneur && window.MutationObserver){
+      var obs = new MutationObserver(function(mut){
+        for(var i=0;i<mut.length;i++){
+          if(mut[i].addedNodes.length > 0){
+            ga('event', 'reservation_engagement', { source: 'planity' });
+            obs.disconnect();
+            break;
+          }
+        }
+      });
+      obs.observe(conteneur, { childList:true, subtree:true });
+    }
+  }
+})();
 
 })();
