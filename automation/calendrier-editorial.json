@@ -87,7 +87,8 @@
       "angle": "S'adresser aux sportifs. Expliquer comment la pressodynamie et la LED optimisent la récupération musculaire, réduisent les courbatures et préviennent les blessures.",
       "image_query": "athlete recovery sport",
       "auteur": "Alison",
-      "statut": "a_publier"
+      "statut": "publie",
+      "date_publication": "2026-07-07"
     },
     {
       "id": "cellulite-comprendre-agir",
