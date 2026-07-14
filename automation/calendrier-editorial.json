@@ -105,7 +105,8 @@
       "angle": "Article pédagogique sur les types de cellulite (adipeuse, aqueuse, fibreuse), pourquoi les crèmes ne suffisent pas, et l'approche par adipologie et drainage.",
       "image_query": "body skin care",
       "auteur": "Alison",
-      "statut": "a_publier"
+      "statut": "publie",
+      "date_publication": "2026-07-14"
     },
     {
       "id": "plancher-pelvien-importance",
